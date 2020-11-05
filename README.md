@@ -55,6 +55,18 @@ wine winetricks filezilla \
 
 ```
 ----------
+### Docker configuration
+- `/etc/docker/daemon.json`
+- `.docker/config.json`
+### Kubernetes
+- `.kube`
+### Vagrant
+- `.vagrant.d`
+### i3wm
+### ssh
+- `.ssh/config`
+
+----------------
 
 All configuration for my desktop
 https://fedoramagazine.org/getting-started-i3-window-manager/
