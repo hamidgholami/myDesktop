@@ -27,11 +27,38 @@ and
 ```sh
 chmod go-r /etc/sudoers.d/<FILE_NAME>
 ```
+### All requirement packages
+```sh
+sudo apt install \
+vim git \
+python3 python3-pip \
+terminator tmux tree \
+zsh \
+vlc \
+build-essential gcc Ubuntu-restricted-extras \
+ca-certificates \
+gnome-tweak-tool \
+openjdk-11-jdk \
+simplescreenrecorder \
+unrar zip unzip p7zip-full p7zip-rar rar \
+wine winetricks filezilla \
+# packer
+# ansible
+# vagrant
+# docker
+# docker-compose
+# kubectl
+# vncviewer
+# pptp, l2tp, sstp, openvpn
+# kvm, qemu, libvirtd
+# zoipper or jitsi
 
-****
+```
+----------
 
 All configuration for my desktop
 https://fedoramagazine.org/getting-started-i3-window-manager/
+
 
 ### To Do List
 - i3
