@@ -27,6 +27,10 @@ and
 ```sh
 chmod go-r /etc/sudoers.d/<FILE_NAME>
 ```
+### Add some repository in source.list.d
+- Docker
+- Ansible
+
 ### All requirement packages
 ```sh
 sudo apt install \
@@ -42,6 +46,27 @@ openjdk-11-jdk \
 simplescreenrecorder \
 unrar zip unzip p7zip-full p7zip-rar rar \
 wine winetricks filezilla \
+zim \
+sshpass \
+openssl \
+dnsutils \
+traceroute \
+virtualbox \
+curl \
+gnupg-agent \
+software-properties-common apt-transport-https \
+qemu-kvm \
+libvirt-bin virtinst virt-viewer virt-manager \
+bridge-utils \
+cpu-checker \
+spice-client-gtk \
+remmina remmina-plugin-vnc remmina-plugin-rdp \
+mtr-tiny htop \
+virt-top imvirt \
+apg at bc rsync ftp \
+guake \
+x11vnc clipit \
+docker-ce docker-ce-cli containerd.io
 # packer
 # ansible
 # vagrant
