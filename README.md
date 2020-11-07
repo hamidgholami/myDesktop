@@ -30,6 +30,8 @@ chmod go-r /etc/sudoers.d/<FILE_NAME>
 ### Add some repository in source.list.d
 - Docker
 - Ansible
+- vscode
+- qbittorrent 
 
 ### All requirement packages
 ```sh
@@ -52,8 +54,9 @@ openssl \
 dnsutils \
 traceroute \
 virtualbox \
-curl \
-gnupg-agent \
+curl ipython3 \
+openssh-server openssh-client \
+gnupg-agent code \
 software-properties-common apt-transport-https \
 qemu-kvm \
 libvirt-bin virtinst virt-viewer virt-manager \
@@ -66,7 +69,11 @@ virt-top imvirt \
 apg at bc rsync ftp \
 guake \
 x11vnc clipit \
-docker-ce docker-ce-cli containerd.io
+docker-ce docker-ce-cli containerd.io \
+openvpn network-manager-openvpn \
+network-manager-openvpn-gnome network-manager-vpnc \
+network-manager-l2tp network-manager-l2tp-gnome \
+qbittorrent
 # packer
 # ansible
 # vagrant
@@ -78,6 +85,10 @@ docker-ce docker-ce-cli containerd.io
 # kvm, qemu, libvirtd
 # zoipper or jitsi
 
+```
+```sh
+pip3 install docker-compose
+pip3 install ansible
 ```
 ----------
 ### Docker configuration
