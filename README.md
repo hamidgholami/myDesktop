@@ -31,7 +31,7 @@ chmod go-r /etc/sudoers.d/<FILE_NAME>
 - Docker
 - Ansible
 - vscode
-- qbittorrent 
+- qbittorrent
 
 ### All requirement packages
 ```sh
@@ -73,7 +73,7 @@ docker-ce docker-ce-cli containerd.io \
 openvpn network-manager-openvpn \
 network-manager-openvpn-gnome network-manager-vpnc \
 network-manager-l2tp network-manager-l2tp-gnome \
-qbittorrent
+qbittorrent mlocate net-tools \
 # packer
 # ansible
 # vagrant
