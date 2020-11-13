@@ -9,10 +9,12 @@ sudo update-alternatives --config editor
 ### Git configuration
 
 - Change default editor to vim
+
 ```sh
  git config --global core.editor vim
 ```
 - Set your email and name
+
 ```sh
  git config --global user.name "Hamid Gholami"
  git config --global user.email hamid@linuxmail.org
@@ -76,8 +78,8 @@ openvpn network-manager-openvpn \
 network-manager-openvpn-gnome network-manager-vpnc \
 network-manager-l2tp network-manager-l2tp-gnome \
 qbittorrent mlocate net-tools cpu-checker \
-font-farsiweb font-powerline \
-gnome-twaek-tool \
+font-farsiweb fonts-powerline \
+gnome-twaek-tool zsh-syntax-highlighting \
 
 # packer
 # ansible
@@ -138,7 +140,7 @@ sudo apt install qemu libvirt-daemon-system \
 libvirt-clients libxslt-dev libxml2-dev libvirt-dev \
 zlib1g-dev ruby-dev ruby-libvirt ebtables dnsmasq-base \
 qemu-kvm libvirt-daemon-system libvirt-clients \
-bridge-utils virtinst virt-manager
+bridge-utils virtinst virt-manager libvirt-bin libvirt-doc
 ```
 - Start and enable libvirtd daemon service.
 
@@ -170,16 +172,70 @@ vagrant plugin install vagrant-libvirt
 ```sh
 vagrant plugin install vagrant-mutate
 ```
+### Install Docker
+[Official docker installation](https://docs.docker.com/engine/install/ubuntu/)
+- Remove old docker versions.
 
-### Install docker-compose and ansible
+```sh
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
+- Install docker repository
+
+```sh
+sudo apt-get update
+```
+```sh
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+```
+
+- Add Docker’s official GPG key:
+
+```sh
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+
+- Add docker repository
+
+```sh
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+```
+- Install docker engine
+
+```sh
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+- Add user in docker goup.
+
+```sh
+sudo usermod -aG docker $USER
+```
+
+- Install docker-compose
+
 ```sh
 pip3 install docker-compose
-pip3 install ansible
 ```
-----------
-### Docker configuration
-- `/etc/docker/daemon.json`
-- `.docker/config.json`
+
+- Docker configuration<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`/etc/docker/daemon.json`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`~/.docker/config.json`
+
+### Install ansible
+
+```sh
+pip3 install ansible
+pip3 install ansible-cmdb
+```
+
 ### Kubernetes
 - `.kube`
 ### Vagrant
@@ -189,9 +245,56 @@ pip3 install ansible
 - `.ssh/config`
 
 ----------------
+### oh-my-zsh
+- Firstly, you should install `zsh`.
 
-All configuration for my desktop
-https://fedoramagazine.org/getting-started-i3-window-manager/
+```sh
+sudo apt install zsh
+```
+- After the installation is complete, change the default shell of the root user to zsh with the chsh command below.
+
+```sh
+chsh -s /usr/bin/zsh root
+```
+- Now logout from the root user, log in again, and you will get the zsh shell. Check the current shell used with the command below.
+
+```sh
+echo $SHELL
+```
+
+- Install `oh-my-zsh` from its official github repository or website.
+
+```sh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+```
+- So, oh-my-zsh is installed in the home directory `~/.oh-my-zsh`. Copy the template .zshrc.zsh-template configuration file to the home directory .zshrc and apply the configuration by running the source command, as shown below
+
+```sh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+source ~/.zshrc
+```
+- My `.zshrc` config.
+
+
+- [Install zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+
+### Install powerline
+
+[Powerline official installation](https://devpro.media/install-powerline-ubuntu/#)
+
+### Instal NeoVim
+
+[NeoVim official installation](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+
+### Install Nerd Font
+
+[Nerd Font Official installation](https://www.nerdfonts.com/)
+
+
+All configuration for my desktop<br />
+https://fedoramagazine.org/getting-started-i3-window-manager/<br />
+https://www.bretfisher.com/shell/<br />
 
 
 ### To Do List
