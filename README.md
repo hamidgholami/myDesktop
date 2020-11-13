@@ -104,7 +104,8 @@ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 - Add HashiCorp repository.
 
 ```sh
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-add-repository \
+     "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 ```
 - Update and install.
 
@@ -276,7 +277,7 @@ source ~/.zshrc
 - My `.zshrc` config.
 
 
-- [Install zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+[Install zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 
 ### Install powerline
