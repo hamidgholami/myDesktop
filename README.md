@@ -1,6 +1,7 @@
 # myDesktop
 - **Ubuntu 20.04**
 - **Lubuntu 18.04**
+
 ### Change default editor
 ```sh
 sudo update-alternatives --config editor
@@ -16,6 +17,7 @@ sudo update-alternatives --config editor
  git config --global user.name "Hamid Gholami"
  git config --global user.email hamid@linuxmail.org
 ```
+
 ### Disable sudo prompt for ask password
 
 Add a file in `/etc/sudoers.d/<FILE_NAME>`
@@ -35,7 +37,7 @@ chmod go-r /etc/sudoers.d/<FILE_NAME>
 
 ### All requirement packages
 ```sh
-sudo apt install \
+sudo apt-get install \
 vim git \
 python3 python3-pip \
 terminator tmux tree \
@@ -63,17 +65,20 @@ libvirt-bin virtinst virt-viewer virt-manager \
 bridge-utils \
 cpu-checker \
 spice-client-gtk \
-remmina remmina-plugin-vnc remmina-plugin-rdp \
+remmina remmina-plugin-* \
 mtr-tiny htop \
 virt-top imvirt \
 apg at bc rsync ftp \
-guake \
-x11vnc clipit \
+guake chromium-browser \
+x11vnc clipit cups-pdf \
 docker-ce docker-ce-cli containerd.io \
 openvpn network-manager-openvpn \
 network-manager-openvpn-gnome network-manager-vpnc \
 network-manager-l2tp network-manager-l2tp-gnome \
-qbittorrent mlocate net-tools \
+qbittorrent mlocate net-tools cpu-checker \
+font-farsiweb font-powerline \
+gnome-twaek-tool \
+
 # packer
 # ansible
 # vagrant
@@ -86,6 +91,87 @@ qbittorrent mlocate net-tools \
 # zoipper or jitsi
 
 ```
+### Install packer
+[Offical packer installation](https://learn.hashicorp.com/tutorials/packer/getting-started-install)
+
+- Add HashiCorp GPG.
+
+```sh
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+```
+- Add HashiCorp repository.
+
+```sh
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+```
+- Update and install.
+
+```sh
+sudo apt-get update && sudo apt-get install packer
+```
+### Install KVM, qemu, libvirt
+Before continuing with the installation, make sure your Ubuntu host machine supports KVM virtualization. The system should have either an Intel processor with the VT-x (vmx), or an AMD processor with the AMD-V (svm) technology support.
+
+Run the following grep command to verify that your processor supports hardware virtualization:
+```sh
+grep -Eoc '(vmx|svm)' /proc/cpuinfo
+```
+If the CPU supports hardware virtualization, the command will output a number greater than zero, which is the number of the CPU cores. Otherwise, if the output is 0 it means that the CPU doesn’t support hardware virtualization.
+
+On some machines, the virtual technology extensions may be disabled in the BIOS by the manufacturers.
+
+- To check if VT is enabled in the BIOS, use the kvm-ok tool.
+
+```sh
+kvm-ok
+```
+```ini
+output
+
+INFO: /dev/kvm exists
+KVM acceleration can be used
+```
+- Install packages
+
+```sh
+sudo apt install qemu libvirt-daemon-system \
+libvirt-clients libxslt-dev libxml2-dev libvirt-dev \
+zlib1g-dev ruby-dev ruby-libvirt ebtables dnsmasq-base \
+qemu-kvm libvirt-daemon-system libvirt-clients \
+bridge-utils virtinst virt-manager
+```
+- Start and enable libvirtd daemon service.
+
+```sh
+sudo systemctl is-active libvirtd
+```
+- To be able to create and manage virtual machines, you’ll need to add your user to the “libvirt” and “kvm” groups. To do that, enter:
+
+```sh
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
+```
+### Install Vagrant
+Download deb/rpm package from [vagrant official website](https://www.vagrantup.com/downloads).
+- Install vagrant package.
+
+```sh
+sudo dpkg -i vagrant_2.2.13_i686.deb
+# or
+sudo apt install ./vagrant_2.2.13_i686.deb
+```
+- Now, install **vagrant-libvirt** plugin using command:
+
+```sh
+vagrant plugin install vagrant-libvirt
+```
+- You also need to install **vagrant-mutate** plugin which converts vagrant boxes to work with different providers.
+
+```sh
+vagrant plugin install vagrant-mutate
+```
+
+### Install docker-compose and ansible
 ```sh
 pip3 install docker-compose
 pip3 install ansible
