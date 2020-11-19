@@ -31,20 +31,14 @@ and
 ```sh
 chmod go-r /etc/sudoers.d/<FILE_NAME>
 ```
-### Add some repository in source.list.d
-- Docker
-- Ansible
-- vscode
-- qbittorrent
-
 ### All requirement packages
 ```sh
 sudo apt-get install \
-vim git python3 python3-pip terminator tmux tree \
+vim git python3 python3-pip terminator tmux tree neovim \
 zsh vlc build-essential gcc Ubuntu-restricted-extras \
 ca-certificates openjdk-11-jdk simplescreenrecorder \
 unrar zip unzip p7zip-full p7zip-rar rar dnsutils \
-wine winetricks filezilla zim sshpass openssl \
+wine winetricks filezilla zim sshpass openssl mosh \
 traceroute virtualbox curl ipython3 openssh-server openssh-client \
 gnupg-agent code software-properties-common apt-transport-https \
 qemu-kvm libvirt-bin virtinst virt-viewer virt-manager bridge-utils \
@@ -54,11 +48,46 @@ guake chromium-browser x11vnc clipit cups-pdf \
 docker-ce docker-ce-cli containerd.io openvpn network-manager-openvpn \
 network-manager-openvpn-gnome network-manager-vpnc \
 network-manager-l2tp network-manager-l2tp-gnome \
-qbittorrent mlocate net-tools cpu-checker \
-font-farsiweb fonts-powerline \
+mlocate net-tools cpu-checker font-farsiweb fonts-powerline \
 gnome-twaek-tool zsh-syntax-highlighting \
 ```
+### Install qbittorrent
+
+* Add stable repository .
+
+```bash
+sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+```
+
+* Run follow commands for install.
+
+```bash
+sudo apt-get update && sudo apt-get install qbittorrent 
+```
+
+### Install VSCode
+
+* Download and import the Microsoft signing GPG key using the curl command.
+
+```bash
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc -o microsoft.asc
+sudo apt-key add microsoft.asc
+```
+
+* Now, add the Visual Studio Code repository to your system.
+
+```bash
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"  | sudo tee /etc/apt/sources.list.d/vscode.list
+```
+
+* Once you have added the repository to the system, do not forget to update the repository index. Use the apt command to install Visual Studio Code.
+
+```bash
+sudo apt update && sudo apt install code
+```
+
 ### Install packer
+
 [Offical packer installation](https://learn.hashicorp.com/tutorials/packer/getting-started-install)
 
 - Add HashiCorp GPG.
@@ -283,7 +312,6 @@ source ~/.zshrc
 ```
 - My `.zshrc` config.
 
-
 [Install zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
 
@@ -291,13 +319,25 @@ source ~/.zshrc
 
 [Powerline official installation](https://devpro.media/install-powerline-ubuntu/#)
 
-### Instal NeoVim
+* Add the *Universe* repository.
 
-[NeoVim official installation](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+```bash
+sudo add-apt-repository universe
+```
+
+* Install Powerline
+
+```bash
+sudo apt install powerline
+```
+
+### Install SpaceVim plugin
+
+[Official installation for linux](https://spacevim.org/quick-start-guide/#linux-and-macos)
 
 ### Install Nerd Font
 
 [Nerd Font Official installation](https://www.nerdfonts.com/)
 
+* Select and install Nerd Font from official website.
 
-https://www.bretfisher.com/shell/
