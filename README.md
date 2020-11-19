@@ -40,58 +40,23 @@ chmod go-r /etc/sudoers.d/<FILE_NAME>
 ### All requirement packages
 ```sh
 sudo apt-get install \
-vim git \
-python3 python3-pip \
-terminator tmux tree \
-zsh \
-vlc \
-build-essential gcc Ubuntu-restricted-extras \
-ca-certificates \
-gnome-tweak-tool \
-openjdk-11-jdk \
-simplescreenrecorder \
-unrar zip unzip p7zip-full p7zip-rar rar \
-wine winetricks filezilla \
-zim \
-sshpass \
-openssl \
-dnsutils \
-traceroute \
-virtualbox \
-curl ipython3 \
-openssh-server openssh-client \
-gnupg-agent code \
-software-properties-common apt-transport-https \
-qemu-kvm \
-libvirt-bin virtinst virt-viewer virt-manager \
-bridge-utils \
-cpu-checker \
-spice-client-gtk \
-remmina remmina-plugin-* \
-mtr-tiny htop \
-virt-top imvirt \
-apg at bc rsync ftp \
-guake chromium-browser \
-x11vnc clipit cups-pdf \
-docker-ce docker-ce-cli containerd.io \
-openvpn network-manager-openvpn \
+vim git python3 python3-pip terminator tmux tree \
+zsh vlc build-essential gcc Ubuntu-restricted-extras \
+ca-certificates openjdk-11-jdk simplescreenrecorder \
+unrar zip unzip p7zip-full p7zip-rar rar dnsutils \
+wine winetricks filezilla zim sshpass openssl \
+traceroute virtualbox curl ipython3 openssh-server openssh-client \
+gnupg-agent code software-properties-common apt-transport-https \
+qemu-kvm libvirt-bin virtinst virt-viewer virt-manager bridge-utils \
+cpu-checker spice-client-gtk remmina remmina-plugin-* \
+mtr-tiny htop virt-top imvirt apg at bc rsync ftp \
+guake chromium-browser x11vnc clipit cups-pdf \
+docker-ce docker-ce-cli containerd.io openvpn network-manager-openvpn \
 network-manager-openvpn-gnome network-manager-vpnc \
 network-manager-l2tp network-manager-l2tp-gnome \
 qbittorrent mlocate net-tools cpu-checker \
 font-farsiweb fonts-powerline \
 gnome-twaek-tool zsh-syntax-highlighting \
-
-# packer
-# ansible
-# vagrant
-# docker
-# docker-compose
-# kubectl
-# vncviewer
-# pptp, l2tp, sstp, openvpn
-# kvm, qemu, libvirtd
-# zoipper or jitsi
-
 ```
 ### Install packer
 [Offical packer installation](https://learn.hashicorp.com/tutorials/packer/getting-started-install)
@@ -237,11 +202,53 @@ pip3 install ansible
 pip3 install ansible-cmdb
 ```
 
+### Install VNCViewer
+
+* Download deb/rpm file from official [VNC website](https://www.realvnc.com/en/connect/download/viewer/linux/) and then install it.
+
+```shell
+sudo apt install ./VNC-Viewer-6.20.529-Linux-x86.deb
+# or
+sudo dpkg -i VNC-Viewer-6.20.529-Linux-x86.deb
+```
+
+### Install i3wm
+
+* To begin, open a terminal and run the following command.
+
+```bash
+sudo apt-get install i3 i3status dmenu i3lock xbacklight feh conky
+```
+
+**i3** is the main window manager package.
+
+**i3status** is a utility to generate a string with information to be displayed in the i3bar.
+
+**dmenu** is a utility to launch our apps in the i3 desktop.
+
+**xbacklight** is a utility to set our laptop’s screen brightness.
+
+**feh** is a utility to set a wallpaper.
+
+**conky** is a utility to display information of the system in a awesome way.
+
+* If you have dual monitor maybe you want use image in dual monitor when you lock your system. 
+
+  So you must install `i3lock-multimonitor` from its [repository](https://github.com/ShikherVerma/i3lock-multimonitor).
+
+* This is my `i3/config` file as an instance.
+
 ### Kubernetes
-- `.kube`
+
+* Install `kubectl` on your machine
+
+```bash
+sudo apt install kubectl
+```
+
+- This is my `.kube`  configuration as an instance.
 ### Vagrant
 - `.vagrant.d`
-### i3wm
 ### ssh
 - `.ssh/config`
 
@@ -293,16 +300,4 @@ source ~/.zshrc
 [Nerd Font Official installation](https://www.nerdfonts.com/)
 
 
-All configuration for my desktop<br />
-https://fedoramagazine.org/getting-started-i3-window-manager/<br />
-https://www.bretfisher.com/shell/<br />
-
-
-### To Do List
-- i3
-- i3status
-- i3lock
-- i3lock-multimonitor
-- oh-my-zsh
-- zsh
-- powerline
+https://www.bretfisher.com/shell/
