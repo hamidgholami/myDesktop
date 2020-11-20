@@ -11,7 +11,7 @@
 - [Install VSCode](#Install-VSCode)
 - [Install Typora](#Install-Typora)
 - [Install packer](#Install-packer)
-- [Install KVM, qemu, libvirt](#Install-KVM,qemu,libvirt)
+- [Install KVM, qemu, libvirt](#Install-KVM-qemu-libvirt)
 - [Install Vagrant](#Install-Vagrant)
 - [Install Docker](#Install-Docker)
 - [Install ansible](#Install-ansible)
@@ -154,7 +154,7 @@ sudo apt-add-repository \
 ```sh
 sudo apt-get update && sudo apt-get install packer
 ```
-### Install KVM,qemu,libvirt
+### Install KVM qemu libvirt
 Before continuing with the installation, make sure your Ubuntu host machine supports KVM virtualization. The system should have either an Intel processor with the VT-x (vmx), or an AMD processor with the AMD-V (svm) technology support.
 
 Run the following grep command to verify that your processor supports hardware virtualization:
