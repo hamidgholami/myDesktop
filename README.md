@@ -24,7 +24,7 @@
 - [Install Nerd Font](#Install-Nerd-Font)
 - [Install XDM](#Install-XDM)
 - [Install AnyDesk](#Install-AnyDesk)
-
+- [Install Zoom](#Install-Zoom)
 
 
 ### Change default editor
