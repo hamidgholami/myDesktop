@@ -4,7 +4,7 @@
 
 ## Table of content
 
-- [Git configuration](###Git configuration)
+- [Git configuration] (###Git configuration)
 - [Disable sudo prompt for ask password](###Disable sudo prompt for ask password)
 - [All requirement packages](###All requirement packages)
 - [Install qbittorrent](###Install qbittorrent)
