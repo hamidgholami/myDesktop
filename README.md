@@ -8,6 +8,22 @@
 - [Disable sudo prompt for ask password](#Disable-sudo-prompt-for-ask-password)
 - [All requirement packages](#All-requirement-packages)
 - [Install qbittorrent](#Install-qbittorrent)
+- [Install VSCode](#Install-VSCode)
+- [Install Typora](#Install-Typora)
+- [Install packer](#Install-packer)
+- [Install KVM, qemu, libvirt](#Install-KVM,-qemu,-libvirt)
+- [Install Vagrant](#Install-Vagrant)
+- [Install Docker](#Install-Docker)
+- [Install ansible](#Install-ansible)
+- [Install VNCViewer](#Install-VNCViewer)
+- [Install i3wm](#Install-i3wm)
+- [Install kubectl](#Kubernetes)
+- [Install oh-my-zsh](#oh-my-zsh)
+- [Install Install powerline](#Install-powerline)
+- [Install SpaceVim plugin](#Install-SpaceVim-plugin)
+- [Install Nerd Font](#Install-Nerd-Font)
+
+
 
 ### Change default editor
 ```sh
