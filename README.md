@@ -306,7 +306,6 @@ sudo apt install kubectl
 ### ssh
 - `.ssh/config`
 
-----------------
 ### oh-my-zsh
 - Firstly, you should install `zsh`.
 
@@ -375,25 +374,10 @@ sudo apt install powerline
 
 **************
 
-**Author**: Hamid Gholami 
+**Author**: [Hamid Gholami](hidgholami@gmail.com)
 
-[![alt text][1.1]][1]
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/hamid-gholami)
+&nbsp;
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/hamidgholami) 
 
-[1.1]: http://i.imgur.com/wWzX9uB.png
-[1]: http://www.twitter.com/045_hamid
-
- [[params.social]]
-    icon = "linkedin"
-    icon_pack = "fa"
-    link = "//ir.linkedin.com/in/hamid-gholami"
-
- [[params.social]]
-    icon = "github"
-    icon_pack = "fa"
-    link = "//github.com/hamidgholami"
-
- [[params.social]]
-    icon = "twitter"
-    icon_pack = "fa"
-    link = "//twitter.com/045_hamid"
-
+[![Twitter](http://i.imgur.com/wWzX9uB.png) Twitter](https://www.twitter.com/045_hamid)
