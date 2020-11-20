@@ -374,7 +374,7 @@ sudo apt install powerline
 
 **************
 
-**Author**: [Hamid Gholami](hidgholami@gmail.com)
+**Author**: Hamid Gholami (hidgholami@gmail.com)
 
 [![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/hamid-gholami)
 &nbsp;
