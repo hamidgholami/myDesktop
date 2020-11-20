@@ -377,6 +377,11 @@ sudo apt install powerline
 
 **Author**: Hamid Gholami 
 
+[![alt text][1.1]][1]
+
+[1.1]: http://i.imgur.com/wWzX9uB.png
+[1]: http://www.twitter.com/045_hamid
+
  [[params.social]]
     icon = "linkedin"
     icon_pack = "fa"
@@ -391,3 +396,4 @@ sudo apt install powerline
     icon = "twitter"
     icon_pack = "fa"
     link = "//twitter.com/045_hamid"
+
