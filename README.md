@@ -22,6 +22,8 @@
 - [Install Install powerline](#Install-powerline)
 - [Install SpaceVim plugin](#Install-SpaceVim-plugin)
 - [Install Nerd Font](#Install-Nerd-Font)
+- [Install XDM](#Install-XDM)
+- [Install AnyDesk](#Install-AnyDesk)
 
 
 
@@ -60,7 +62,7 @@ sudo apt-get install \
 vim git python3 python3-pip terminator tmux tree neovim xpad \
 zsh vlc build-essential gcc Ubuntu-restricted-extras \
 ca-certificates openjdk-11-jdk simplescreenrecorder shutter kazam \
-unrar zip unzip p7zip-full p7zip-rar rar dnsutils \
+unrar zip unzip p7zip-full p7zip-rar rar dnsutils okular\
 wine winetricks filezilla zim sshpass openssl mosh \
 traceroute virtualbox curl ipython3 openssh-server openssh-client \
 gnupg-agent code software-properties-common apt-transport-https \
@@ -74,6 +76,35 @@ network-manager-l2tp network-manager-l2tp-gnome \
 mlocate net-tools cpu-checker font-farsiweb fonts-powerline \
 gnome-twaek-tool zsh-syntax-highlighting \
 ```
+### Install AnyDesk
+
+* add repository key to Trusted software providers list.
+
+```bash
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | apt-key add -
+```
+
+* add the repository:
+
+```bash
+echo "deb http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+```
+
+* Update and install:
+
+```bash
+sudo apt update && sudo apt install anydesk
+```
+
+### Install XDM
+
+* Once downloaded and extract it from its [official website](https://subhra74.github.io/xdm/).
+* `cd` into its directory and run `install.sh`.
+
+```bash
+sudo ./install.sh
+```
+
 ### Install qbittorrent
 
 * Add stable repository .
