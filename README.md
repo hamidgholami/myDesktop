@@ -2,6 +2,13 @@
 - **Ubuntu 20.04**
 - **Lubuntu 18.04**
 
+## Table of content
+
+- [Git configuration](#Git configuration)
+- [Disable sudo prompt for ask password](#Disable sudo prompt for ask password)
+- [All requirement packages](#All requirement packages)
+- [Install qbittorrent](#Install qbittorrent)
+
 ### Change default editor
 ```sh
 sudo update-alternatives --config editor
