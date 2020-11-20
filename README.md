@@ -76,6 +76,16 @@ network-manager-l2tp network-manager-l2tp-gnome \
 mlocate net-tools cpu-checker font-farsiweb fonts-powerline \
 gnome-twaek-tool zsh-syntax-highlighting \
 ```
+### Install Zoom
+
+* Install deb/rpm pakcge from [Official website](https://zoom.us/download).
+
+```bash
+sudo apt install ./zoom_amd64.deb
+# or
+sudo dpkg -i zoom_amd64.deb
+```
+
 ### Install AnyDesk
 
 * add repository key to Trusted software providers list.
