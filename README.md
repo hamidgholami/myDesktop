@@ -34,9 +34,9 @@ chmod go-r /etc/sudoers.d/<FILE_NAME>
 ### All requirement packages
 ```sh
 sudo apt-get install \
-vim git python3 python3-pip terminator tmux tree neovim \
+vim git python3 python3-pip terminator tmux tree neovim xpad \
 zsh vlc build-essential gcc Ubuntu-restricted-extras \
-ca-certificates openjdk-11-jdk simplescreenrecorder \
+ca-certificates openjdk-11-jdk simplescreenrecorder shutter kazam \
 unrar zip unzip p7zip-full p7zip-rar rar dnsutils \
 wine winetricks filezilla zim sshpass openssl mosh \
 traceroute virtualbox curl ipython3 openssh-server openssh-client \
@@ -84,6 +84,31 @@ echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" 
 
 ```bash
 sudo apt update && sudo apt install code
+```
+
+### Install Typora
+
+[Official Typora installation](https://support.typora.io/Typora-on-Linux/)
+
+* Add `typora` GPG key.
+
+```bash
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+# or use
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
+```
+
+* Add Typora's repository.
+
+```bash
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+sudo apt-get update
+```
+
+* Install Typora.
+
+```bash
+sudo apt install typora
 ```
 
 ### Install packer
@@ -341,3 +366,28 @@ sudo apt install powerline
 
 * Select and install Nerd Font from official website.
 
+--------------------------------
+
+#### To Do List
+
+- [ ] Check all this configuration on Fedora and make a README file for it.
+- [ ] Insert my configuration file for some tools such as: docker, kubectl, i3, ssh and etc.
+
+**************
+
+**Author**: Hamid Gholami 
+
+ [[params.social]]
+    icon = "linkedin"
+    icon_pack = "fa"
+    link = "//ir.linkedin.com/in/hamid-gholami"
+
+ [[params.social]]
+    icon = "github"
+    icon_pack = "fa"
+    link = "//github.com/hamidgholami"
+
+ [[params.social]]
+    icon = "twitter"
+    icon_pack = "fa"
+    link = "//twitter.com/045_hamid"
