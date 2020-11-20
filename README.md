@@ -378,4 +378,6 @@ sudo apt install powerline
 
 [![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/hamid-gholami)
 &nbsp;
-[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/hamidgholami) &nbsp; [![Twitter](http://i.imgur.com/wWzX9uB.png) Twitter](https://www.twitter.com/045_hamid)
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/hamidgholami)
+&nbsp;
+[![Twitter](http://i.imgur.com/wWzX9uB.png) Twitter](https://www.twitter.com/045_hamid)
