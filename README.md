@@ -57,24 +57,25 @@ and
 chmod go-r /etc/sudoers.d/<FILE_NAME>
 ```
 ### All requirement packages
+
 ```sh
 sudo apt-get install \
 vim git python3 python3-pip terminator tmux tree neovim xpad \
-zsh vlc build-essential gcc Ubuntu-restricted-extras \
-ca-certificates openjdk-11-jdk simplescreenrecorder shutter kazam \
-unrar zip unzip p7zip-full p7zip-rar rar dnsutils okular\
+zsh vlc build-essential gcc remmina remmina-plugin-* \
+ca-certificates openjdk-11-jdk simplescreenrecorder kazam \
+unrar zip unzip p7zip-full p7zip-rar rar dnsutils okular \
 wine winetricks filezilla zim sshpass openssl mosh \
 traceroute virtualbox curl ipython3 openssh-server openssh-client \
 gnupg-agent code software-properties-common apt-transport-https \
-qemu-kvm libvirt-bin virtinst virt-viewer virt-manager bridge-utils \
-cpu-checker spice-client-gtk remmina remmina-plugin-* \
+qemu-kvm virtinst virt-viewer virt-manager bridge-utils \
+cpu-checker spice-client-gtk fonts-farsiweb \
 mtr-tiny htop virt-top imvirt apg at bc rsync ftp \
 guake chromium-browser x11vnc clipit cups-pdf \
-docker-ce docker-ce-cli containerd.io openvpn network-manager-openvpn \
+openvpn network-manager-openvpn gnome-tweaks \
 network-manager-openvpn-gnome network-manager-vpnc \
 network-manager-l2tp network-manager-l2tp-gnome \
-mlocate net-tools cpu-checker font-farsiweb fonts-powerline \
-gnome-twaek-tool zsh-syntax-highlighting \
+mlocate net-tools cpu-checker fonts-powerline \
+zsh-syntax-highlighting ubuntu-restricted-extras
 ```
 ### Install Zoom
 
