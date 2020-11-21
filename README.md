@@ -25,6 +25,7 @@
 - [Install XDM](#Install-XDM)
 - [Install AnyDesk](#Install-AnyDesk)
 - [Install Zoom](#Install-Zoom)
+- [Install Shutter](#Install-Shutter)
 
 
 ### Change default editor
@@ -77,6 +78,20 @@ network-manager-l2tp network-manager-l2tp-gnome \
 mlocate net-tools cpu-checker fonts-powerline \
 zsh-syntax-highlighting ubuntu-restricted-extras
 ```
+### Install Shutter
+
+* Add repository
+
+```bash
+sudo add-apt-repository -y ppa:linuxuprising/shutter
+```
+
+* Install Shutter
+
+```bash
+sudo apt install shutter
+```
+
 ### Install Zoom
 
 * Install deb/rpm pakcge from [Official website](https://zoom.us/download).
