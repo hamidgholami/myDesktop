@@ -212,6 +212,9 @@ sudo apt-add-repository \
 sudo apt-get update && sudo apt-get install packer
 ```
 ### Install KVM qemu libvirt
+
+[Official Ubuntu KVM installation](https://help.ubuntu.com/community/KVM/Installation)
+
 Before continuing with the installation, make sure your Ubuntu host machine supports KVM virtualization. The system should have either an Intel processor with the VT-x (vmx), or an AMD processor with the AMD-V (svm) technology support.
 
 Run the following grep command to verify that your processor supports hardware virtualization:
