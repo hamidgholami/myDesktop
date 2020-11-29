@@ -1,0 +1,9 @@
+all:
+  children:
+    hamid:
+      vars:
+        ansible_user: vagrant
+        ansible_become: yes
+      hosts:
+        myhost:
+          ansible_host: 
