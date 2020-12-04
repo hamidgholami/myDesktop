@@ -1,0 +1,34 @@
+---
+# tasks file for ubuntuPreparation
+    - name: Install requirement packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ requirement_packages }}"
+
+    - name: Install VNC Viewer, vagrant, zoom
+      apt:
+        deb: "{{ myfiles }}/*.deb"
+        state: present
+
+    - name: Add the user 'ubuntu_user' with a bash shell, appending the group 'docker,libvirtd'
+      user:
+        name: "{{ ubuntu_user }}"
+        shell: /bin/bash
+        groups: docker,kvm,libvirt
+        append: yes
+    
+    - name: Copy docker daemon file
+      notify: restart docker
+      copy:
+        src: "{{ myfiles }}/daemon.json"
+        dest: /etc/docker/daemon.json
+
+    - name: Start and enable services
+      systemd:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - docker
+        - libvirtd

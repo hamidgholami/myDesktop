@@ -6,4 +6,4 @@ all:
         ansible_become: yes
       hosts:
         myhost:
-          ansible_host: 
+          ansible_host: 192.168.121.135
