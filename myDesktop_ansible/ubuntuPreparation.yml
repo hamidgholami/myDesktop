@@ -1,12 +1,12 @@
 ---
 - hosts: ubuntu
   vars:
-    apt_key_dir: roles/ubuntuPreparation/files/apt_keys
-    deb_files: roles/ubuntuPreparation/files
+    #apt_key_dir: roles/ubuntuPreparation/files/apt_keys
+    myfiles: roles/ubuntuPreparation/files
   pre_tasks:
      - name: Copy GPG keys
        synchronize:
-         src: "{{ apt_key_dir }}"
+         src: "{{ myfiles }}/apt_keys"
          dest: /tmp/
 
     #  - name: Add apt keys
