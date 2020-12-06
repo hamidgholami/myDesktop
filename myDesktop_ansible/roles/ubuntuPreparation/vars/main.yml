@@ -85,3 +85,4 @@ requirement_packages:
   - containerd.io
   - packer
   - bpython
+  - ansible
