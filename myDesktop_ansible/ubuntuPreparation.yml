@@ -1,7 +1,6 @@
 ---
 - hosts: ubuntu
   vars:
-    #apt_key_dir: roles/ubuntuPreparation/files/apt_keys
     myfiles: roles/ubuntuPreparation/files
   pre_tasks:
      - name: Copy GPG keys
@@ -9,13 +8,6 @@
          src: "{{ myfiles }}/apt_keys"
          dest: /tmp/
 
-    #  - name: Add apt keys
-    #    apt_key:
-    #      date: "{{ lookup('file', '{{ item.src }}') }}"
-    #      state: present
-    #    with_filetree: "{{ apt_key_dir }}/"
-    #    when: item.state == 'file'
-    
      - name: Add apt keys
        shell: cd /tmp/apt_keys && apt-key add *
        args:
@@ -37,8 +29,17 @@
      - name: Change sources.list file
        changed_when: false
        copy:
-         src: roles/ubuntuPreparation/files/lanartifactory_focal_sources.list
-         dest: "/etc/apt/source.list.d/"
+         src: "{{ item }}"
+         dest: "/etc/apt/sources.list.d/"
+       loop:
+         - "{{ myfiles }}/lanartifactory_focal_sources.list"
+         - "{{ myfiles }}/vscode.list"
+
+     - name: Copy apt ssl
+       changed_when: false
+       copy:
+         src: "{{ myfiles }}/SSL"
+         dest: "/etc/apt/apt.conf.d/"
 
      - name: Run "apt-get update"
        apt:

@@ -8,3 +8,5 @@ all:
             ubuntu:
               ansible_host: 192.168.121.178 # or localhost
               ubuntu_user: vagrant
+              git_config_username:
+              git_config_email:
