@@ -86,3 +86,4 @@ requirement_packages:
   - packer
   - bpython
   - ansible
+  - xchm

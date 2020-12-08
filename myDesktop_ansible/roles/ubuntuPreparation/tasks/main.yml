@@ -6,7 +6,7 @@
         state: present
       loop: "{{ requirement_packages }}"
 
-    - name: Install VNC Viewer, vagrant, zoom
+    - name: Install VNC-Viewer,vagrant,zoom,HipChat,Jitsi,chrome
       apt:
         deb: "{{ myfiles }}/*.deb"
         state: present
@@ -45,6 +45,12 @@
         - {name: "core.editor",  value: "vim" }
 
     - name: Set VIM as default editor
+      alternatives:
+        name: editor
+        path: /usr/bin/vim.basic
+
+      # TODO copy and update ca-certificates
+    - name: Set certs file in ca-certificates
       alternatives:
         name: editor
         path: /usr/bin/vim.basic
