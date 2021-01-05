@@ -1,0 +1,50 @@
+---
+- hosts: ubuntu
+  gather_facts: false
+  vars:
+    myfiles: roles/ubuntuPreparation/files
+  # pre_tasks:
+  #    - name: Copy GPG keys
+  #      copy:
+  #        src: "{{ myfiles }}/apt_keys"
+  #        dest: /tmp/
+
+  #    - name: Add apt keys
+  #      shell: cd /tmp/apt_keys && apt-key add *
+  #      args:
+  #       executable: /bin/bash
+  #       warn: false
+
+  #    - name: Rename sources.list file
+  #      shell: "mv /etc/apt/sources.list /etc/apt/sources.list.disabled"
+  #      args:
+  #       executable: /bin/bash
+  #       warn: false
+
+  #    - name: Remove tmp directory
+  #      changed_when: false
+  #      file:
+  #        path: "/tmp/apt_keys"
+  #        state: absent
+
+  #    - name: Change sources.list file
+  #      changed_when: false
+  #      copy:
+  #        src: "{{ item }}"
+  #        dest: "/etc/apt/sources.list.d/"
+  #      loop:
+  #        - "{{ myfiles }}/lanartifactory_focal_sources.list"
+  #        - "{{ myfiles }}/vscode.list"
+
+  #    - name: Copy apt ssl
+  #      changed_when: false
+  #      copy:
+  #        src: "{{ myfiles }}/dotin-certs/SSL"
+  #        dest: "/etc/apt/apt.conf.d/"
+
+  #    - name: Run "apt-get update"
+  #      apt:
+  #       update_cache: yes
+
+  roles:
+    - ubuntuPreparation

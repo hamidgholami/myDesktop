@@ -1,0 +1,89 @@
+---
+# tasks file for ubuntuPreparation
+    # - name: Install requirement packages
+    #   apt:
+    #     #name: "{{ item }}"
+    #     name: "{{ requirement_packages }}" # This is faster than loop or with_items
+    #     state: present
+    #   #loop: "{{ requirement_packages }}"
+
+    # - name: Copy .deb files
+    #   copy:
+    #     src: "{{ myfiles }}/debFiles"
+    #     dest: /tmp/
+  
+    - name: Install VNC-Viewer,vagrant,zoom,HipChat,Jitsi,chrome
+      apt:
+        deb: "/tmp/debFiles/{{ item.src }}"
+        state: present
+      with_community.general.filetree: /tmp/debFiles/
+      when: item.state == 'file'
+      tags:
+        - installdeb
+
+    - name: create directories
+      ansible.builtin.file:
+        path: /tmp/debFiles/{{ item.path }}
+        state: directory
+        mode: '{{ item.mode }}'
+      with_community.general.filetree: /tmp/debFiles/
+      when: item.state == 'directory'
+
+    - name: List all files under /tmp/debFiles
+      ansible.builtin.debug:
+        msg: "{{ lookup('community.general.filetree', '/tmp/debFiles/') }}"
+
+    # - name: Add the user 'ansible_user' with a bash shell, appending the group 'docker,kvm,libvirt'
+    #   user:
+    #     name: "{{ ansible_user }}"
+    #     shell: /bin/bash
+    #     groups: docker,kvm,libvirt
+    #     append: yes
+
+    # - name: Start and enable services
+    #   systemd:
+    #     name: "{{ item }}"
+    #     state: started
+    #     enabled: yes
+    #   loop:
+    #     - docker
+    #     - libvirtd
+
+    # - name: Copy docker daemon file
+    #   notify: restart docker
+    #   copy:
+    #     src: "{{ myfiles }}/daemon.json"
+    #     dest: /etc/docker/daemon.json
+
+    # - name: git configuration
+    #   git_config:
+    #     name: "{{ item.name }}"
+    #     scope: global
+    #     value: "{{ item.value }}"
+    #   loop:
+    #     - {name: "user.name",  value: "{{ git_config_username }}" }
+    #     - {name: "user.email",  value: "{{ git_config_email }}" }
+    #     - {name: "http.sslVerify",  value: "false" }
+    #     - {name: "core.editor",  value: "vim" }
+
+    # - name: Set VIM as default editor
+    #   alternatives:
+    #     name: editor
+    #     path: /usr/bin/vim.basic
+
+    # - name: Copy certs file in "/usr/local/share/ca-certificates"
+    #   copy:
+    #     src: "{{ myfiles }}/dotin-certs"
+    #     dest: "/usr/local/share/ca-certificates/"
+
+    # - name: Reconfigure ca-certificates
+    #   shell: "dpkg-reconfigure --frontend=noninteractive ca-certificates"
+    #   args:
+    #     executable: /bin/bash
+    #     warn: false
+
+    # - name: update-ca-certificates
+    #   shell: "update-ca-certificates"
+    #   args:
+    #     executable: /bin/bash
+    #     warn: false
