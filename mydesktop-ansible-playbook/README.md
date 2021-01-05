@@ -16,7 +16,7 @@ Step 1
 --------------
 In ansible machine (Other client that should access via ssh to Ubuntu) clone project and cd on it.
 ```bash
-git clone https://bitbucket.dotin.ir/scm/~h.gholami/mydesktop.git && cd "$(basename "$_" .git)"
+git clone https://github.com/hamidgholami/myDesktop.git && cd "$(basename "$_" .git)"/mydesktop-ansible-playbook
 ```
 
 Step 2
@@ -35,7 +35,7 @@ all:
             ubuntu:
               ansible_host: X.X.X.X # or localhost
               git_config_username: "USER_NAME"
-              git_config_email: "x.xxxx@dotin.ir"
+              git_config_email: "x.xxxx@mail.com"
 ```
 
 Step 3
@@ -58,7 +58,7 @@ Put all the required files into a directory with `debFiles` name in the path bel
         │   │   ├── libssl1.0.2_1.0.2u-1~deb9u1_amd64.deb
         │   │   ├── vagrant_2.2.9_x86_64.deb
         │   │   └── VNC-Viewer-6.20.529-Linux-x64.deb
-        │   └── dotin-certs # All Dotin's certificates (*.crt)
+        │   └── certs # All certificates (*.crt)
         ├── handlers
         ├── meta
         ├── tasks

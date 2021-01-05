@@ -39,7 +39,7 @@
   #    - name: Copy apt ssl
   #      changed_when: false
   #      copy:
-  #        src: "{{ myfiles }}/dotin-certs/SSL"
+  #        src: "{{ myfiles }}/certs/SSL"
   #        dest: "/etc/apt/apt.conf.d/"
 
   #    - name: Run "apt-get update"

@@ -1,6 +1,6 @@
 {
-  "insecure-registries" : ["lanartifactory.dotin.ir:80"],
-  "registry-mirrors": ["http://lanartifactory.dotin.ir:80"],
+  "insecure-registries" : ["mycompany.registry.com"],
+  "registry-mirrors": ["http://mycompany.registry.com"],
   "log-driver": "json-file",
   "log-opts": { "max-size": "5m", "max-file": "1" },
   "storage-driver" : "overlay2"
