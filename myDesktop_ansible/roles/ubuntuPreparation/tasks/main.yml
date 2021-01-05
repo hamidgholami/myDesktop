@@ -56,10 +56,12 @@
 
     - name: Reconfigure ca-certificates
       shell: "dpkg-reconfigure --frontend=noninteractive ca-certificates"
-        args:
-          executable: /bin/bash
+      args:
+        executable: /bin/bash
+        warn: false
 
     - name: update-ca-certificates
       shell: "update-ca-certificates"
-        args:
-          executable: /bin/bash
+      args:
+        executable: /bin/bash
+        warn: false
