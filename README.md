@@ -142,7 +142,7 @@ sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
 * Run follow commands for install.
 
 ```bash
-sudo apt-get update && sudo apt-get install qbittorrent 
+sudo apt-get update && sudo apt-get install qbittorrent
 ```
 
 ### Install VSCode
@@ -368,7 +368,7 @@ sudo apt-get install i3 i3status dmenu i3lock xbacklight feh conky
 
 **conky** is a utility to display information of the system in a awesome way.
 
-* If you have dual monitor maybe you want use image in dual monitor when you lock your system. 
+* If you have dual monitor maybe you want use image in dual monitor when you lock your system.
 
   So you must install `i3lock-multimonitor` from its [repository](https://github.com/ShikherVerma/i3lock-multimonitor).
 
@@ -452,7 +452,11 @@ sudo apt install powerline
 #### To Do List
 
 - [ ] Check all this configuration on Fedora and make a README file for it.
-- [ ] Insert my configuration file for some tools such as: docker, kubectl, i3, ssh and etc.
+- [ ] Insert my configuration file for some tools such as: docker, kubectl, i3, ssh and etc
+- [ ] Install `kubectl`,`kubectx`, `helm`,`k9s`
+- [ ] Install `regolith` (i3) desktop
+- [ ] Install `pipenv`
+- [ ] [Kubernetes Utilities](https://gamov.io/posts/2020/03/26/2020-03-11-5-kubernetes-tools-you-probably-dont-use-but-you-should.html)
 
 **************
 
