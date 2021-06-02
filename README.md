@@ -242,7 +242,7 @@ KVM acceleration can be used
 sudo apt install qemu libvirt-daemon-system \
 libvirt-clients libxslt1-dev libxml2-dev libvirt-dev \
 zlib1g-dev ruby-dev ruby-libvirt ebtables dnsmasq-base \
-qemu-kvm bridge-utils virtinst virt-manager libvirt-doc
+qemu-kvm bridge-utils virtinst virt-manager libvirt-doc libnss-libvirt
 ```
 - Start and enable libvirtd daemon service.
 
@@ -254,6 +254,12 @@ sudo systemctl is-active libvirtd
 ```sh
 sudo usermod -aG libvirt $USER
 sudo usermod -aG kvm $USER
+```
+- Add `libvirt` in `nsswitch.conf`
+```bash
+. . . 
+hosts: files libvirt mdns4_minimal ...
+. . .
 ```
 ### Install Vagrant
 Download deb/rpm package from [vagrant official website](https://www.vagrantup.com/downloads).
