@@ -463,6 +463,7 @@ sudo apt install powerline
 - [ ] Install `regolith` (i3) desktop
 - [ ] Install `pipenv`
 - [ ] Install `keepassxc`
+- [ ] Install `vagrant-cachier` and `vagrant-faster` as a plugin for `Vagrant`
 - [ ] Install `mitogen` for Ansible speed [Mitogen](https://mitogen.networkgenomics.com/ansible_detailed.html#installation)
 - [ ] [Kubernetes Utilities](https://gamov.io/posts/2020/03/26/2020-03-11-5-kubernetes-tools-you-probably-dont-use-but-you-should.html)
 
