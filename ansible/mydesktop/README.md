@@ -7,4 +7,3 @@ TODO
 - [ ] virtualization,virtualbox,libvirt,packer,vagrant
 - [ ] Containerization,docker,kuber
 - [ ] Multimedia
-
