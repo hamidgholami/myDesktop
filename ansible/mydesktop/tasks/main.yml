@@ -1,3 +1,6 @@
 ---
-# tasks file for mydesktop
+- name: "Include prerequisites"
+  include_tasks: "prerequisites.yml"
+  tags:
+    - "prerequisites"
 ...

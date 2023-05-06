@@ -9,5 +9,5 @@ TODO
 - [ ] Multimedia
 - [ ] dnsmasq
 - [ ] openvpn
-- [ ] backup to googledrive,dropbox
+- [ ] backup to googleDrive,dropbox
 - [ ] create an inbox directory

@@ -1,0 +1,5 @@
+---
+# Add your desired packages, in case it's not in mydesktop/defaults/main.yml
+#prerequisite_packages_list:
+#  - "vim"
+#  - "git"

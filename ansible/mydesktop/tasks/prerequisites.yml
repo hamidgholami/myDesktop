@@ -1,3 +1,16 @@
 ---
-# prerequisites packages
+- name: "Run apt-get update"
+  ansible.builtin.apt:
+    update_cache: yes
+  tags:
+    - "prerequisites"
+
+- name: "Install prerequisite's packages "
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ prerequisite_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
 ...
