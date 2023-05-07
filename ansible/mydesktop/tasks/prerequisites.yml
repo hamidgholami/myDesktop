@@ -1,7 +1,7 @@
 ---
 - name: "Run apt-get update"
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
   tags:
     - "prerequisites"
 
@@ -9,6 +9,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
+    update_cache: true
   loop: "{{ prerequisite_packages_list }}"
   tags:
     - "prerequisites"
