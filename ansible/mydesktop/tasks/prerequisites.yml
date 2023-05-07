@@ -5,11 +5,12 @@
   tags:
     - "prerequisites"
 
-- name: "Install prerequisite's packages "
+- name: "Install prerequisite's packages"
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
     update_cache: true
+    install_recommends: true
   loop: "{{ prerequisite_packages_list }}"
   tags:
     - "prerequisites"
