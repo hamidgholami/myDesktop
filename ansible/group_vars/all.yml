@@ -1,3 +1,6 @@
 ---
 # Add your desired packages, in case it's not in 'mydesktop/vars/main.yml' underneath 'prerequisite_packages_list:'
+display_server: "xwayland"
+display_manager: "lightdm"
+display_windows_manager: "regolith-desktop-complete"
 ...

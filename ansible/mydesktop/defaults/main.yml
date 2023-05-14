@@ -1,3 +1,9 @@
 ---
-
 prerequisite_packages_list: []
+utility_packages: []
+
+display_server: "xorg"
+display_manager: "lightdm"
+display_windows_manager: "i3" #awesome,qtile
+
+...

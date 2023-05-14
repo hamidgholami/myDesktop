@@ -5,13 +5,14 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
 
 IMAGE_DEBIAN_11 = "generic/debian11"
 VM_IP = "10.0.0.65"
-VM_NAME = "debian11"
+VM_NAME = "debian-11"
 
 Vagrant.configure("2") do |config|
   config.vm.define VM_NAME do |machine|
     machine.ssh.insert_key = false
     machine.vm.box = IMAGE_DEBIAN_11
-    config.vm.box_version = "4.2.16"
+    # machine.disksize.size = '70GB'
+    machine.vm.box_version = "4.2.16"
     machine.vm.hostname = VM_NAME
     machine.vm.synced_folder '.', '/vagrant', type: 'rsync', disabled: true
     machine.vm.synced_folder '.', '/vagrant', disabled: true
@@ -21,7 +22,7 @@ Vagrant.configure("2") do |config|
                        :libvirt__dhcp_enabled => false
 
     machine.vm.provider "libvirt" do |lv|
-      lv.memory = 1024
+      lv.memory = 4096
       lv.cpus = 2
     end
 
