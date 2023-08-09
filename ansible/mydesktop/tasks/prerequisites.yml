@@ -5,7 +5,20 @@
   tags:
     - "prerequisites"
 
-- name: "Install prerequisite's packages"
+- name: "Install the display server"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    install_recommends: true
+  loop: "{{ display_server_packages_list }}"
+  register: display_server_installation
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "prerequisites-install-display-server"
+
+- name: "Install the prerequisite's packages"
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
@@ -15,4 +28,42 @@
   tags:
     - "prerequisites"
     - "prerequisites-install"
+
+- name: "Reboot the host"
+  ansible.builtin.reboot:
+    msg: "Reboot initiated by Ansible due to display server installation/updates"
+    connect_timeout: 5
+    reboot_timeout: 120
+    pre_reboot_delay: 0
+    post_reboot_delay: 30
+    test_command: uptime
+  when:
+    - display_server_installation.changed
+    - not ansible_connection == 'local'
+    - not ansible_check_mode
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "prerequisites-reboot"
+
+- name: "Finish the playbook"
+  block:
+    - name: "Print message"
+      ansible.builtin.debug:
+        msg:
+          - "Since the playbook is running on local connection, and display_server_installation has been changed."
+          - "Please reboot the host and proceed with the playbook"
+
+    - name: "Stop the playbook"
+      ansible.builtin.meta: end_play
+      when:
+        - not ansible_check_mode
+  when:
+    - ansible_connection == 'local'
+    - not ansible_check_mode
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "prerequisites-reboot"
+
 ...

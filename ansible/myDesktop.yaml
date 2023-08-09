@@ -4,6 +4,6 @@
   gather_facts: yes
   become: yes
   roles:
-    - { role: "./mydesktop", tags: [ "prerequisites" ] }
+    - { role: "./mydesktop" }
 
 ...

@@ -1,6 +1,5 @@
 ---
 - name: "Include prerequisites"
-  include_tasks: "prerequisites.yml"
-  tags:
-    - "prerequisites"
+  import_tasks: "prerequisites.yml"
+
 ...
