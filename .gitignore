@@ -4,7 +4,7 @@
 *.swp
 
 # virtualization
-.vagrant/
+*/.vagrant/
 
 # debyg/test
 */*/tests

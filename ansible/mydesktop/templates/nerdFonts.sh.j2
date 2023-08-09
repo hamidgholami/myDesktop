@@ -1,0 +1,26 @@
+#!/bin/bash
+mkdir -p ~/.local/share/fonts
+NERDFONTS_RELEASE_VERSION="v3.0.1"
+cd /tmp
+fonts=(
+"CascadiaCode"
+"FiraCode"
+"Go-Mono"
+"Hack"
+"Inconsolata"
+"Iosevka"
+"JetBrainsMono"
+"Mononoki"
+"RobotoMono"
+"SourceCodePro"
+"UbuntuMono"
+"Lekton"
+)
+
+for font in ${fonts[@]}
+do
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/$NERDFONTS_RELEASE_VERSION/$font.zip
+    unzip $font.zip -d $HOME/.local/share/fonts/$font/
+    rm $font.zip
+done
+fc-cache

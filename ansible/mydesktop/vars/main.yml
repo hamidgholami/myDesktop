@@ -1,5 +1,10 @@
 ---
 prerequisite_packages_list:
+  - "xorg"
+  - "xbacklight"
+  - "xbindkeys"
+  - "xvkbd"
+  - "xinput"
   - "vim"
   - "git"
   - "tree"
