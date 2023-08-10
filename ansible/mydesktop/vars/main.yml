@@ -1,98 +1,75 @@
 ---
-prerequisite_packages_list:
-  - "xorg"
-  - "xbacklight"
-  - "xbindkeys"
-  - "xvkbd"
-  - "xinput"
-  - "vim"
-  - "git"
-  - "tree"
-  - "curl"
+
+system_packages_list:
   - "apt-transport-https"
+  - "software-properties-common"
   - "make"
   - "libfontconfig"
   - "g++"
-  - "jq"
-  - "nmap"
-  - "ruby"
-  - "python3"
-  - "virtualenv"
-  - "python3-virtualenv"
   - "libatk-bridge2.0-0"
   - "libgtk-3-0"
   - "libjemalloc2"
   - "libldap2-dev"
   - "libsasl2-dev"
-  - "python3-pip"
   - "gcc"
   - "build-essential"
   - "ca-certificates"
-  - "zip"
-  - "unzip"
-  - "dnsutils"
-  - "sshpass"
-  - "openssl"
-  - "traceroute"
-  - "openssh-server"
-  - "openssh-client"
-  - "gnupg-agent"
-  - "gnupg"
-  - "software-properties-common"
-  - "apt-transport-https"
-  - "mtr-tiny"
+  - "iucode-tool"
+
+system_utility_packages_list:
+  - "git"
+  - "tree"
+  - "curl"
+  - "wget"
+  - "jq"
+  - "tmux"
   - "htop"
   - "rsync"
-  - "openvpn"
-  - "network-manager-openvpn"
-  - "network-manager-vpnc"
-  - "network-manager-l2tp"
-  - "net-tools"
   - "mlocate"
   - "dos2unix"
-  - "zstd"
-  - "dnsmasq"
-  - "openconnect"
-  - "ifupdown"
-  - "screenfetch"
-  - "qrencode"
-  - "paperkey"
-  - "zbar-tools"
+  - "neofetch"
+  - "exa"
+  - "lxappearance"
+  - "cups"
+  - "suckless-tools"
+  - "nitrogen"
+  - "gnuplot"
+  - "lolcat"
+  - "sl"
+  - "figlet"
 
-utility_packages:
-  - "x11vnc"
-  - "fonts-powerline"
-  - "cups-pdf"
-  - "ipython3"
-  - "mosh"
-  - "okular"
+screen_capture_packages_list:
   - "simplescreenrecorder"
-  - "xpad"
-  - "vlc"
-  - "chromium"
-  - "mutt"
-  - "remmina"
-  - "terminator"
-  - "remmina-plugin-*"
   - "kazam"
-  - "filezilla"
-  - "zim"
-  - "ftp"
-  - "neovim"
-  - "python3-neovim"
-  - "packer"
-  - "bpython"
-  - "xchm"
-  - "spyder3"
-  - "powerline"
+  - "ffmpeg"
+  - "obs-studio"
+  - "kdenlive"
+
+essential_font_packages_list:
+  - "fonts-powerline"
+  - "fonts-font-awesome"
+  - "fonts-farsiweb"
+
+remote_desktop_packages_list:
+  - "x11vnc"
+  - "remmina"
+  - "remmina-plugin-*"
+
+clipboard_packages_list:
+  - "xclip"
   - "copyq-plugins"
   - "copyq"
-  - "gnuplot"
   - "xsel"
+
+internet_utility_packages_list:
+  - "chromium"
+  - "firefox-esr"
+  - "surf"
+  - "aria2"
+
+virtualization_packages_list:
   - "imvirt"
-  - "apg"
   - "qemu-kvm"
-  - "tmux"
   - "qemu"
   - "qemu-kvm"
   - "ksmtuned"
@@ -101,14 +78,206 @@ utility_packages:
   - "virt-manager"
   - "bridge-utils"
   - "cpu-checker"
+
+compression_packages_list:
+  - "zip"
+  - "unzip"
+  - "zstd"
+  - "unrar"
+
+sound_management_packages_list:
+  - "pulseaudio"
+  - "alsa-utils"
+  - "pavucontrol"
+  - "volumeicon-alsa"
+
+display_server_packages_list:
+  - "xorg"
+  - "xbacklight"
+  - "xbindkeys"
+  - "xvkbd"
+  - "xinput"
+  - "lightdm"
+  - 'lightdm-gtk-greeter'
+  - "lightdm-gtk-greeter-settings"
+
+python_packages_list:
+  - "python3"
+  - "virtualenv"
+  - "python3-virtualenv"
+  - "python3-pip"
+
+security_management_packages_list:
+  - "ca-certificates"
+  - "openssl"
+  - "libpam-google-authenticator"
+  - "pass"
+  - "apg"
+  - "pwgen"
+
+ssh_packages_list:
+  - "sshpass"
+  - "openssh-server"
+  - "openssh-client"
+
+network_packages_list:
+  - "dnsutils"
+  - "traceroute"
+  - "mtr-tiny"
+  - "net-tools"
+  - "ifupdown"
+  - "nmap"
+
+dns_packages_list:
+  - "dnsmasq"
+bluetooth_packages_list:
+  - "bluez"
+  - "blueman"
+
+vpn_packages_list:
+  - "openvpn"
+  - "network-manager-openvpn"
+  - "network-manager-vpnc"
+  - "network-manager-l2tp"
+  - "openconnect"
+
+gpg_packages_list:
+  - "gnupg-agent"
+  - "gnupg"
+  - "qrencode"
+  - "paperkey"
+  - "zbar-tools"
+  - "pinentry-curses"
+  - "pinentry-tty"
+
+file_manager_packages_list:
+  - "pcmanfm"
+  - "ranger"
+
+terminal_emulator_packages_list:
+  - "alacritty"
+  - "kitty"
+
+pip_packages_list:
+  - "yt-dlp"
+
+editor_packages_list:
+  - "vim"
+  - "spyder3"
+  - "code"
+  - "ipython3"
+  - "bpython"
+
+pdf_management_packages_list:
+  - "cups-pdf"
+  - "xournal"
+  - "okular"
+  - "xchm"
+
+media_player_packages_list:
+  - "vlc"
+  - "mpv"
+
+wiki_packages_list:
+  - "zim"
+prerequisite_packages_list:
+  - "ruby"
+
+#  - dh-autoreconf libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-shape0 libxcb-shape0-dev i3status
+i3wm_packages:
+  - "i3-wm"
+  - "suckless-tools"
+  - "polybar"
+  - "sxhkd"
+  - "i3lock-fancy"
+#  - "dh-autoreconf"
+#  - "meson"
+#  - "libxcb-keysyms1-dev"
+#  - "libpango1.0-dev"
+#  - "libxcb-util0-dev"
+#  - "xcb"
+#  - "libxcb1-dev"
+#  - "libxcb-icccm4-dev"
+#  - "libyajl-dev"
+#  - "libev-dev"
+#  - "libxcb-xkb-dev"
+#  - "libxcb-cursor-dev"
+#  - "libxkbcommon-dev"
+#  - "libxcb-xinerama0-dev"
+#  - "libxkbcommon-x11-dev"
+#  - "libstartup-notification0-dev"
+#  - "libxcb-randr0-dev"
+#  - "libxcb-xrm0"
+#  - "libxcb-xrm-dev"
+#  - "libxcb-shape0"
+#  - "libxcb-shape0-dev"
+#  - "i3status"
+#  - "feh"
+#  - "pcmanfm"
+#  - "lxappearance"
+#  - "lightdm"
+#  - slick-greeter
+#  - "lightdm-settings"
+#  - "nitrogen"
+utility_packages:
+  - "fonts-powerline"
+  - "libreadline-dev"
+  - "powerline"
+  - "cups-pdf"
+  - "python3-neovim"
+  - "ipython3"
+  - "bpython"
+  - "spyder3"
+  - "mosh"
+  - "xournal"
+  - "okular"
+  - "xchm"
+  - "simplescreenrecorder"
+  - "kazam"
+  - "zim"
+  - "xpad"
+  - "neovim"
+  - "kdenlive"
+  - "vlc"
+  - "gnuplot"
+  - "chromium"
+  - "mutt"
+  - "x11vnc"
+  - "remmina"
+  - "remmina-plugin-*"
+  - "terminator"
+  - "tmux"
+  - "filezilla"
+  - "ftp"
+  - "packer"
+  - "copyq-plugins"
+  - "copyq"
+  - "xsel"
+  - "imvirt"
+  - "qemu-kvm"
+  - "qemu"
+  - "qemu-kvm"
+  - "ksmtuned"
+  - "virtinst"
+  - "virt-viewer"
+  - "virt-manager"
+  - "bridge-utils"
+  - "cpu-checker"
+  - "apg"
   - "pwgen"
   - "at"
   - "bc"
   - "aria2"
   - "flatpak"
-  - "kdenlive"
   - "ranger"
-  - "xournal"
+  - "xmonad"
+  - "exa"
+  - "lolcat"
+  - "sl"
+  - "micro"
+  - "pinentry-curses"
+  - "pinentry-tty"
+#  - https://github.com/fzerorubigd/persian-fonts-linux
 #  - "virtualbox-guest-additions-iso"
 #  - "discord"
 #  - "fonts-farsiweb"
@@ -126,4 +295,21 @@ utility_packages:
 #  - "ttf-mscorefonts-installer"
 #  - "virtualbox"
 #  - "virtualbox-ext-pack"
+# https://github.com/sebastiencs/icons-in-terminal
+# https://github.com/drewgrif/qtile-debian
+# https://github.com/jarun/nnn
+# https://github.com/mananapr/cfiles
+#  yt-dlp
+# fonts-font-awesome fonts-ubuntu fonts-liberation2 fonts-liberation fonts-terminus
+#xmonad
+#qtile
+#dwm
+#sway
+#i3
+#openbox
+# lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+# sudo apt install -y xorg xbacklight xbindkeys xvkbd xinput xorg-dev
+# alias ls='exa -al --long --header --color=always --group-directories-first'
+
+# joplin: wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
 ...
