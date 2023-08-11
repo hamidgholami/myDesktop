@@ -1,5 +1,15 @@
 ---
 
+display_server_packages_list:
+  - "xorg"
+  - "xbacklight"
+  - "xbindkeys"
+  - "xvkbd"
+  - "xinput"
+  - "lightdm"
+  - 'lightdm-gtk-greeter'
+  - "lightdm-gtk-greeter-settings"
+
 system_packages_list:
   - "apt-transport-https"
   - "software-properties-common"
@@ -15,6 +25,57 @@ system_packages_list:
   - "build-essential"
   - "ca-certificates"
   - "iucode-tool"
+
+python_packages_list:
+  - "python3"
+  - "virtualenv"
+  - "python3-virtualenv"
+  - "python3-pip"
+
+security_management_packages_list:
+  - "ca-certificates"
+  - "openssl"
+  - "libpam-google-authenticator"
+  - "pass"
+  - "apg"
+  - "pwgen"
+
+gpg_packages_list:
+  - "gnupg-agent"
+  - "gnupg"
+  - "qrencode"
+  - "paperkey"
+  - "zbar-tools"
+  - "pinentry-curses"
+  - "pinentry-tty"
+
+ssh_packages_list:
+  - "sshpass"
+  - "openssh-server"
+  - "openssh-client"
+
+network_packages_list:
+  - "dnsutils"
+  - "traceroute"
+  - "mtr-tiny"
+  - "net-tools"
+  - "ifupdown"
+  - "nmap"
+
+dns_packages_list:
+  - "dnsmasq"
+
+compression_packages_list:
+  - "zip"
+  - "unzip"
+  - "zstd"
+  - "unrar"
+
+sound_management_packages_list:
+  - "pulseaudio"
+  - "alsa-utils"
+  - "pavucontrol"
+  - "volumeicon-alsa"
 
 system_utility_packages_list:
   - "git"
@@ -38,17 +99,32 @@ system_utility_packages_list:
   - "sl"
   - "figlet"
 
+essential_font_packages_list:
+  - "fonts-powerline"
+  - "fonts-font-awesome"
+  - "fonts-farsiweb"
+
+editor_packages_list:
+  - "vim"
+  - "spyder3"
+  - "ipython3"
+  - "bpython"
+#  - "code"
+
+file_manager_packages_list:
+  - "pcmanfm"
+  - "ranger"
+
+terminal_emulator_packages_list:
+  - "alacritty"
+  - "kitty"
+
 screen_capture_packages_list:
   - "simplescreenrecorder"
   - "kazam"
   - "ffmpeg"
   - "obs-studio"
   - "kdenlive"
-
-essential_font_packages_list:
-  - "fonts-powerline"
-  - "fonts-font-awesome"
-  - "fonts-farsiweb"
 
 remote_desktop_packages_list:
   - "x11vnc"
@@ -67,6 +143,27 @@ internet_utility_packages_list:
   - "surf"
   - "aria2"
 
+bluetooth_packages_list:
+  - "bluez"
+  - "blueman"
+
+vpn_packages_list:
+  - "openvpn"
+  - "network-manager-openvpn"
+  - "network-manager-vpnc"
+  - "network-manager-l2tp"
+  - "openconnect"
+
+pdf_management_packages_list:
+  - "cups-pdf"
+  - "xournal"
+  - "okular"
+  - "xchm"
+
+media_player_packages_list:
+  - "vlc"
+  - "mpv"
+
 virtualization_packages_list:
   - "imvirt"
   - "qemu-kvm"
@@ -79,104 +176,8 @@ virtualization_packages_list:
   - "bridge-utils"
   - "cpu-checker"
 
-compression_packages_list:
-  - "zip"
-  - "unzip"
-  - "zstd"
-  - "unrar"
-
-sound_management_packages_list:
-  - "pulseaudio"
-  - "alsa-utils"
-  - "pavucontrol"
-  - "volumeicon-alsa"
-
-display_server_packages_list:
-  - "xorg"
-  - "xbacklight"
-  - "xbindkeys"
-  - "xvkbd"
-  - "xinput"
-  - "lightdm"
-  - 'lightdm-gtk-greeter'
-  - "lightdm-gtk-greeter-settings"
-
-python_packages_list:
-  - "python3"
-  - "virtualenv"
-  - "python3-virtualenv"
-  - "python3-pip"
-
-security_management_packages_list:
-  - "ca-certificates"
-  - "openssl"
-  - "libpam-google-authenticator"
-  - "pass"
-  - "apg"
-  - "pwgen"
-
-ssh_packages_list:
-  - "sshpass"
-  - "openssh-server"
-  - "openssh-client"
-
-network_packages_list:
-  - "dnsutils"
-  - "traceroute"
-  - "mtr-tiny"
-  - "net-tools"
-  - "ifupdown"
-  - "nmap"
-
-dns_packages_list:
-  - "dnsmasq"
-bluetooth_packages_list:
-  - "bluez"
-  - "blueman"
-
-vpn_packages_list:
-  - "openvpn"
-  - "network-manager-openvpn"
-  - "network-manager-vpnc"
-  - "network-manager-l2tp"
-  - "openconnect"
-
-gpg_packages_list:
-  - "gnupg-agent"
-  - "gnupg"
-  - "qrencode"
-  - "paperkey"
-  - "zbar-tools"
-  - "pinentry-curses"
-  - "pinentry-tty"
-
-file_manager_packages_list:
-  - "pcmanfm"
-  - "ranger"
-
-terminal_emulator_packages_list:
-  - "alacritty"
-  - "kitty"
-
 pip_packages_list:
   - "yt-dlp"
-
-editor_packages_list:
-  - "vim"
-  - "spyder3"
-  - "code"
-  - "ipython3"
-  - "bpython"
-
-pdf_management_packages_list:
-  - "cups-pdf"
-  - "xournal"
-  - "okular"
-  - "xchm"
-
-media_player_packages_list:
-  - "vlc"
-  - "mpv"
 
 wiki_packages_list:
   - "zim"

@@ -5,7 +5,7 @@
   tags:
     - "prerequisites"
 
-- name: "Install the display server"
+- name: "Install 'display_server_packages_list'"
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
@@ -16,18 +16,79 @@
   tags:
     - "prerequisites"
     - "prerequisites-install"
-    - "prerequisites-install-display-server"
+    - "display-server-packages-list"
 
-- name: "Install the prerequisite's packages"
+- name: "Install 'system_packages_list'"
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
     update_cache: true
     install_recommends: true
-  loop: "{{ prerequisite_packages_list }}"
+  loop: "{{ system_packages_list }}"
   tags:
     - "prerequisites"
     - "prerequisites-install"
+    - "system-packages-list"
+
+- name: "Install 'python_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    install_recommends: true
+  loop: "{{ python_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "python-packages-list"
+
+- name: "Install 'security_management_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    install_recommends: true
+  loop: "{{ security_management_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "security-management-packages-list"
+
+- name: "Install 'gpg_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    install_recommends: true
+  loop: "{{ gpg_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "gpg-packages-list"
+
+- name: "Install 'ssh_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    install_recommends: true
+  loop: "{{ ssh_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "ssh-packages-list"
+
+- name: "Install 'network_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+    install_recommends: true
+  loop: "{{ network_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "network-packages-list"
 
 - name: "Reboot the host"
   ansible.builtin.reboot:
