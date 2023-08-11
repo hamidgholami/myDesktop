@@ -179,6 +179,7 @@ libvirt_qemu_packages_list:
   - "libvirt-clients"
   - "libvirt-daemon"
   - "libvirt-daemon-system"
+  - "libnss-libvirt"
   - "virtinst"
   - "imvirt"
   - "qemu-utils"
@@ -191,6 +192,7 @@ libvirt_qemu_packages_list:
 
 pip_packages_list: []
 #  - "yt-dlp"
+#  - "docker-compose"
 
 wiki_packages_list:
   - "zim"

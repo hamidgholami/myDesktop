@@ -286,6 +286,12 @@
     update_cache: false
     install_recommends: true
   loop: "{{ libvirt_qemu_packages_list }}"
+  #  notify: sudo sudo systemctl is-active libvirtd
+  #  sudo usermod -aG libvirt $USER
+  #  sudo usermod -aG kvm $USER
+  #  $ cat /etc/nsswitch.conf
+  #  # /etc/nsswitch.conf:
+  #  hosts: files libvirt libvirt_guest dn
   tags:
     - "prerequisites"
     - "prerequisites-install"
