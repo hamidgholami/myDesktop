@@ -73,8 +73,11 @@ dns_packages_list:
 compression_packages_list:
   - "zip"
   - "unzip"
+  - "gzip"
+  - "bzip2"
   - "zstd"
   - "7zip"
+  - "p7zip-full"
   - "unrar-free"
   - "file-roller"
 
@@ -97,6 +100,7 @@ system_utility_packages_list:
   - "less"
   - "htop"
   - "rsync"
+  - "meld"
   - "mlocate"
   - "dos2unix"
   - "neofetch"
@@ -122,12 +126,16 @@ essential_font_packages_list:
   - "fonts-terminus"
   - "fonts-recommended"
   - "fonts-font-awesome"
+  - "fonts-liberation"
+  - "fonts-liberation2"
   - "fonts-farsiweb"
 #  - "fonts-powerline"
 
 editor_packages_list:
   - "vim"
   - "l3afpad"
+  - "kate"
+  - "notepadqq"
   - "spyder"
   - "ipython3"
   - "bpython"
@@ -178,6 +186,7 @@ internet_utility_packages_list:
   - "chromium"
   - "firefox-esr"
   - "surf"
+  - "qutebrowser"
   - "lynx"
   - "aria2"
   - "transmission-gtk"
@@ -245,51 +254,22 @@ minimal_desktop_environment_packages_list:
   - "xfce4"
   - "xfce4-goodies"
 
-pip_packages_list: []
+pip_packages_list:
 #  - "yt-dlp"
-#  - "docker-compose"
+  - "docker-compose"
 
 wiki_packages_list:
   - "zim"
 prerequisite_packages_list:
   - "ruby"
 
-#  - dh-autoreconf libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev libxcb-shape0 libxcb-shape0-dev i3status
 i3wm_packages:
   - "i3-wm"
   - "suckless-tools"
   - "polybar"
   - "sxhkd"
   - "i3lock-fancy"
-#  - "dh-autoreconf"
-#  - "meson"
-#  - "libxcb-keysyms1-dev"
-#  - "libpango1.0-dev"
-#  - "libxcb-util0-dev"
-#  - "xcb"
-#  - "libxcb1-dev"
-#  - "libxcb-icccm4-dev"
-#  - "libyajl-dev"
-#  - "libev-dev"
-#  - "libxcb-xkb-dev"
-#  - "libxcb-cursor-dev"
-#  - "libxkbcommon-dev"
-#  - "libxcb-xinerama0-dev"
-#  - "libxkbcommon-x11-dev"
-#  - "libstartup-notification0-dev"
-#  - "libxcb-randr0-dev"
-#  - "libxcb-xrm0"
-#  - "libxcb-xrm-dev"
-#  - "libxcb-shape0"
-#  - "libxcb-shape0-dev"
-#  - "i3status"
-#  - "feh"
-#  - "pcmanfm"
-#  - "lxappearance"
-#  - "lightdm"
-#  - slick-greeter
-#  - "lightdm-settings"
-#  - "nitrogen"
+
 utility_packages:
   - "fonts-powerline"
   - "libreadline-dev"
@@ -349,20 +329,7 @@ utility_packages:
   - "pinentry-curses"
   - "pinentry-tty"
 #  - https://github.com/fzerorubigd/persian-fonts-linux
-#  - "virtualbox-guest-additions-iso"
-#  - "discord"
-#  - "fonts-farsiweb"
-#  - kubectl
-#  - ubuntu-restricted-extras
-#  - "docker-ce"
-#  - "docker-ce-cli"
-#  - "containerd.io"
-#  - "code"
-#  - "virt-top"
-#  - "unrar"
-#  - "rar"
-#  - "p7zip-full"
-#  - "p7zip-rar"
+
 #  - "ttf-mscorefonts-installer"
 #  - "virtualbox"
 #  - "virtualbox-ext-pack"
@@ -371,7 +338,6 @@ utility_packages:
 # https://github.com/jarun/nnn
 # https://github.com/mananapr/cfiles
 #  yt-dlp
-# fonts-font-awesome fonts-ubuntu fonts-liberation2 fonts-liberation fonts-terminus
 #xmonad
 #qtile
 #dwm
@@ -383,4 +349,9 @@ utility_packages:
 # alias ls='exa -al --long --header --color=always --group-directories-first'
 
 # joplin: wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
+# FIXME Hamid:
+#  curl -s https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | gpg --dearmor | sudo tee /usr/share/keyrings/jetbrains-ppa-archive-keyring.gpg > /dev/null
+#  echo "deb [signed-by=/usr/share/keyrings/jetbrains-ppa-archive-keyring.gpg] http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com any main" | sudo tee /etc/apt/sources.list.d/jetbrains-ppa.list > /dev/null
+#  sudo apt update
+#  sudo apt install pycharm-community
 ...
