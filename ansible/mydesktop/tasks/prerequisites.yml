@@ -9,7 +9,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: true
+    update_cache: false
     install_recommends: true
   loop: "{{ display_server_packages_list }}"
   register: display_server_installation
@@ -22,7 +22,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: true
+    update_cache: false
     install_recommends: true
   loop: "{{ system_packages_list }}"
   tags:
@@ -34,7 +34,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: true
+    update_cache: false
     install_recommends: true
   loop: "{{ python_packages_list }}"
   tags:
@@ -42,11 +42,20 @@
     - "prerequisites-install"
     - "python-packages-list"
 
+- name: "Install 'pip_packages_list'"
+  ansible.builtin.pip:
+    name: "{{ item }}"
+  loop: "{{ pip_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "pip-packages-list"
+
 - name: "Install 'security_management_packages_list'"
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: true
+    update_cache: false
     install_recommends: true
   loop: "{{ security_management_packages_list }}"
   tags:
@@ -58,7 +67,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: true
+    update_cache: false
     install_recommends: true
   loop: "{{ gpg_packages_list }}"
   tags:
@@ -70,7 +79,7 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: true
+    update_cache: false
     install_recommends: true
   loop: "{{ ssh_packages_list }}"
   tags:
@@ -82,13 +91,193 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-    update_cache: true
+    update_cache: false
     install_recommends: true
   loop: "{{ network_packages_list }}"
   tags:
     - "prerequisites"
     - "prerequisites-install"
     - "network-packages-list"
+
+- name: "Install 'compression_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ compression_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "compression-packages-list"
+
+- name: "Install 'sound_management_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ sound_management_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "sound-management-packages-list"
+
+- name: "Install 'system_utility_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ system_utility_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "system-utility-packages-list"
+
+- name: "Install 'essential_font_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ essential_font_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "essential-font-packages-list"
+
+- name: "Install 'editor_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ editor_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "editor-packages-list"
+
+- name: "Install 'file_manager_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ file_manager_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "file-manager-packages-list"
+
+- name: "Install 'terminal_emulator_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ terminal_emulator_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "terminal-emulator-packages-list"
+
+- name: "Install 'screen_capture_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ screen_capture_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "screen-capture-packages-list"
+
+- name: "Install 'remote_desktop_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ remote_desktop_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "remote-desktop-packages-list"
+
+- name: "Install 'clipboard_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ clipboard_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "clipboard-packages-list"
+
+- name: "Install 'internet_utility_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ internet_utility_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "internet-utility-packages-list"
+
+- name: "Install 'bluetooth_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ bluetooth_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "bluetooth-packages-list"
+
+- name: "Install 'vpn_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ vpn_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "vpn-packages-list"
+
+- name: "Install 'pdf_management_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ pdf_management_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "pdf-management-packages-list"
+
+- name: "Install 'media_player_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ media_player_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "media-player-packages-list"
 
 - name: "Reboot the host"
   ansible.builtin.reboot:

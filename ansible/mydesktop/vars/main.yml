@@ -69,7 +69,8 @@ compression_packages_list:
   - "zip"
   - "unzip"
   - "zstd"
-  - "unrar"
+  - "7zip"
+  - "unrar-free"
 
 sound_management_packages_list:
   - "pulseaudio"
@@ -106,7 +107,7 @@ essential_font_packages_list:
 
 editor_packages_list:
   - "vim"
-  - "spyder3"
+  - "spyder"
   - "ipython3"
   - "bpython"
 #  - "code"
@@ -120,11 +121,12 @@ terminal_emulator_packages_list:
   - "kitty"
 
 screen_capture_packages_list:
-  - "simplescreenrecorder"
-  - "kazam"
+  - "flameshot"
   - "ffmpeg"
   - "obs-studio"
   - "kdenlive"
+  - "kazam"
+  - "simplescreenrecorder"
 
 remote_desktop_packages_list:
   - "x11vnc"
@@ -176,8 +178,8 @@ virtualization_packages_list:
   - "bridge-utils"
   - "cpu-checker"
 
-pip_packages_list:
-  - "yt-dlp"
+pip_packages_list: []
+#  - "yt-dlp"
 
 wiki_packages_list:
   - "zim"

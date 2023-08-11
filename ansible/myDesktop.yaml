@@ -1,6 +1,7 @@
 ---
 - name: "Setup My Desktop"
   hosts: myDesktop
+  strategy: free
   gather_facts: yes
   become: yes
   roles:
