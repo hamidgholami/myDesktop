@@ -279,6 +279,19 @@
     - "prerequisites-install"
     - "media-player-packages-list"
 
+- name: "Install 'libvirt_qemu_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ libvirt_qemu_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "libvirt-qemu-packages-list"
+
+
 - name: "Reboot the host"
   ansible.builtin.reboot:
     msg: "Reboot initiated by Ansible due to display server installation/updates"

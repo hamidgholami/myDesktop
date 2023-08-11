@@ -18,23 +18,23 @@ system_packages_list:
   - "g++"
   - "libatk-bridge2.0-0"
   - "libgtk-3-0"
-  - "libjemalloc2"
-  - "libldap2-dev"
-  - "libsasl2-dev"
   - "gcc"
   - "build-essential"
   - "ca-certificates"
   - "iucode-tool"
+  - "grub2-common"
 
 python_packages_list:
   - "python3"
   - "virtualenv"
   - "python3-virtualenv"
   - "python3-pip"
+  - "python-is-python3"
 
 security_management_packages_list:
   - "ca-certificates"
   - "openssl"
+  - "libsasl2-dev"
   - "libpam-google-authenticator"
   - "pass"
   - "apg"
@@ -61,6 +61,7 @@ network_packages_list:
   - "net-tools"
   - "ifupdown"
   - "nmap"
+  - "netcat-traditional"
 
 dns_packages_list:
   - "dnsmasq"
@@ -84,7 +85,11 @@ system_utility_packages_list:
   - "curl"
   - "wget"
   - "jq"
+  - "aptitude"
+  - "dbus"
   - "tmux"
+  - "iotop"
+  - "less"
   - "htop"
   - "rsync"
   - "mlocate"
@@ -118,6 +123,9 @@ file_manager_packages_list:
 
 terminal_emulator_packages_list:
   - "alacritty"
+  - "rxvt-unicode"
+  - "termit"
+  - "xterm"
   - "kitty"
 
 screen_capture_packages_list:
@@ -143,6 +151,7 @@ internet_utility_packages_list:
   - "chromium"
   - "firefox-esr"
   - "surf"
+  - "lynx"
   - "aria2"
 
 bluetooth_packages_list:
@@ -166,16 +175,18 @@ media_player_packages_list:
   - "vlc"
   - "mpv"
 
-virtualization_packages_list:
-  - "imvirt"
-  - "qemu-kvm"
-  - "qemu"
-  - "qemu-kvm"
-  - "ksmtuned"
+libvirt_qemu_packages_list:
+  - "libvirt-clients"
+  - "libvirt-daemon"
+  - "libvirt-daemon-system"
   - "virtinst"
+  - "imvirt"
+  - "qemu-utils"
+  - "qemu-system"
   - "virt-viewer"
   - "virt-manager"
   - "bridge-utils"
+  - "ksmtuned"
   - "cpu-checker"
 
 pip_packages_list: []
