@@ -297,6 +297,70 @@
     - "prerequisites-install"
     - "libvirt-qemu-packages-list"
 
+- name: "Install 'system_events_notifications_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ system_events_notifications_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "system-events-notifications-packages-list"
+
+- name: "Install 'printer_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ printer_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "printer-packages-list"
+
+- name: "Install 'mail_client_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ mail_client_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "mail-client-packages-list"
+
+- name: "Install 'minimal_desktop_environment_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ minimal_desktop_environment_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "minimal-desktop-environment-packages-list"
+
+- name: "Restart/Active installed services"
+  service:
+    name: "{{ item }}"
+    state: "restarted"
+    enabled: true
+  loop:
+    - "libvirtd"
+    - "cups"
+    - "bluetooth"
+    - "lightdm"
+    - "avahi-daemon"
+    - "acpid"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
+    - "restart-essential-services"
 
 - name: "Reboot the host"
   ansible.builtin.reboot:
