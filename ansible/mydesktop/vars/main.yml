@@ -97,7 +97,6 @@ system_utility_packages_list:
   - "dbus"
   - "tmux"
   - "yadm"
-  - "split"
   - "dmidecode" # sudo dmidecode -t 1
   - "iotop"
   - "less"
@@ -201,10 +200,13 @@ bluetooth_packages_list:
 
 vpn_packages_list:
   - "openvpn"
+  - "openconnect"
+  - "network-manager-openconnect"
   - "network-manager-openvpn"
   - "network-manager-vpnc"
   - "network-manager-l2tp"
-  - "openconnect"
+  - "network-manager-sstp"
+  - "network-manager-pptp"
 
 pdf_management_packages_list:
   - "cups-pdf"
@@ -258,7 +260,6 @@ minimal_desktop_environment_packages_list:
 
 pip_packages_list:
   - "yt-dlp"
-  - "docker-compose"
 
 wiki_packages_list:
   - "zim"

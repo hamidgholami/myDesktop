@@ -42,15 +42,6 @@
     - "prerequisites-install"
     - "python-packages-list"
 
-- name: "Install 'pip_packages_list'"
-  ansible.builtin.pip:
-    name: "{{ item }}"
-  loop: "{{ pip_packages_list }}"
-  tags:
-    - "prerequisites"
-    - "prerequisites-install"
-    - "pip-packages-list"
-
 - name: "Install 'security_management_packages_list'"
   ansible.builtin.apt:
     name: "{{ item }}"
@@ -362,6 +353,18 @@
     - "prerequisites"
     - "prerequisites-install"
     - "restart-essential-services"
+
+- name: "Create .config in the user's home dir"
+  ansible.builtin.file:
+      path: "/home/vagrant/.config"
+    #    FIXME Hamid, the value ownwe/group should be used as variable
+      owner: "vagrant"
+      group: "vagrant"
+      mode: "755"
+      state: "directory"
+  tags:
+    - "prerequisites"
+    - "prerequisites-install"
 
 - name: "Reboot the host"
   ansible.builtin.reboot:

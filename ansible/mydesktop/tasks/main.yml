@@ -1,5 +1,9 @@
 ---
-- name: "Include prerequisites"
+
+- name: "Import prerequisites"
   import_tasks: "prerequisites.yml"
+
+- name: "Import pip_install"
+  import_tasks: "pip_install.yml"
 
 ...
