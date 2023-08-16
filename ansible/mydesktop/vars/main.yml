@@ -273,7 +273,6 @@ i3wm_packages:
   - "i3lock-fancy"
 
 #  - https://github.com/fzerorubigd/persian-fonts-linux
-
 #  - "ttf-mscorefonts-installer"
 #  - "virtualbox"
 #  - "virtualbox-ext-pack"
@@ -291,7 +290,6 @@ i3wm_packages:
 # lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 # sudo apt install -y xorg xbacklight xbindkeys xvkbd xinput xorg-dev
 # alias ls='exa -al --long --header --color=always --group-directories-first'
-
 # joplin: wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
 # FIXME Hamid:
 #  curl -s https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | gpg --dearmor | sudo tee /usr/share/keyrings/jetbrains-ppa-archive-keyring.gpg > /dev/null
