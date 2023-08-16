@@ -97,6 +97,8 @@ system_utility_packages_list:
   - "dbus"
   - "tmux"
   - "yadm"
+  - "split"
+  - "dmidecode" # sudo dmidecode -t 1
   - "iotop"
   - "less"
   - "htop"
@@ -129,8 +131,8 @@ essential_font_packages_list:
   - "fonts-font-awesome"
   - "fonts-liberation"
   - "fonts-liberation2"
+  - "fonts-powerline"
   - "fonts-farsiweb"
-#  - "fonts-powerline"
 
 editor_packages_list:
   - "vim"
@@ -147,7 +149,6 @@ editor_packages_list:
   - "geany-plugin-spellcheck"
   - "geany-plugin-treebrowser"
   - "geany-plugin-vimode"
-#  - "code"
 
 file_manager_packages_list:
   - "pcmanfm"
@@ -256,7 +257,7 @@ minimal_desktop_environment_packages_list:
   - "xfce4-goodies"
 
 pip_packages_list:
-#  - "yt-dlp"
+  - "yt-dlp"
   - "docker-compose"
 
 wiki_packages_list:
