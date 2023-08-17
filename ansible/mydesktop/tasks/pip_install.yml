@@ -28,6 +28,8 @@
   ansible.builtin.pip:
     name: "{{ item }}"
   loop: "{{ pip_packages_list }}"
+  when:
+    - not ansible_check_mode
   tags:
     - "prerequisites"
     - "pip-packages-list"

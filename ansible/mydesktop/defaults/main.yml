@@ -23,7 +23,7 @@ pipconf:
     global_quiet: 0
     global_verbose: 2
     global_break_system_packages: true
-    global_require_virtualenv: false
+    global_require_virtualenv: true
     global_download_cache: /tmp
     global_log_file: /tmp/pip-log.txt
     freeze_timeout: 10

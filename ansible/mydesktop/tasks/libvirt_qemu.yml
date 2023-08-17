@@ -11,16 +11,6 @@
     - "libvirt-qemu"
     - "libvirt-qemu-packages-list"
 
-#- name: "Restart/Active libvirtd service unit"
-#  service:
-#    name: "libvirtd"
-#    state: "restarted"
-#    enabled: true
-#  when: update_libvirt_qemu_packages_result.changed
-#  tags:
-#    - "libvirt-qemu"
-#    - "restart-libvirtd"
-
 - name: "Update /etc/nsswitch.conf with libvirt"
   lineinfile:
     dest: "/etc/nsswitch.conf"
@@ -39,6 +29,8 @@
       - "libvirt"
       - "kvm"
     append: true
+  when:
+    - not ansible_check_mode
   tags:
     - "libvirt-qemu"
 ...

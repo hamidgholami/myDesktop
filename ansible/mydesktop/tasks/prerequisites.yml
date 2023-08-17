@@ -13,7 +13,7 @@
     install_recommends: true
   loop: "{{ display_server_packages_list }}"
   register: display_server_installation
-  notify: "Restart-Active lightdm service unit"
+  notify: "restart-lightdm"
   tags:
     - "prerequisites"
     - "display-server-packages-list"
@@ -212,7 +212,7 @@
     update_cache: false
     install_recommends: true
   loop: "{{ bluetooth_packages_list }}"
-  notify: "Restart-Active bluetooth service unit"
+  notify: "restart-bluetooth"
   tags:
     - "prerequisites"
     - "bluetooth-packages-list"
@@ -258,8 +258,8 @@
     install_recommends: true
   loop: "{{ system_events_notifications_packages_list }}"
   notify:
-    - "Restart-Active avahi-daemon service unit"
-    - "Restart-Active acpid service unit"
+    - "restart-avahi-daemon"
+    - "restart-acpid"
   tags:
     - "prerequisites"
     - "system-events-notifications-packages-list"
@@ -271,7 +271,7 @@
     update_cache: false
     install_recommends: true
   loop: "{{ printer_packages_list }}"
-  notify: "Restart-Active cups service unit"
+  notify: "restart-cups"
   tags:
     - "prerequisites"
     - "printer-packages-list"
