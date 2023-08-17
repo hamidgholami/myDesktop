@@ -13,6 +13,7 @@
     install_recommends: true
   loop: "{{ display_server_packages_list }}"
   register: display_server_installation
+  notify: "Restart-Active lightdm service unit"
   tags:
     - "prerequisites"
     - "display-server-packages-list"
@@ -211,6 +212,7 @@
     update_cache: false
     install_recommends: true
   loop: "{{ bluetooth_packages_list }}"
+  notify: "Restart-Active bluetooth service unit"
   tags:
     - "prerequisites"
     - "bluetooth-packages-list"
@@ -255,6 +257,9 @@
     update_cache: false
     install_recommends: true
   loop: "{{ system_events_notifications_packages_list }}"
+  notify:
+    - "Restart-Active avahi-daemon service unit"
+    - "Restart-Active acpid service unit"
   tags:
     - "prerequisites"
     - "system-events-notifications-packages-list"
@@ -266,6 +271,7 @@
     update_cache: false
     install_recommends: true
   loop: "{{ printer_packages_list }}"
+  notify: "Restart-Active cups service unit"
   tags:
     - "prerequisites"
     - "printer-packages-list"
@@ -292,22 +298,6 @@
     - "prerequisites"
     - "minimal-desktop-environment-packages-list"
 
-- name: "Restart/Active installed services"
-  service:
-    name: "{{ item }}"
-    state: "restarted"
-    enabled: true
-  loop:
-    - "libvirtd"
-    - "cups"
-    - "bluetooth"
-    - "lightdm"
-    - "avahi-daemon"
-    - "acpid"
-  tags:
-    - "prerequisites"
-    - "restart-essential-services"
-
 - name: "Create .config in {{ mydesktop.system.username }}'s home dir"
   become: false
   ansible.builtin.file:
@@ -320,13 +310,20 @@
     - "prerequisites"
 
 - name: "Reboot the host"
-  ansible.builtin.reboot:
-    msg: "Reboot initiated by Ansible due to display server installation/updates"
-    connect_timeout: 5
-    reboot_timeout: 120
-    pre_reboot_delay: 0
-    post_reboot_delay: 30
-    test_command: uptime
+  block:
+    - name: "Print message"
+      ansible.builtin.debug:
+        msg:
+          - "Rebooting the host ..."
+
+    - name: "Reboot"
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible due to display server installation/updates"
+        connect_timeout: 5
+        reboot_timeout: 70
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: uptime
   when:
     - display_server_installation.changed
     - not ansible_connection == 'local'

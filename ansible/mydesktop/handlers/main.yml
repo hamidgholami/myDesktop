@@ -1,3 +1,38 @@
 ---
-# handlers file for mydesktop
+- name: "Restart-Active libvirtd service unit"
+  service:
+    name: "libvirtd"
+    state: "restarted"
+    enabled: true
+
+- name: "Restart-Active cups service unit"
+  service:
+    name: "cups"
+    state: "restarted"
+    enabled: true
+
+- name: "Restart-Active bluetooth service unit"
+  service:
+    name: "bluetooth"
+    state: "restarted"
+    enabled: true
+
+- name: "Restart-Active lightdm service unit"
+  service:
+    name: "lightdm"
+    state: "restarted"
+    enabled: true
+
+- name: "Restart-Active avahi-daemon service unit"
+  service:
+    name: "avahi-daemon"
+    state: "restarted"
+    enabled: true
+
+- name: "Restart-Active acpid service unit"
+  service:
+    name: "acpid"
+    state: "restarted"
+    enabled: true
+
 ...

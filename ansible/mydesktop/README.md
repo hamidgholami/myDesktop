@@ -3,7 +3,7 @@ TODO
 - [ ] gpg,ssh,sudo,bashrc,tmux
 - [ ] git
 - [ ] fonts,nerdfont
-- [ ] IDEs,IntelliJ,VSCode,Sublime,vim
+- [ ] IntelliJ,VSCode,
 - [ ] virtualization,virtualbox,libvirt,packer,vagrant
 - [ ] Containerization,docker,kuber
 - [ ] Multimedia

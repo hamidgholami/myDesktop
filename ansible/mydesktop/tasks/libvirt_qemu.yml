@@ -6,20 +6,20 @@
     update_cache: false
     install_recommends: true
   loop: "{{ libvirt_qemu_packages_list }}"
-  register: update_libvirt_qemu_packages_result
+  notify: "Restart-Active libvirtd service unit"
   tags:
     - "libvirt-qemu"
     - "libvirt-qemu-packages-list"
 
-- name: "Restart/Active libvirtd service unit"
-  service:
-    name: "libvirtd"
-    state: "restarted"
-    enabled: true
-  when: update_libvirt_qemu_packages_result.changed
-  tags:
-    - "libvirt-qemu"
-    - "restart-libvirtd"
+#- name: "Restart/Active libvirtd service unit"
+#  service:
+#    name: "libvirtd"
+#    state: "restarted"
+#    enabled: true
+#  when: update_libvirt_qemu_packages_result.changed
+#  tags:
+#    - "libvirt-qemu"
+#    - "restart-libvirtd"
 
 - name: "Update /etc/nsswitch.conf with libvirt"
   lineinfile:
@@ -32,11 +32,11 @@
     - "libvirt-qemu"
     - "libvirt-nsswitch"
 
-- name: "add {{ my_desktop.system.username }} in libvirt,kvm group"
+- name: "add {{ mydesktop.system.username }} in libvirt,kvm group"
   ansible.builtin.user:
     name: "{{ mydesktop.system.username }}"
     groups:
-      - "libvit"
+      - "libvirt"
       - "kvm"
     append: true
   tags:
