@@ -1,0 +1,13 @@
+{{ ansible_managed | comment }}
+
+[global]
+timeout = {{ pipconf.global_timeout }}
+quiet = {{ pipconf.global_quiet }}
+verbose = {{ pipconf.global_verbose }}
+break-system-packages = {{ pipconf.global_break_system_packages }}
+require-virtualenv = {{ pipconf.global_require_virtualenv }}
+download-cache = {{ pipconf.global_download_cache }}
+log-file = {{ pipconf.global_log_file }}
+
+[freeze]
+timeout = {{ pipconf.freeze_timeout }}

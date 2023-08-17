@@ -3,8 +3,32 @@ ansible_connection: "ssh"
 prerequisite_packages_list: []
 utility_packages: []
 
-display_server: "xorg"
-display_manager: "lightdm"
-display_windows_manager: "i3" #awesome,qtile
 
+mydesktop:
+  user:
+    first_name: "Vagrant"
+    last_name: "Vagrant"
+    email_address: "vagrant@vagrant.org"
+
+  system:
+    username: "vagrant"
+    hostname: "mydesktop"
+    default_editor: "vim"
+    display_server: "xorg"
+    display_manager: "lightdm"
+    display_windows_manager: "i3" #awesome,qtile
+
+pipconf:
+    global_timeout: 60
+    global_quiet: 0
+    global_verbose: 2
+    global_break_system_packages: true
+    global_require_virtualenv: false
+    global_download_cache: /tmp
+    global_log_file: /tmp/pip-log.txt
+    freeze_timeout: 10
+
+virtualization:
+  libvirt_qemu: true
+  virtualbox: false
 ...

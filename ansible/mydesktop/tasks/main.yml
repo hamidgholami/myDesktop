@@ -6,4 +6,6 @@
 - name: "Import pip_install"
   import_tasks: "pip_install.yml"
 
+- name: "Import libvirt_qemu"
+  import_tasks: "libvirt_qemu.yml"
 ...

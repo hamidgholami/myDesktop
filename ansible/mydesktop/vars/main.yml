@@ -6,6 +6,9 @@ display_server_packages_list:
   - "xbindkeys"
   - "xvkbd"
   - "xinput"
+  - "xserver-xorg-input-libinput"
+  - "xserver-xorg-input-evdev"
+  - "xserver-xorg-input-mouse"
   - "lightdm"
   - 'lightdm-gtk-greeter'
   - "lightdm-gtk-greeter-settings"

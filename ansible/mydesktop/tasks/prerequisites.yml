@@ -15,7 +15,6 @@
   register: display_server_installation
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "display-server-packages-list"
 
 - name: "Install 'system_packages_list'"
@@ -27,7 +26,6 @@
   loop: "{{ system_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "system-packages-list"
 
 - name: "Install 'python_packages_list'"
@@ -39,7 +37,6 @@
   loop: "{{ python_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "python-packages-list"
 
 - name: "Install 'security_management_packages_list'"
@@ -51,7 +48,6 @@
   loop: "{{ security_management_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "security-management-packages-list"
 
 - name: "Install 'gpg_packages_list'"
@@ -63,7 +59,6 @@
   loop: "{{ gpg_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "gpg-packages-list"
 
 - name: "Install 'ssh_packages_list'"
@@ -75,7 +70,6 @@
   loop: "{{ ssh_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "ssh-packages-list"
 
 - name: "Install 'network_packages_list'"
@@ -87,7 +81,6 @@
   loop: "{{ network_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "network-packages-list"
 
 - name: "Install 'compression_packages_list'"
@@ -99,7 +92,6 @@
   loop: "{{ compression_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "compression-packages-list"
 
 - name: "Install 'sound_management_packages_list'"
@@ -111,7 +103,6 @@
   loop: "{{ sound_management_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "sound-management-packages-list"
 
 - name: "Install 'system_utility_packages_list'"
@@ -123,7 +114,6 @@
   loop: "{{ system_utility_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "system-utility-packages-list"
 
 - name: "Install 'essential_font_packages_list'"
@@ -135,7 +125,6 @@
   loop: "{{ essential_font_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "essential-font-packages-list"
 
 - name: "Install 'editor_packages_list'"
@@ -147,7 +136,6 @@
   loop: "{{ editor_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "editor-packages-list"
 
 - name: "Install 'file_manager_packages_list'"
@@ -159,7 +147,6 @@
   loop: "{{ file_manager_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "file-manager-packages-list"
 
 - name: "Install 'terminal_emulator_packages_list'"
@@ -171,7 +158,6 @@
   loop: "{{ terminal_emulator_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "terminal-emulator-packages-list"
 
 - name: "Install 'screen_capture_packages_list'"
@@ -183,7 +169,6 @@
   loop: "{{ screen_capture_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "screen-capture-packages-list"
 
 - name: "Install 'remote_desktop_packages_list'"
@@ -195,7 +180,6 @@
   loop: "{{ remote_desktop_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "remote-desktop-packages-list"
 
 - name: "Install 'clipboard_packages_list'"
@@ -207,7 +191,6 @@
   loop: "{{ clipboard_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "clipboard-packages-list"
 
 - name: "Install 'internet_utility_packages_list'"
@@ -219,7 +202,6 @@
   loop: "{{ internet_utility_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "internet-utility-packages-list"
 
 - name: "Install 'bluetooth_packages_list'"
@@ -231,7 +213,6 @@
   loop: "{{ bluetooth_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "bluetooth-packages-list"
 
 - name: "Install 'vpn_packages_list'"
@@ -243,7 +224,6 @@
   loop: "{{ vpn_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "vpn-packages-list"
 
 - name: "Install 'pdf_management_packages_list'"
@@ -255,7 +235,6 @@
   loop: "{{ pdf_management_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "pdf-management-packages-list"
 
 - name: "Install 'media_player_packages_list'"
@@ -267,27 +246,7 @@
   loop: "{{ media_player_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "media-player-packages-list"
-
-- name: "Install 'libvirt_qemu_packages_list'"
-  ansible.builtin.apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: false
-    install_recommends: true
-  loop: "{{ libvirt_qemu_packages_list }}"
-  # FIXME Hamid:
-  # notify: sudo sudo systemctl is-active libvirtd
-  #  sudo usermod -aG libvirt $USER
-  #  sudo usermod -aG kvm $USER
-  #  $ cat /etc/nsswitch.conf
-  #  # /etc/nsswitch.conf:
-  #  hosts: files libvirt libvirt_guest dn
-  tags:
-    - "prerequisites"
-    - "prerequisites-install"
-    - "libvirt-qemu-packages-list"
 
 - name: "Install 'system_events_notifications_packages_list'"
   ansible.builtin.apt:
@@ -298,7 +257,6 @@
   loop: "{{ system_events_notifications_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "system-events-notifications-packages-list"
 
 - name: "Install 'printer_packages_list'"
@@ -310,7 +268,6 @@
   loop: "{{ printer_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "printer-packages-list"
 
 - name: "Install 'mail_client_packages_list'"
@@ -322,7 +279,6 @@
   loop: "{{ mail_client_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "mail-client-packages-list"
 
 - name: "Install 'minimal_desktop_environment_packages_list'"
@@ -334,7 +290,6 @@
   loop: "{{ minimal_desktop_environment_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "minimal-desktop-environment-packages-list"
 
 - name: "Restart/Active installed services"
@@ -351,20 +306,18 @@
     - "acpid"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "restart-essential-services"
 
-- name: "Create .config in the user's home dir"
+- name: "Create .config in {{ mydesktop.system.username }}'s home dir"
+  become: false
   ansible.builtin.file:
-      path: "/home/vagrant/.config"
-    #    FIXME Hamid, the value ownwe/group should be used as variable
-      owner: "vagrant"
-      group: "vagrant"
-      mode: "755"
+      path: "/home/{{ mydesktop.system.username }}/.config"
+      owner: "{{ mydesktop.system.username }}"
+      group: "{{ mydesktop.system.username }}"
+      mode: "0755"
       state: "directory"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
 
 - name: "Reboot the host"
   ansible.builtin.reboot:
@@ -380,7 +333,6 @@
     - not ansible_check_mode
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "prerequisites-reboot"
 
 - name: "Finish the playbook"
@@ -400,7 +352,6 @@
     - not ansible_check_mode
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "prerequisites-reboot"
 
 ...

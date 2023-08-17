@@ -2,36 +2,33 @@
 
 - name: "Create '~/.config/pip/'"
   ansible.builtin.file:
-    #    FIXME Hamid, the value ownwe/group should be used as variable
-    path: "/home/vagrant/.config/pip"
+    path: "/home/{{ mydesktop.system.username }}/.config/pip"
+    owner: "{{ mydesktop.system.username }}"
+    group: "{{ mydesktop.system.username }}"
     mode: "755"
     state: "directory"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "pip-packages-list"
 
-- name: "Add/Update pip in the user's home dir"
+- name: "Add/Update pip in {{ mydesktop.system.username }}'s home dir"
   changed_when: false
-  copy:
-    src: "pip.conf"
-    dest: "/home/vagrant/.config/pip/pip.conf"
-#    FIXME Hamid, the value ownwe/group should be used as variable
-    owner: "vagrant"
-    group: "vagrant"
-    mode: "0600"
+  ansible.builtin.template:
+    src: "pip.conf.j2"
+    dest: "/home/{{ mydesktop.system.username }}/.config/pip/pip.conf"
+    owner: "{{ mydesktop.system.username }}"
+    group: "{{ mydesktop.system.username }}"
+    mode: "0644"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
-    - "pip-packages-list"
     - "pip-packages-list"
 
 - name: "Install 'pip_packages_list'"
+  become: false
   ansible.builtin.pip:
     name: "{{ item }}"
   loop: "{{ pip_packages_list }}"
   tags:
     - "prerequisites"
-    - "prerequisites-install"
     - "pip-packages-list"
 ...
