@@ -168,6 +168,7 @@ terminal_emulator_packages_list:
 
 screen_capture_packages_list:
   - "flameshot"
+  - "peek"
   - "scrot"
   - "ffmpeg"
   - "obs-studio"
