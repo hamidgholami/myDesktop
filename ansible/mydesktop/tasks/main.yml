@@ -8,4 +8,7 @@
 
 - name: "Import libvirt_qemu"
   import_tasks: "libvirt_qemu.yml"
+
+- name: "Import hashicorp_apt_repository"
+  import_tasks: "hashicorp_apt_repository.yml"
 ...
