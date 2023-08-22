@@ -195,7 +195,21 @@ internet_utility_packages_list:
   - "lynx"
   - "aria2"
   - "transmission-gtk"
+  - "deluge"
   - "qbittorrent"
+  - "filezilla"
+  - "geary"
+  - "hexchat"
+  -
+# FIXME, Hamid tackle the following apps
+# ristretto
+# inkscape
+# blender
+# scribus
+# zathura
+# gnumeric
+# gnucash
+# https://docs.matrix.kit.edu/en/clients/install_linux/
 
 bluetooth_packages_list:
   - "bluetooth"
