@@ -12,6 +12,7 @@ display_server_packages_list:
   - "lightdm"
   - 'lightdm-gtk-greeter'
   - "lightdm-gtk-greeter-settings"
+  - "wmctrl"
 
 system_packages_list:
   - "apt-transport-https"
@@ -183,9 +184,9 @@ remote_desktop_packages_list:
 
 clipboard_packages_list:
   - "xclip"
-  - "copyq-plugins"
-  - "copyq"
   - "xsel"
+  - "copyq"
+  - "copyq-plugins"
 
 internet_utility_packages_list:
   - "chromium"
@@ -200,7 +201,6 @@ internet_utility_packages_list:
   - "filezilla"
   - "geary"
   - "hexchat"
-  -
 # FIXME, Hamid tackle the following apps
 # ristretto
 # inkscape
@@ -260,6 +260,7 @@ system_events_notifications_packages_list:
   - "acpid"
   - "dunst"
   - "rofi"
+  - "fzf"
 
 printer_packages_list:
   - "cups"
