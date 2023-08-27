@@ -14,4 +14,8 @@
 
 - name: "Import googlechrome"
   import_tasks: "googlechrome.yml"
+
+- name: "Import intellij"
+  import_tasks: "intellij.yml"
+
 ...

@@ -23,7 +23,7 @@
 
     - name: "Installing google-chrome"
       ansible.builtin.apt:
-        name: "google-chrome-stable"
+        name: "{{ googlechrome.package_name }}"
         state: present
   tags:
     - "google-chrome"
