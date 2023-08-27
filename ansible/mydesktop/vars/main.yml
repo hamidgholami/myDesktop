@@ -142,7 +142,6 @@ editor_packages_list:
   - "l3afpad"
   - "kate"
   - "notepadqq"
-  - "spyder"
   - "ipython3"
   - "bpython"
   - "geany"
@@ -152,6 +151,7 @@ editor_packages_list:
   - "geany-plugin-spellcheck"
   - "geany-plugin-treebrowser"
   - "geany-plugin-vimode"
+#  - "spyder"
 
 file_manager_packages_list:
   - "pcmanfm"
@@ -243,6 +243,9 @@ libvirt_qemu_packages_list:
   - "libvirt-daemon"
   - "libvirt-daemon-system"
   - "libnss-libvirt"
+  - "libosinfo-bin"
+  - "libguestfs-tools"
+  - "genisoimage"
   - "virtinst"
   - "imvirt"
   - "qemu-utils"

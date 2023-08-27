@@ -44,6 +44,12 @@ hashicorp:
   release_url: "https://apt.releases.hashicorp.com"
   archive_keyrings_path: "/usr/share/keyrings/hashicorp-archive-keyring.gpg"
   finger_print: "798AEC654E5C15428C8E42EEAA16FCBCA621E701"
-  gpg_checksum: "sha256:cafb01beac341bf2a9ba89793e6dd2468110291adfbb6c62ed11a0cde6c09029"
+  gpg_checksum: "sha256:cafb01beac341bf2a9ba89793e6dd2468110291adfbb6c62ed11a0cde6c09029" # curl -sL https://apt.releases.hashicorp.com/gpg|sha256sum
 
+googlechrome:
+  gpg_key_url: "https://dl.google.com/linux/linux_signing_key.pub"
+  release_url: "https://dl.google.com/linux/chrome/deb/"
+  archive_keyrings_path: "/usr/share/keyrings/google-chrome-archive-keyring.gpg"
+  gpg_checksum: "sha256:fb8df9740df6a1125fd2983465d830b764b63cd92d5ada8b5bbf75927d6a71ee" # curl -sL https://dl.google.com/linux/linux_signing_key.pub|sha256sum
+  
 ...

@@ -11,4 +11,7 @@
 
 - name: "Import hashicorp_apt_repository"
   import_tasks: "hashicorp_apt_repository.yml"
+
+- name: "Import googlechrome"
+  import_tasks: "googlechrome.yml"
 ...
