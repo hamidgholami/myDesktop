@@ -59,4 +59,14 @@ intellij_idea:
   release_url: "http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com"
   gpg_key_url: "https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc"
   gpg_checksum: "sha256:a8eeb391e6cdc8090c149887a55c416c43486b7d6e78ea6f9e7096d403233359" # curl -sL https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc|sha256sum
+
+# https://code.visualstudio.com/docs/setup/linux
+vscode:
+  archive_keyrings_path: "/usr/share/keyrings/vscode-archive-keyring.gpg"
+  package_name: "code"
+  release_url: "https://packages.microsoft.com/repos/code"
+  gpg_key_url: "https://packages.microsoft.com/keys/microsoft.asc"
+  gpg_checksum: "sha256:2cfd20a306b2fa5e25522d78f2ef50a1f429d35fd30bd983e2ebffc2b80944fa" # curl -sL https://packages.microsoft.com/keys/microsoft.asc|sha256sum
+
+
 ...

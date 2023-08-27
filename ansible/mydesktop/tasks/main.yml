@@ -18,4 +18,7 @@
 - name: "Import intellij"
   import_tasks: "intellij.yml"
 
+- name: "Import vscode"
+  import_tasks: "vscode.yml"
+  
 ...
