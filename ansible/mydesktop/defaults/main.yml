@@ -45,5 +45,5 @@ hashicorp:
   archive_keyrings_path: "/usr/share/keyrings/hashicorp-archive-keyring.gpg"
   finger_print: "798AEC654E5C15428C8E42EEAA16FCBCA621E701"
   gpg_checksum: "sha256:cafb01beac341bf2a9ba89793e6dd2468110291adfbb6c62ed11a0cde6c09029"
-  
+
 ...
