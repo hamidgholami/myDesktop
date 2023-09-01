@@ -228,13 +228,13 @@
     - "prerequisites"
     - "vpn-packages-list"
 
-- name: "Install 'pdf_management_packages_list'"
+- name: "Install 'document_management_packages_list'"
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
     update_cache: false
     install_recommends: true
-  loop: "{{ pdf_management_packages_list }}"
+  loop: "{{ document_management_packages_list }}"
   tags:
     - "prerequisites"
     - "pdf-management-packages-list"

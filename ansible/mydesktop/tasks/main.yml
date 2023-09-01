@@ -20,5 +20,18 @@
 
 - name: "Import vscode"
   import_tasks: "vscode.yml"
-  
+
+- name: "Update and upgrade apt packages"
+  apt:
+    upgrade: yes
+    update_cache: yes
+  tags:
+    - always
+
+- name: "Run apt clean"
+  apt:
+    clean: true
+  tags:
+    - always
+
 ...

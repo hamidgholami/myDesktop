@@ -1,7 +1,7 @@
 ---
 ansible_connection: "ssh"
-prerequisite_packages_list: []
-utility_packages: []
+prerequisite_packages_list: [ ]
+utility_packages: [ ]
 
 
 mydesktop:
@@ -19,14 +19,14 @@ mydesktop:
     display_windows_manager: "i3" #awesome,qtile
 
 pipconf:
-    global_timeout: 60
-    global_quiet: 0
-    global_verbose: 2
-    global_break_system_packages: true
-    global_require_virtualenv: true
-    global_download_cache: /tmp
-    global_log_file: /tmp/pip-log.txt
-    freeze_timeout: 10
+  global_timeout: 60
+  global_quiet: 0
+  global_verbose: 2
+  global_break_system_packages: true
+  global_require_virtualenv: true
+  global_download_cache: /tmp
+  global_log_file: /tmp/pip-log.txt
+  freeze_timeout: 10
 
 virtualization:
   libvirt_qemu: true
@@ -68,5 +68,49 @@ vscode:
   gpg_key_url: "https://packages.microsoft.com/keys/microsoft.asc"
   gpg_checksum: "sha256:2cfd20a306b2fa5e25522d78f2ef50a1f429d35fd30bd983e2ebffc2b80944fa" # curl -sL https://packages.microsoft.com/keys/microsoft.asc|sha256sum
 
+nerd_font:
+  release_version: "v3.0.1"
+  release_url: "https://github.com/ryanoasis/nerd-fonts/releases/download/"
+  font_list:
+    - "CascadiaCode"
+    - "FiraCode"
+    - "Go-Mono"
+    - "Hack"
+    - "Inconsolata"
+    - "Iosevka"
+    - "JetBrainsMono"
+    - "Mononoki"
+    - "RobotoMono"
+    - "SourceCodePro"
+    - "UbuntuMono"
+    - "Lekton"
+  font_dir_path: "$HOME/.local/share/fonts"
 
+docker:
+  log:
+    opts: {
+      "max-size": "5m",
+      "max-file": "1",
+      "compress": "true"
+    }
+    level:
+    driver:
+  data_root_path: ""
+  network:
+    bip:
+    mtu:
+    fixed_cidr:
+    default_address_pools:
+      - { "base": "172.253.0.0/16", "size": 24 }
+      - { "base": "172.253.0.0/16", "size": 24 }
+    dns:
+      - "8.8.8.8"
+      - "4.4.4.4"
+    storage_driver:
+    live_restore:
+    registry:
+      insecure_registries:
+        - "mycompany.registry.com"
+      registry_mirrors:
+        - "http://mycompany.registry.com"
 ...

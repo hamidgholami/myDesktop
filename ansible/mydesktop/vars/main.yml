@@ -6,6 +6,7 @@ display_server_packages_list:
   - "xbindkeys"
   - "xvkbd"
   - "xinput"
+  - "lxsession"
   - "xserver-xorg-input-libinput"
   - "xserver-xorg-input-evdev"
   - "xserver-xorg-input-mouse"
@@ -19,6 +20,7 @@ system_packages_list:
   - "software-properties-common"
   - "make"
   - "sudo"
+  - "locales"
   - "libfontconfig"
   - "g++"
   - "libatk-bridge2.0-0"
@@ -29,6 +31,7 @@ system_packages_list:
   - "ca-certificates"
   - "iucode-tool"
   - "grub2-common"
+  - "dkms"
 
 python_packages_list:
   - "python3-full"
@@ -36,6 +39,7 @@ python_packages_list:
   - "python3-virtualenv"
   - "python3-pip"
   - "python-is-python3"
+  - "python3-distutils"
 
 security_management_packages_list:
   - "ca-certificates"
@@ -70,6 +74,7 @@ network_packages_list:
   - "nmap"
   - "netcat-traditional"
   - "whois"
+  - "ethtool"
 
 dns_packages_list:
   - "dnsmasq"
@@ -101,7 +106,7 @@ system_utility_packages_list:
   - "dbus"
   - "tmux"
   - "yadm"
-  - "dmidecode" # sudo dmidecode -t 1
+  - "dmidecode"
   - "iotop"
   - "less"
   - "htop"
@@ -127,15 +132,29 @@ system_utility_packages_list:
   - "redshift"
   - "cpu-x"
   - "qimgv"
+  - "bash-completion"
+  - "shellcheck"
+  - "libxcb-xinerama0"
+  - "libxcb-cursor0"
+  - "hwinfo"
+  - "hicolor-icon-theme"
+  - "desktop-file-utils"
+  - "adwaita-qt6"
 
 essential_font_packages_list:
   - "fonts-terminus"
+  - "fonts-hack"
+  - "fonts-jetbrains-mono"
+  - "fonts-mononoki"
   - "fonts-recommended"
+  - "fonts-noto"
   - "fonts-font-awesome"
   - "fonts-liberation"
   - "fonts-liberation2"
   - "fonts-powerline"
+  - "fonts-ubuntu-title"
   - "fonts-farsiweb"
+  - "fontconfig"
 
 editor_packages_list:
   - "vim"
@@ -201,15 +220,6 @@ internet_utility_packages_list:
   - "filezilla"
   - "geary"
   - "hexchat"
-# FIXME, Hamid tackle the following apps
-# ristretto
-# inkscape
-# blender
-# scribus
-# zathura
-# gnumeric
-# gnucash
-# https://docs.matrix.kit.edu/en/clients/install_linux/
 
 bluetooth_packages_list:
   - "bluetooth"
@@ -226,17 +236,21 @@ vpn_packages_list:
   - "network-manager-sstp"
   - "network-manager-pptp"
 
-pdf_management_packages_list:
+document_management_packages_list:
   - "cups-pdf"
   - "xournal"
   - "okular"
   - "xchm"
   - "evince"
   - "pdfarranger"
+  - "zathura"
+  - "gnumeric"
+  - "ghostscript"
 
 media_player_packages_list:
   - "vlc"
   - "mpv"
+  - "media-player-info"
 
 libvirt_qemu_packages_list:
   - "libvirt-clients"
@@ -280,8 +294,30 @@ minimal_desktop_environment_packages_list:
   - "xfce4"
   - "xfce4-goodies"
 
+wireless_packages_list:
+  - "wireless-regdb"
+  - "wireless-tools"
+
+disk_management_packages_list:
+  - "lvm2"
+  - "parted"
+  - "gparted"
+  - "volume-key"
+  - "usbmuxd"
+  - "mintstick"
+  - "usbview"
+  - "usbutils"
+
+
+distributing_desktop_applications:
+  - "flatpak"
+
 pip_packages_list:
   - "yt-dlp"
+
+keyboard_management_packages_list:
+  - "kbd"
+  - "kbdd"
 
 wiki_packages_list:
   - "zim"
@@ -295,6 +331,13 @@ i3wm_packages:
   - "sxhkd"
   - "i3lock-fancy"
 
+graphical_applications_packages_list:
+  - "inkscape"
+  - "ristretto"
+  - "blender"
+  - "scribus"
+  - "gnucash"
+
 #  - https://github.com/fzerorubigd/persian-fonts-linux
 #  - "ttf-mscorefonts-installer"
 #  - "virtualbox"
@@ -303,20 +346,6 @@ i3wm_packages:
 # https://github.com/drewgrif/qtile-debian
 # https://github.com/jarun/nnn
 # https://github.com/mananapr/cfiles
-#  yt-dlp
-#xmonad
-#qtile
-#dwm
-#sway
-#i3
-#openbox
-# lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-# sudo apt install -y xorg xbacklight xbindkeys xvkbd xinput xorg-dev
 # alias ls='exa -al --long --header --color=always --group-directories-first'
-# joplin: wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
-# FIXME Hamid:
-#  curl -s https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | gpg --dearmor | sudo tee /usr/share/keyrings/jetbrains-ppa-archive-keyring.gpg > /dev/null
-#  echo "deb [signed-by=/usr/share/keyrings/jetbrains-ppa-archive-keyring.gpg] http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com any main" | sudo tee /etc/apt/sources.list.d/jetbrains-ppa.list > /dev/null
-#  sudo apt update
-#  sudo apt install pycharm-community
+
 ...
