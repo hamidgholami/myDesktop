@@ -36,6 +36,9 @@
 - name: "Import vscode"
   import_tasks: "vscode.yml"
 
+- name: "Import docker"
+  import_tasks: "docker.yml"
+
 - name: "Update and upgrade apt packages"
   ansible.builtin.apt:
     upgrade: yes

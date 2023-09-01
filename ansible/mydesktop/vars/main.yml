@@ -331,6 +331,13 @@ i3wm_packages:
   - "sxhkd"
   - "i3lock-fancy"
 
+docker_packages_list:
+  - "docker-ce"
+  - "docker-ce-cli"
+  - "containerd.io"
+  - "docker-buildx-plugin"
+  - "docker-compose-plugin"
+
 graphical_applications_packages_list:
   - "inkscape"
   - "ristretto"

@@ -1,18 +1,44 @@
 ---
-- name: "Uninstall old packages"
-  ansible.builtin.apt:
-    name: "{{ item }}"
-    state: absent
-    autoremove: true
-  loop:
-    - "docker.io"
-    - "docker-compose"
-    - "docker-doc"
-    - "podman-docker"
+- name: "Install Docker"
+  block:
+    - name: "Uninstall old packages"
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: absent
+        autoremove: true
+      loop:
+        - "docker.io"
+        - "docker-compose"
+        - "docker-doc"
+        - "podman-docker"
+
+    - name: "Get Docker GPG"
+      ansible.builtin.get_url:
+        url: "{{ docker.release_url }}/gpg"
+        dest: "/tmp/docker.gpg"
+        checksum: "{{ docker.gpg_checksum }}"
+
+    - name: "Generate Docker keyrings dearmor"
+      ansible.builtin.shell: "gpg --dearmor < /tmp/docker.gpg > {{ docker.archive_keyrings_path }}"
+      no_log: true
+      args:
+        creates: "{{ docker.archive_keyrings_path }}"
+
+    - name: "Add/Update Docker apt source list"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }} signed-by={{ docker.archive_keyrings_path }}] {{ docker.release_url }} {{ ansible_distribution_release }} stable"
+        state: present
+        filename: "docker"
+        update_cache: true
+
+    - name: "Install 'docker_packages_list'"
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: false
+        install_recommends: false
+      loop: "{{ docker_packages_list }}"
   tags:
-    - "docker"
-    - "uninstall-old-packages"
-
-
+    - "install-docker"
 
 ...

@@ -42,12 +42,12 @@ deb_architecture: {
 # https://www.hashicorp.com/security
 hashicorp:
   archive_keyrings_path: "/usr/share/keyrings/hashicorp-archive-keyring.gpg"
-  gpg_checksum: "sha256:cafb01beac341bf2a9ba89793e6dd2468110291adfbb6c62ed11a0cde6c09029" # curl -sL https://apt.releases.hashicorp.com/gpg|sha256sum
+  gpg_checksum: "sha256:cafb01beac341bf2a9ba89793e6dd2468110291adfbb6c62ed11a0cde6c09029" # curl -sL https://apt.releases.hashicorp.com/gpg | sha256sum
   release_url: "https://apt.releases.hashicorp.com"
 
 googlechrome:
   archive_keyrings_path: "/usr/share/keyrings/google-chrome-archive-keyring.gpg"
-  gpg_checksum: "sha256:fb8df9740df6a1125fd2983465d830b764b63cd92d5ada8b5bbf75927d6a71ee" # curl -sL https://dl.google.com/linux/linux_signing_key.pub|sha256sum
+  gpg_checksum: "sha256:fb8df9740df6a1125fd2983465d830b764b63cd92d5ada8b5bbf75927d6a71ee" # curl -sL https://dl.google.com/linux/linux_signing_key.pub | sha256sum
   gpg_key_url: "https://dl.google.com/linux/linux_signing_key.pub"
   release_url: "https://dl.google.com/linux/chrome/deb/"
   package_name: "google-chrome-stable"
@@ -58,7 +58,7 @@ intellij_idea:
   package_name: "intellij-idea-community"
   release_url: "http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com"
   gpg_key_url: "https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc"
-  gpg_checksum: "sha256:a8eeb391e6cdc8090c149887a55c416c43486b7d6e78ea6f9e7096d403233359" # curl -sL https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc|sha256sum
+  gpg_checksum: "sha256:a8eeb391e6cdc8090c149887a55c416c43486b7d6e78ea6f9e7096d403233359" # curl -sL https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | sha256sum
 
 # https://code.visualstudio.com/docs/setup/linux
 vscode:
@@ -66,7 +66,7 @@ vscode:
   package_name: "code"
   release_url: "https://packages.microsoft.com/repos/code"
   gpg_key_url: "https://packages.microsoft.com/keys/microsoft.asc"
-  gpg_checksum: "sha256:2cfd20a306b2fa5e25522d78f2ef50a1f429d35fd30bd983e2ebffc2b80944fa" # curl -sL https://packages.microsoft.com/keys/microsoft.asc|sha256sum
+  gpg_checksum: "sha256:2cfd20a306b2fa5e25522d78f2ef50a1f429d35fd30bd983e2ebffc2b80944fa" # curl -sL https://packages.microsoft.com/keys/microsoft.asc | sha256sum
 
 nerd_font:
   release_version: "v3.0.1"
@@ -87,6 +87,9 @@ nerd_font:
   font_dir_path: "$HOME/.local/share/fonts"
 
 docker:
+  release_url: "https://download.docker.com/linux/debian"
+  gpg_checksum: "sha256:1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570" # curl -sL https://download.docker.com/linux/debian/gpg | sha256sum
+  archive_keyrings_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
   log:
     opts: {
       "max-size": "5m",
