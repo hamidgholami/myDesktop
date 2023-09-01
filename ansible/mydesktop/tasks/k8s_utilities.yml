@@ -1,3 +1,47 @@
 ---
-# Kubernetes utilities
+
+- name: "Install kubectl"
+  block:
+    - name: "Get the stable version"
+      ansible.builtin.uri:
+        url: "{{ k8s.release.last_stable_url }}"
+        return_content: true
+      register: k8s_latest_stable_version
+      when:
+        - k8s.release.version is undefined
+
+    - name: "Pick the specified version: {{ k8s.release.version }}"
+      set_fact:
+        k8s_specific_version: "{{ k8s.version }}"
+      when:
+        - k8s.version|default('')|length>0
+
+    - name: "Get k8s GPG"
+      ansible.builtin.get_url:
+        url: "{{ k8s.release.url }}/core:/{{ k8s.release.name }}:/{{ k8s.release.version }}/deb/{{ k8s.release.gpg.file_name }}"
+        dest: "{{ k8s.release.gpg.temp_file_path }}"
+        checksum: "{{ k8s.release.gpg.checksum_hash }}"
+
+    - name: "Generate k8s keyrings dearmor"
+      ansible.builtin.shell: "gpg --dearmor < {{ k8s.release.gpg.temp_file_path }} > {{ k8s.release.gpg.archive_keyrings_path }}"
+      no_log: true
+      args:
+        creates: "{{ k8s.release.gpg.archive_keyrings_path }}"
+
+    - name: "Add/Update k8s apt source list"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }} signed-by={{ k8s.release.gpg.archive_keyrings_path }}] {{ k8s.release.url }}/core:/{{ k8s.release.name }}:/{{ k8s.release.version }}/deb/ /"
+        state: present
+        filename: "k8s"
+        update_cache: true
+
+    - name: "Install {{ k8s.packages | join(',') }} packages"
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: false
+        install_recommends: false
+      loop: "{{ k8s.packages }}"
+  tags:
+    - "install-kubectl"
 ...

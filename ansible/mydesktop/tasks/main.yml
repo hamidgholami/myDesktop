@@ -39,6 +39,9 @@
 - name: "Import docker"
   import_tasks: "docker.yml"
 
+- name: "Import k8s utilities"
+  import_tasks: "k8s_utilities.yml"
+
 - name: "Update and upgrade apt packages"
   ansible.builtin.apt:
     upgrade: yes

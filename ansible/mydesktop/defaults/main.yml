@@ -86,10 +86,42 @@ nerd_font:
     - "Lekton"
   font_dir_path: "$HOME/.local/share/fonts"
 
+k8s:
+  release:
+    name: "stable"
+    version: "v1.28"
+    last_stable_url: "https://cdn.dl.k8s.io/release/stable.txt"
+    url: "https://pkgs.k8s.io"
+    gpg:
+      file_name: "Release.key"
+      archive_keyrings_path: "/usr/share/keyrings/k8s-archive-keyring.gpg"
+      checksum_hash: "sha256:5fe267a9ae47ffd566624057f2c8f64ab8a786a9c650e92cc22135381b04f12b" # curl -sL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sha256sum
+      temp_file_path: "/tmp/k8s.gpg"
+  packages:
+    - "kubectl"
+
 docker:
-  release_url: "https://download.docker.com/linux/debian"
-  gpg_checksum: "sha256:1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570" # curl -sL https://download.docker.com/linux/debian/gpg | sha256sum
-  archive_keyrings_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
+  release:
+    name: "stable"
+    version: "*" # apt-cache madison docker-ce | awk '{ print $3 }', e.g. '5:24.0.0-1~debian.11~bullseye'
+    url: "https://download.docker.com/linux/debian"
+    gpg:
+      file_name: "gpg"
+      checksum_hash: "sha256:1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570" # curl -sL https://download.docker.com/linux/debian/gpg | sha256sum
+      archive_keyrings_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
+      temp_file_path: "/tmp/docker.gpg"
+  packages:
+    unofficial:
+      - "docker.io"
+      - "docker-compose"
+      - "docker-doc"
+      - "podman-docker"
+    official:
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
+      - "docker-buildx-plugin"
+      - "docker-compose-plugin"
   log:
     opts: {
       "max-size": "5m",
@@ -104,8 +136,14 @@ docker:
     mtu:
     fixed_cidr:
     default_address_pools:
-      - { "base": "172.253.0.0/16", "size": 24 }
-      - { "base": "172.253.0.0/16", "size": 24 }
+      - {
+        "base": "172.253.0.0/16",
+        "size": 24
+      }
+      - {
+        "base": "172.253.0.0/16",
+        "size": 24
+      }
     dns:
       - "8.8.8.8"
       - "4.4.4.4"
