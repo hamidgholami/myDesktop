@@ -1,3 +1,18 @@
 ---
-# docker configuration
+- name: "Uninstall old packages"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: absent
+    autoremove: true
+  loop:
+    - "docker.io"
+    - "docker-compose"
+    - "docker-doc"
+    - "podman-docker"
+  tags:
+    - "docker"
+    - "uninstall-old-packages"
+
+
+
 ...

@@ -25,6 +25,11 @@
       ansible.builtin.apt:
         name: "{{ googlechrome.package_name }}"
         state: present
+
+    - name: "Remove extra google-chrome apt source list"
+      ansible.builtin.file:
+        path: "/etc/apt/sources.list.d/google-chrome.list"
+        state: absent
   tags:
     - "google-chrome"
 

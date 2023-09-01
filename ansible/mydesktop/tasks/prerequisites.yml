@@ -1,9 +1,4 @@
 ---
-- name: "Run apt-get update"
-  ansible.builtin.apt:
-    update_cache: true
-  tags:
-    - "prerequisites"
 
 - name: "Install 'display_server_packages_list'"
   ansible.builtin.apt:
