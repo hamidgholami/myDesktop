@@ -19,6 +19,8 @@
         url: "{{ krew_release_download_url }}/krew-linux_{{ my_desktop_architecture }}.tar.gz"
         dest: "{{ krew.temp_dir_path }}/krew-linux_{{ my_desktop_architecture }}.tar.gz"
         checksum: "sha256:{{ krew_checksum_sha256.content }}"
+      when:
+        - not ansible_check_mode
 
     - name: "Unarchive & copy krew binary file"
       ansible.builtin.unarchive:

@@ -41,6 +41,14 @@
   tags:
     - "install-kubectl"
 
+- name: "Ensure bash_profiles exists"
+  file:
+    path: "/home/{{ user_configurations.user_name | default('vagrant') }}/bash_profiles"
+    state: "directory"
+  tags:
+    - "install-kubectl"
+    - "update-k8s-bashrc"
+
 - name: "kubectl | Copy k8s_bashrc"
   become: false
   ansible.builtin.copy:
