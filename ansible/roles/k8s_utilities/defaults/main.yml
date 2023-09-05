@@ -37,7 +37,7 @@ kubecolor:
   release:
     url: "https://github.com/hidetatz/kubecolor/releases"
     version: "0.0.25"
-    checksum_hash: "sha256:c126077e765ead50cfeca8e39886ddeee83c882cb54df726191f6762007a8015"
+    checksum_hash: "sha256:c126077e765ead50cfeca8e39886ddeee83c882cb54df726191f6762007a8015" # Extract from https://github.com/hidetatz/kubecolor/releases/download/v0.0.25/checksums.txt
 k8s:
   release:
     name: "stable"
