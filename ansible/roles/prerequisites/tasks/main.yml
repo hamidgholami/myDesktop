@@ -1,0 +1,67 @@
+---
+
+- name: "Install prerequisites packages"
+  include_tasks: "install_packages.yml"
+  loop: "{{ prerequisite | from_yaml | dict2items }}"
+  no_log: true
+  loop_control:
+    loop_var: package_group
+  register: install_packages_output
+  tags:
+    - "prerequisites"
+
+- name: "Create .config in {{ user_configurations.user_name }}'s home dir"
+  become: false
+  ansible.builtin.file:
+    path: "/home/{{ user_configurations.user_name }}/.config"
+    owner: "{{ user_configurations.user_name }}"
+    group: "{{ user_configurations.user_name }}"
+    mode: "0755"
+    state: "directory"
+  tags:
+    - "prerequisites"
+
+- name: "Reboot the host"
+  block:
+    - name: "Print message"
+      ansible.builtin.debug:
+        msg:
+          - "Rebooting the host: {{ ansible_hostname }} ..."
+
+    - name: "Reboot"
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible due to display server installation/updates"
+        connect_timeout: 5
+        reboot_timeout: 70
+        pre_reboot_delay: 0
+        post_reboot_delay: 7
+        test_command: uptime
+  when:
+    - install_packages_output.changed
+    - not ansible_connection == 'local'
+    - not ansible_check_mode
+  tags:
+    - "prerequisites"
+    - "prerequisites-reboot"
+
+- name: "Finish the playbook"
+  block:
+    - name: "Print message"
+      ansible.builtin.debug:
+        msg:
+          - "Since the playbook is running on local connection, and install_packages_output has been changed."
+          - "Please reboot the host and proceed with the playbook"
+
+    - name: "Stop the playbook"
+      ansible.builtin.meta: end_play
+      when:
+        - not ansible_check_mode
+  when:
+    - ansible_connection == 'local'
+    - not ansible_check_mode
+  tags:
+    - "prerequisites"
+    - "prerequisites-reboot"
+
+
+...

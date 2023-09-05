@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  author: Hamid Gholami
+  description: Setup a Debian based desktop with all required tools.
+  company: geekestan.com
+  license: license (GPL-2.0-or-later, MIT, etc)
+  min_ansible_version: 2.13
+  platforms:
+    - name: Debian
+      versions:
+        - 12
+  galaxy_tags:
+    - "debian"
+    - "desktop"
+    - "myDesktop"
+    - "kubectl"
+    - "k8s_utilities"
+    - "kubernetes"
+dependencies: []
+...

@@ -1,0 +1,8 @@
+---
+ansible_connection: ssh
+
+user_configurations:
+  user_name: "vagrant"
+  display_name: "Vagrant Vagrant"
+
+...
