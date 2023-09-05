@@ -1,0 +1,91 @@
+---
+
+system_architecture: {
+  "aarch64": "arm64",
+  "x86_64": "amd64"
+}
+
+user_configurations:
+  user_name: "vagrant"
+
+krew:
+  release:
+    url: "https://github.com/kubernetes-sigs/krew/releases"
+    version: "v0.4.4"
+  temp_dir_path: "/tmp"
+  plugins:
+    - "ctx"
+    - "ns"
+    - "deprecations"
+    - "tree"
+    - "images"
+    - "df-pv"
+    - "trace"
+    - "sniff"
+    - "janitor"
+    - "pod-dive"
+    - "status"
+    - "get-all"
+    - "access-matrix"
+    - "score"
+    - "sort-manifests"
+    - "explore"
+    - "outdated"
+    - "ingress-nginx"
+
+kubecolor:
+  release:
+    url: "https://github.com/hidetatz/kubecolor/releases"
+    version: "0.0.25"
+    checksum_hash: "sha256:c126077e765ead50cfeca8e39886ddeee83c882cb54df726191f6762007a8015"
+k8s:
+  release:
+    name: "stable"
+    version: "v1.28"
+    last_stable_url: "https://cdn.dl.k8s.io/release/stable.txt"
+    url: "https://pkgs.k8s.io"
+    gpg:
+      file_name: "Release.key"
+      archive_keyrings_path: "/usr/share/keyrings/k8s-archive-keyring.gpg"
+      checksum_hash: "sha256:5fe267a9ae47ffd566624057f2c8f64ab8a786a9c650e92cc22135381b04f12b" # curl -sL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sha256sum
+      temp_file_path: "/tmp/k8s.gpg"
+  packages:
+    - "kubectl"
+  kubectl:
+    bashrc: |
+      ## Kubernetes
+      export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+      source <(kubectl completion bash)
+      alias kubectl="kubecolor"
+      alias k='kubectl'
+      alias kg='kubectl get'
+      alias klo='kubectl logs -f'
+      alias kx=kubectx
+      alias kctx="kubectl ctx"
+      alias kubectx="kubectl ctx"
+      alias kn=kubens
+      alias kns="kubectl ns"
+      alias kubens="kubectl ns"
+      alias kval=kubeval
+      alias kscore="kubectl score"
+      alias kdep="kubectl deprications"
+      alias ktree="kubectl tree"
+      alias kimages="kubectl images"
+      alias kdf="kubectl df-pv"
+      alias ktail="kubectl tail"
+
+      complete -F __start_kubectl k
+      complete -F __start_kubectl kg
+      complete -F __start_kubectl klo
+      complete -F __start_kubectl kx
+      complete -F __start_kubectl kubectx
+      complete -F __start_kubectl kn
+      complete -F __start_kubectl kns
+      complete -F __start_kubectl kubens
+      complete -F __start_kubectl kval
+      complete -F __start_kubectl kscore
+      complete -F __start_kubectl kdep
+      complete -F __start_kubectl ktree
+      complete -F __start_kubectl kimages
+      complete -F __start_kubectl kdf
+      complete -F __start_kubectl ktail

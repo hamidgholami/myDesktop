@@ -1,0 +1,17 @@
+---
+- name: "Manipulate some required variables"
+  set_fact:
+    my_desktop_architecture: "{{ [ansible_architecture] | map('extract', system_architecture) | first }}"
+    krew_release_download_url: "{{ krew.release.url }}/download/{{ krew.release.version }}"
+  tags:
+    - always
+
+- name: "Import kubectl tasks"
+  import_tasks: "kubectl.yml"
+
+- name: "Import krew tasks"
+  import_tasks: "krew.yml"
+
+
+
+...
