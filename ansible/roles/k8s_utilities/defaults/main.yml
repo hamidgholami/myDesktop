@@ -8,6 +8,17 @@ system_architecture: {
 user_configurations:
   user_name: "vagrant"
 
+helm:
+  release:
+    url: "https://baltocdn.com/helm"
+    gpg:
+      file_name: "signing.asc"
+      checksum_hash: "sha256:d8d0edbdc72338073b7b126be1454c7ebd29bf0da2f64fba87b82d2ae528626d" # curl -sL https://baltocdn.com/helm/signing.asc | sha256sum
+      archive_keyring_file_path: "/usr/share/keyrings/helm-archive-keyring.gpg"
+      temp_file_path: "/tmp/helm.gpg"
+  packages:
+    - "helm"
+
 kustomize:
   release:
     url: "https://github.com/kubernetes-sigs/kustomize/releases"
