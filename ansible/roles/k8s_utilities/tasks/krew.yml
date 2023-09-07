@@ -50,6 +50,7 @@
   loop: "{{ krew.plugins }}"
   when: krew.plugins is defined
   tags:
+    - "install-kubectl-krew"
     - "install-kubectl-krew-plugins"
 
 ...

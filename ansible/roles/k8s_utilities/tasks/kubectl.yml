@@ -41,9 +41,25 @@
   tags:
     - "install-kubectl"
 
+- name: "Ensure .kube directory exists"
+  changed_when: false
+  file:
+    path: "/home/{{ user_configurations.user_name | default('vagrant') }}/.kube"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "0755"
+    state: "directory"
+  tags:
+    - "install-kubectl"
+    - "create-kube-conf"
+    -
 - name: "Ensure bash_profiles exists"
+  changed_when: false
   file:
     path: "/home/{{ user_configurations.user_name | default('vagrant') }}/bash_profiles"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "0755"
     state: "directory"
   tags:
     - "install-kubectl"
@@ -62,13 +78,13 @@
 - name: "Install kubecolor"
   block:
     - name: "Fetch kubecolor tar.gz file"
-      get_url:
+      ansible.builtin.get_url:
         url: "{{ kubecolor_release_url }}/{{ kubecolor_tar_file_name }}"
         dest: "/tmp"
         checksum: "{{ kubecolor.release.checksum_hash }}"
 
     - name: "Unarchive & copy krew binary file"
-      unarchive:
+      ansible.builtin.unarchive:
         src: "/tmp/{{ kubecolor_tar_file_name }}"
         dest: "/usr/local/bin"
         mode: "0755"
@@ -79,4 +95,32 @@
   tags:
     - "install-kubectl"
     - "install-kubecolor"
+
+- name: "Install kubetail"
+  block:
+    - name: "Fetch kubetail version: {{ kubetail.release.version }}"
+      ansible.builtin.get_url:
+        url: "{{ kubetail.release.url }}/{{ kubetail.release.version }}.tar.gz"
+        dest: "/tmp"
+        checksum: "{{ kubetail.release.checksum_hash }}"
+
+    - name: "Unarchive & copy kubetail script file"
+      ansible.builtin.unarchive:
+        src: "/tmp/kubetail-{{ kubetail.release.version }}.tar.gz"
+        dest: "/usr/local/bin"
+        mode: "0755"
+        remote_src: true
+        extra_opts:
+          - '--strip-components=1'
+          - '--overwrite'
+        exclude:
+          - ".github"
+          - ".gitignore"
+          - "LICENSE"
+          - "README.md"
+          - "completion"
+          - "kubetail.plugin.zsh"
+  tags:
+    - "install-kubectl"
+    - "install-kubetail"
 ...

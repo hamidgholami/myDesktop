@@ -8,6 +8,18 @@ system_architecture: {
 user_configurations:
   user_name: "vagrant"
 
+kustomize:
+  release:
+    url: "https://github.com/kubernetes-sigs/kustomize/releases"
+    version: "v5.1.1"
+    checksum_hash: "sha256:3b30477a7ff4fb6547fa77d8117e66d995c2bdd526de0dafbf8b7bcb9556c85d" # https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.1.1/checksums.txt
+
+kubetail:
+  release:
+    url: "https://github.com/johanhaleby/kubetail/archive/refs/tags"
+    version: "1.6.18"
+    checksum_hash: "sha256:62ba29b3a869bba5b2ddf8c0fbbd307330dfe8cf8f3d47ae459c327b66afbb93" # curl -fsSL https://github.com/johanhaleby/kubetail/archive/refs/tags/1.6.18.tar.gz | sha256sum
+
 krew:
   release:
     url: "https://github.com/kubernetes-sigs/krew/releases"
