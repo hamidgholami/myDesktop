@@ -11,8 +11,10 @@ TODO
 - [ ] openvpn
 - [ ] backup to googleDrive,dropbox
 - [ ] create an inbox directory
-- [ ] https://docs.ansible.com/ansible/latest/collections/community/general/passwordstore_lookup.html
+- [ ] [passwordstore_1](https://docs.ansible.com/ansible/latest/collections/community/general/passwordstore_lookup.html)
+- [ ] [passwordstore_2](https://docs.ansible.com/ansible/2.9/plugins/lookup/passwordstore.html)
 
+Sample of git `sparse-checkout`
 ```bash
 git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
 cd nerd-fonts
