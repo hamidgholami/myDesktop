@@ -1,0 +1,13 @@
+---
+
+- name: "Install {{ package_group.key }}"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ package_group.value }}"
+  tags:
+    - "prerequisites"
+
+...

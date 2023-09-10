@@ -89,7 +89,9 @@
   become: false
   ansible.builtin.copy:
     content: "{{ k8s.kubectl.bashrc }}"
-    dest: "bash_profiles/k8s_bashrc"
+    dest: "/home/{{ user_configurations.user_name | default('vagrant') }}/.bash_profiles/k8s_bashrc"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
     mode: "0644"
   tags:
     - "install-kubectl"

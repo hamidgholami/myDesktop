@@ -10,12 +10,12 @@
   tags:
     - "prerequisites"
 
-- name: "Create .config in {{ user_configurations.user_name }}'s home dir"
+- name: "Create .config in {{ user_configurations.user_name | default('vagrant') }}'s home dir"
   become: false
   ansible.builtin.file:
-    path: "/home/{{ user_configurations.user_name }}/.config"
-    owner: "{{ user_configurations.user_name }}"
-    group: "{{ user_configurations.user_name }}"
+    path: "/home/{{ user_configurations.user_name | default('vagrant') }}/.config"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
     mode: "0755"
     state: "directory"
   tags:

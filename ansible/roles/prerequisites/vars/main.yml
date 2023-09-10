@@ -29,7 +29,6 @@ prerequisite:
     - "coreutils"
     - "gcc"
     - "build-essential"
-    - "ca-certificates"
     - "iucode-tool"
     - "grub2-common"
     - "dkms"
@@ -44,6 +43,7 @@ prerequisite:
 
   security_management_packages:
     - "ca-certificates"
+    - "ca-certificates-java"
     - "openssl"
     - "libsasl2-dev"
     - "libpam-google-authenticator"
@@ -118,6 +118,7 @@ prerequisite:
     - "neofetch"
     - "exa"
     - "lxappearance"
+    - "libxkbcommon-tools"
     - "suckless-tools"
     - "nitrogen"
     - "gnuplot"
@@ -226,6 +227,7 @@ prerequisite:
     - "bluetooth"
     - "bluez"
     - "blueman"
+    - "bluez-alsa-utils"
 
   vpn_packages:
     - "openvpn"

@@ -13,7 +13,10 @@ galaxy_info:
     - "desktop"
     - "myDesktop"
     - "kubectl"
+    - "kubectl_plugins"
     - "k8s_utilities"
     - "kubernetes"
+    - "helm"
+    - "kustomize"
 dependencies:
   - role: "prerequisites"
