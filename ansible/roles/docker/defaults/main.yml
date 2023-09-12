@@ -1,0 +1,65 @@
+---
+
+system_architecture: {
+  "aarch64": "arm64",
+  "x86_64": "amd64"
+}
+
+user_configurations:
+  user_name: "vagrant"
+
+docker:
+  release:
+    name: "stable"
+    version: "*" # apt-cache madison docker-ce | awk '{ print $3 }', e.g. '5:24.0.0-1~debian.11~bullseye'
+    url: "https://download.docker.com/linux/debian"
+    gpg:
+      file_name: "gpg"
+      checksum_hash: "sha256:1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570" # curl -sL https://download.docker.com/linux/debian/gpg | sha256sum
+      archive_keyring_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
+      temp_file_path: "/tmp/docker.gpg"
+  packages:
+    unofficial:
+      - "docker.io"
+      - "docker-compose"
+      - "docker-doc"
+      - "podman-docker"
+    official:
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
+      - "docker-buildx-plugin"
+      - "docker-compose-plugin"
+  log:
+    opts: {
+      "max-size": "5m",
+      "max-file": "1",
+      "compress": "true"
+    }
+    level:
+    driver:
+  data_root_path: ""
+  network:
+    bip:
+    mtu:
+    fixed_cidr:
+    default_address_pools:
+      - {
+        "base": "172.253.0.0/16",
+        "size": 24
+      }
+      - {
+        "base": "172.253.0.0/16",
+        "size": 24
+      }
+    dns:
+      - "8.8.8.8"
+      - "4.4.4.4"
+    storage_driver:
+    live_restore:
+    registry:
+      insecure_registries:
+        - "mycompany.registry.com"
+      registry_mirrors:
+        - "http://mycompany.registry.com"
+...

@@ -11,10 +11,11 @@ galaxy_info:
         - 12
   galaxy_tags:
     - "debian"
+    - "debian_workstation"
     - "desktop"
+    - "desktop_workstation"
     - "myDesktop"
-    - "kubectl"
-    - "k8s_utilities"
-    - "kubernetes"
+    - "utilities"
+    - "workstation"
 dependencies: []
 ...

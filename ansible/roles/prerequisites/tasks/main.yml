@@ -21,6 +21,39 @@
   tags:
     - "prerequisites"
 
+- name: "Create .bash_profiles directory"
+  changed_when: false
+  file:
+    path: "/home/{{ user_configurations.user_name | default('vagrant') }}/.bash_profiles"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "0755"
+    state: "directory"
+  tags:
+    - "prerequisites"
+
+- name: "Add .bash_profiles in .profile"
+  lineinfile:
+    dest: "/home/{{ user_configurations.user_name | default('vagrant') }}/.profile"
+    line: |
+      if [ -f "$HOME/.bash_profiles" ]; then
+          . "$HOME/.bash_profiles/*_bashrc"
+      fi
+  tags:
+    - "prerequisites"
+
+- name: "Import pip tasks"
+  import_tasks: "pip_install.yml"
+
+- name: "Add/Update .gitconfig"
+  template:
+    src: ".gitconfig.j2"
+    dest: "/home/{{ user_configurations.user_name | default('vagrant') }}/.gitconfig"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+  tags:
+    - "update-gitconfig"
+
 - name: "Reboot the host"
   block:
     - name: "Print message"
@@ -64,4 +97,7 @@
     - "prerequisites-reboot"
 
 
+# clone some git project
+# git configuration
+# tmux, vim, nvim, taskwarrior
 ...

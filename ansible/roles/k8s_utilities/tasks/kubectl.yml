@@ -67,7 +67,7 @@
 
 - name: "Ensure .profiles are updated with 'bash_profiles' directory"
   changed_when: false
-  shell: "grep -c bash_profiles /home/{{ user_configurations.user_name | default('vagrant') }}/.profile || true"
+  shell: "grep -c .bash_profiles /home/{{ user_configurations.user_name | default('vagrant') }}/.profile || true"
   register: check_bash_profiles
   tags:
     - "install-kubectl"
@@ -77,7 +77,7 @@
   lineinfile:
     dest: "/home/{{ user_configurations.user_name | default('vagrant') }}/.profile"
     line: |
-      if [ -f "$HOME/bash_profiles" ]; then
+      if [ -f "$HOME/.bash_profiles" ]; then
           . "$HOME/.bash_profiles/*_bashrc"
       fi
   when: check_bash_profiles.stdout == "0"

@@ -1,5 +1,8 @@
 ---
 
+pip_packages:
+  - "yt-dlp"
+
 prerequisite:
   display_server_packages:
     - "xorg"
@@ -118,7 +121,6 @@ prerequisite:
     - "neofetch"
     - "exa"
     - "lxappearance"
-    - "libxkbcommon-tools"
     - "suckless-tools"
     - "nitrogen"
     - "gnuplot"
@@ -314,17 +316,13 @@ prerequisite:
   distributing_desktop_applications:
     - "flatpak"
 
-  pip_packages:
-    - "yt-dlp"
-
   keyboard_management_packages:
     - "kbd"
     - "kbdd"
+    - "libxkbcommon-tools"
 
   wiki_packages:
     - "zim"
-  prerequisite_packages:
-    - "ruby"
 
   i3wm_packages:
     - "i3-wm"

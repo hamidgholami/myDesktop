@@ -5,4 +5,109 @@ user_configurations:
   user_name: "vagrant"
   display_name: "Vagrant Vagrant"
 
+gpg:
+  conf:
+    cert-digest-algo: SHA512
+    default-key: "0xD8692123C4065DEA5E0F3AB5249B39D24F25E3B6"
+    default-preference-list: "SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed"
+    keyid-format: 0xlong
+    keyserver: "hkps://keys.openpgp.org/"
+    keyserver-options:
+      - "http-proxy=socks5-hostname://127.0.0.1:9050"
+      - "no-try-dns-srv"
+      - "include-revoked"
+    list-options: show-uid-validity
+    personal-cipher-preferences: "AES256 AES192 AES CAST5"
+    personal-digest-preferences: "SHA512 SHA384 SHA256 SHA224"
+    verify-options: show-uid-validity
+    default-recipient: <user-id>
+    charset: utf-8
+    options:
+      - fixed-list-mode
+      - auto-key-retrieve
+      - default-recipient-self
+      - with-fingerprint
+      - use-agent
+      - no-greeting
+      - utf8-strings
+      - auto-key-locate local
+      - require-cross-certification
+      - no-emit-version
+      - no-comments
+  agent:
+    default-cache-ttl-ssh: 86400
+    default-cache-ttl: 86400
+    max-cache-ttl-ssh: 86400
+    max-cache-ttl: 86400
+    pinentry-program: "/usr/bin/pinentry-tty"
+    pinentry-timeout: 30
+    ssh-fingerprint-digest: SHA256
+    options:
+      - allow-loopback-pinentry
+      - disable-scdaemon
+      - no-allow-external-cache
+      - enable-ssh-support
+
+git:
+  init: { defaultBranch: master }
+  user: { name: test, email: test, signingkey: test }
+  core: { excludesfile: ~/.gitignore, editor: vim}
+  credential:
+    - { name: github,
+          url: "https://github.com",
+          helper: "!pass git/github" }
+    - { name: bitbucket,
+          url: "https://bitbucket.com",
+          helper: "!pass git/bitbucket" }
+  include: { path: .gitconfig.user}
+  commit:
+    { template: "~/.gitmessage # https://github.com/voku/dotfiles/blob/master/.gitmessage",
+        gpgsign: true }
+  merge:
+    { conflictstyle: diff3,
+        log: true }
+  rerere: { enabled: true }
+  pull:
+    { rebase: true,
+        ff: only }
+  fetch:
+    { prune: true,
+        pruneTags: true }
+  push:
+    { default: simple,
+        followTags: true }
+  log:
+    { abbrevCommit: true,
+        decorate: short,
+        date: "format:%x" }
+  submodule:
+    { recurse: true }
+  blame:
+    { date: "format:%x" }
+  alias:
+    { l: "log --pretty=oneline -n 20 --graph --abbrev-commit",
+        s: "status -s",
+        p: "pull --recurse-submodules",
+        c: "clone --recursive",
+        contributors: "shortlog --summary --numbered" }
+  apply:
+    { whitespace: fix }
+  branch:
+    { sort: "-committerdate" }
+  gpg:
+    { program: gpg }
+
+
+pipconf:
+  global:
+    timeout: 60
+    quiet: 0
+    verbose: 2
+    break_system_packages: true
+    require_virtualenv: true
+    download_cache: /tmp
+    log_file: /tmp/pip-log.txt
+  freeze:
+    timeout: 10
+
 ...

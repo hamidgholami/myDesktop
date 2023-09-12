@@ -1,0 +1,10 @@
+{{ ansible_managed | comment }}
+
+{% for gitMainSectionKey, gitMainSectionValue in git.items() -%}
+[{{ gitMainSectionKey }}]
+{% for k,v in gitMainSectionValue|dict2items -%}
+{{k}}
+{% endfor -%}
+{% endfor -%}
+
+
