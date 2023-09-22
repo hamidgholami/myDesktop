@@ -49,53 +49,61 @@ gpg:
       - enable-ssh-support
 
 git:
-  init: { defaultBranch: master }
-  user: { name: test, email: test, signingkey: test }
-  core: { excludesfile: ~/.gitignore, editor: vim}
-  credential:
-    - { name: github,
-          url: "https://github.com",
-          helper: "!pass git/github" }
-    - { name: bitbucket,
-          url: "https://bitbucket.com",
-          helper: "!pass git/bitbucket" }
-  include: { path: .gitconfig.user}
+  init:
+    defaultBranch: master
+  user:
+    name: test
+    email: test
+    signingkey: test
+  core:
+    excludesfile: ~/.gitignore
+    editor: vim}
+  include:
+    path: .gitconfig.user
   commit:
-    { template: "~/.gitmessage # https://github.com/voku/dotfiles/blob/master/.gitmessage",
-        gpgsign: true }
+    template: "~/.gitmessage # https://github.com/voku/dotfiles/blob/master/.gitmessage"
+    gpgsign: true
   merge:
-    { conflictstyle: diff3,
-        log: true }
-  rerere: { enabled: true }
+    conflictstyle: diff3
+    log: true
+  rerere:
+    enabled: true
   pull:
-    { rebase: true,
-        ff: only }
+    rebase: true
+    ff: only
   fetch:
-    { prune: true,
-        pruneTags: true }
+    prune: true
+    pruneTags: true
   push:
-    { default: simple,
-        followTags: true }
+    default: simple
+    followTags: true
   log:
-    { abbrevCommit: true,
-        decorate: short,
-        date: "format:%x" }
+    abbrevCommit: true
+    decorate: short
+    date: "format:%x"
   submodule:
-    { recurse: true }
+    recurse: true
   blame:
-    { date: "format:%x" }
+    date: "format:%x"
   alias:
-    { l: "log --pretty=oneline -n 20 --graph --abbrev-commit",
-        s: "status -s",
-        p: "pull --recurse-submodules",
-        c: "clone --recursive",
-        contributors: "shortlog --summary --numbered" }
+    l: "log --pretty=oneline -n 20 --graph --abbrev-commit"
+    s: "status -s"
+    p: "pull --recurse-submodules"
+    c: "clone --recursive"
+    contributors: "shortlog --summary --numbered"
   apply:
-    { whitespace: fix }
+    whitespace: fix
   branch:
-    { sort: "-committerdate" }
+    sort: "-committerdate"
   gpg:
-    { program: gpg }
+    program: gpg
+#      credential:
+#        - name: github
+#          url: "https://github.com"
+#          helper: "!pass git/github"
+#        - name: bitbucket
+#          url: "https://bitbucket.com"
+#          helper: "!pass git/bitbucket"
 
 
 pipconf:
