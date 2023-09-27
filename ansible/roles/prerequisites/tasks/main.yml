@@ -1,4 +1,18 @@
 ---
+- name: "Disable translate download in apt.config.d"
+  changed_when: false
+  ansible.builtin.copy:
+    dest: "/etc/apt/apt.conf.d/20translate"
+    content: "Acquire::Languages \"none\";"
+    owner: "root"
+    group: "root"
+    mode: "644"
+
+- name: "Run apt-get update"
+  ansible.builtin.apt:
+    update_cache: true
+  tags:
+    - always
 
 - name: "Install prerequisites packages"
   include_tasks: "install_packages.yml"
