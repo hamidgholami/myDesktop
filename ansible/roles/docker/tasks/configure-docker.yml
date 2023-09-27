@@ -1,0 +1,16 @@
+---
+- name: "Docker | add {{ user_configurations.user_name | default('vagrant') }} in the group of docker"
+  ansible.builtin.user:
+    name: "{{ user_configurations.user_name | default('vagrant') }}"
+    groups:
+      - "docker"
+    append: true
+  tags:
+    - "configure-docker"
+
+
+- name: "Docker | Copy daemon.json"
+  template:
+    src: "daemon.json.j2"
+# docker-pass-helper ???
+...
