@@ -22,7 +22,7 @@
 
     - name: "Docker | Add/Update apt source list"
       ansible.builtin.apt_repository:
-        repo: "deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }} signed-by={{ docker.release.gpg.archive_keyring_path }}] {{ docker.release.url }} {{ ansible_distribution_release|lower }} {{ docker.release.name }}"
+        repo: "deb [arch={{ [ansible_architecture] | map('extract', system_architecture) | first }} signed-by={{ docker.release.gpg.archive_keyring_path }}] {{ docker.release.url }} {{ ansible_distribution_release|lower }} {{ docker.release.name }}"
         state: present
         filename: "docker"
         update_cache: true

@@ -1,9 +1,9 @@
 {{ ansible_managed | comment }}
 
 {% for key, value in git.items() %}
+
 [{{ key }}]
 {% for k, v in value.items() %}
 {{ k }}={{ v }}
-
 {% endfor %}
 {% endfor %}
