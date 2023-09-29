@@ -1,5 +1,5 @@
 ---
-- name: "Docker | add {{ user_configurations.user_name | default('vagrant') }} in the group of docker"
+- name: "Add/Update {{ user_configurations.user_name | default('vagrant') }} in the group of docker"
   ansible.builtin.user:
     name: "{{ user_configurations.user_name | default('vagrant') }}"
     groups:
@@ -8,9 +8,16 @@
   tags:
     - "configure-docker"
 
-
-- name: "Docker | Copy daemon.json"
-  template:
+- name: "Add/Update daemon.json for docker service"
+  ansible.builtin.template:
     src: "daemon.json.j2"
+    dest: "/etc/docker/daemon.json"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: restart-docker
+  tags:
+    - "configure-docker-daemon"
+    - "configure-docker"
 # docker-pass-helper ???
 ...

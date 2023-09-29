@@ -30,36 +30,64 @@ docker:
       - "containerd.io"
       - "docker-buildx-plugin"
       - "docker-compose-plugin"
-  log:
-    opts: {
+  daemon:
+    "data-root": "/home/vagrant/docker-data"
+    "raw-logs": false
+    "log-driver": "json-file"
+    "log-opts": {
+      "cache-disabled": "false",
+      "cache-max-file": "5",
+      "cache-max-size": "20m",
+      "cache-compress": "true",
       "max-size": "5m",
       "max-file": "1",
-      "compress": "true"
+      "compress": "true",
+      "labels": "myDesktop"
     }
-    level:
-    driver:
-  data_root_path: ""
-  network:
-    bip:
-    mtu:
-    fixed_cidr:
-    default_address_pools:
-      - {
+    "storage-driver": "overlay2"
+    "live-restore": true
+    "default-ulimits": {
+      "nofile": {
+        "Name": "nofile",
+        "Hard": 64000,
+        "Soft": 64000
+      }
+    }
+    "mtu": 1500
+    "bip": "10.10.0.5/24"
+    "fixed-cidr": "192.168.1.0/25"
+    "default-address-pools": [
+      {
         "base": "172.253.0.0/16",
         "size": 24
       }
-      - {
-        "base": "172.253.0.0/16",
-        "size": 24
+    ]
+    "dns": [
+      "192.168.1.1"
+    ]
+    "insecure-registries": [
+      "mycompany.registry.com"
+    ]
+    "registry-mirrors": [
+      "http://mycompany.registry.com"
+    ]
+    "exec-opts": [
+      "native.cgroupdriver=systemd"
+    ]
+    "selinux-enabled": false
+    "max-concurrent-downloads": 3
+    "max-concurrent-uploads": 5
+    "max-download-attempts": 5
+    "builder": {
+      "gc": {
+        "enabled": true,
+        "defaultKeepStorage": "10GB",
+        "policy": [
+          { "keepStorage": "10GB", "filter": [ "unused-for=2200h" ] },
+          { "keepStorage": "50GB", "filter": [ "unused-for=3300h" ] },
+          { "keepStorage": "100GB", "all": true }
+        ]
       }
-    dns:
-      - "8.8.8.8"
-      - "4.4.4.4"
-    storage_driver:
-    live_restore:
-    registry:
-      insecure_registries:
-        - "mycompany.registry.com"
-      registry_mirrors:
-        - "http://mycompany.registry.com"
+    }
+    "experimental": false
 ...
