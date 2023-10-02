@@ -30,6 +30,11 @@ docker:
       - "containerd.io"
       - "docker-buildx-plugin"
       - "docker-compose-plugin"
+  credential:
+    release:
+      url: "https://github.com/docker/docker-credential-helpers/releases"
+      version: "v0.8.0"
+      checksum_hash: "sha256:a69ce71a6b5cef7aadf343c93e00e1ffc549d649bd011fbb39bfa38534484511"
   daemon:
     "data-root": "/home/vagrant/docker-data"
     "raw-logs": false
