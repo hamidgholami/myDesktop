@@ -68,6 +68,7 @@ prerequisite:
     - "sshpass"
     - "openssh-server"
     - "openssh-client"
+    - "keychain"
 
   network_packages:
     - "dnsutils"
