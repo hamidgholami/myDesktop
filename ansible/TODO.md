@@ -14,6 +14,10 @@ TODO
 - [ ] [passwordstore_1](https://docs.ansible.com/ansible/latest/collections/community/general/passwordstore_lookup.html)
 - [ ] [passwordstore_2](https://docs.ansible.com/ansible/2.9/plugins/lookup/passwordstore.html)
 - [ ] [OpenVpn 3](https://openvpn.net/cloud-docs/owner/connectors/connector-user-guides/openvpn-3-client-for-linux.html)
+- [ ] [KOR](https://github.com/yonahd/kor)
+- [ ] [ssh-add](https://junyonglee.me/ssh/How-to-permanently-add-private-key-passphrase-to-ssh-agent/)
+      - https://askubuntu.com/questions/1356352/how-to-install-ssh-keychain-on-ubuntu-with-wsl
+      - https://www.funtoo.org/Funtoo:Keychain
 - [ ] [Docker Daemon](https://docs.docker.com/config/containers/logging/configure/)
   - https://docs.docker.com/engine/reference/commandline/dockerd/
     https://docs.docker.com/engine/reference/commandline/dockerd/
