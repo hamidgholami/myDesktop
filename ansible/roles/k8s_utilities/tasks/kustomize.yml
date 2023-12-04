@@ -1,0 +1,26 @@
+---
+
+- name: "Manipulate Kustomize variables"
+  set_fact:
+    kustomize_download_url: "{{ kustomize.release.url }}/download/kustomize/{{ kustomize.release.version }}"
+    kustomize_tar_file_name: "kustomize_{{ kustomize.release.version }}_linux_{{ my_desktop_architecture }}.tar.gz"
+  tags:
+    - always
+
+- name: "Install Kustomize"
+  block:
+    - name: "Fetch Kustomize tar.gz file version: {{ kustomize.release.version }}"
+      ansible.builtin.get_url:
+        url: "{{ kustomize_download_url }}/{{ kustomize_tar_file_name }}"
+        dest: "/tmp"
+        checksum: "{{ kustomize.release.checksum_hash }}"
+
+    - name: "Unarchive & copy kustomize binary file"
+      ansible.builtin.unarchive:
+        src: "/tmp/{{ kustomize_tar_file_name }}"
+        dest: "/usr/local/bin"
+        mode: "0755"
+        remote_src: true
+  tags:
+    - "install-kustomize"
+...

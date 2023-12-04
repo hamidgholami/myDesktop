@@ -1,0 +1,36 @@
+---
+- name: "Install 'libvirt_qemu_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ libvirt_qemu_packages_list }}"
+  notify: "Restart-Active libvirtd service unit"
+  tags:
+    - "libvirt-qemu"
+    - "libvirt-qemu-packages-list"
+
+- name: "Update /etc/nsswitch.conf with libvirt"
+  lineinfile:
+    dest: "/etc/nsswitch.conf"
+    backrefs: true
+    regexp: "^(hosts:.*?)( libvirt libvirt_guest)?$"
+    line: '\1 libvirt libvirt_guest'
+    state: "present"
+  tags:
+    - "libvirt-qemu"
+    - "libvirt-nsswitch"
+
+- name: "add {{ mydesktop.system.username }} in libvirt,kvm group"
+  ansible.builtin.user:
+    name: "{{ mydesktop.system.username }}"
+    groups:
+      - "libvirt"
+      - "kvm"
+    append: true
+  when:
+    - not ansible_check_mode
+  tags:
+    - "libvirt-qemu"
+...

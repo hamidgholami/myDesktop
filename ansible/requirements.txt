@@ -1,0 +1,5 @@
+# pip install -r requirements.txt
+ansible==6.7.0
+ansible-core==2.13.11
+ansible-lint==6.18.0
+mitogen==0.3.4

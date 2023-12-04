@@ -1,0 +1,58 @@
+---
+
+- name: "Disable translate download in apt.config.d"
+  changed_when: false
+  ansible.builtin.copy:
+    dest: "/etc/apt/apt.conf.d/20translate"
+    content: "Acquire::Languages \"none\";"
+    owner: "root"
+    group: "root"
+    mode: "644"
+
+- name: "Run apt-get update"
+  ansible.builtin.apt:
+    update_cache: true
+  tags:
+    - always
+
+- name: "Import prerequisites"
+  import_tasks: "prerequisites.yml"
+
+- name: "Import pip_install"
+  import_tasks: "pip_install.yml"
+
+- name: "Import libvirt_qemu"
+  import_tasks: "libvirt_qemu.yml"
+
+- name: "Import hashicorp_apt_repository"
+  import_tasks: "hashicorp_apt_repository.yml"
+
+- name: "Import googlechrome"
+  import_tasks: "googlechrome.yml"
+
+- name: "Import intellij"
+  import_tasks: "intellij.yml"
+
+- name: "Import vscode"
+  import_tasks: "vscode.yml"
+
+- name: "Import docker"
+  import_tasks: "docker.yml"
+
+- name: "Import k8s utilities"
+  import_tasks: "k8s_utilities.yml"
+
+- name: "Update and upgrade apt packages"
+  ansible.builtin.apt:
+    upgrade: yes
+    update_cache: yes
+  tags:
+    - always
+
+- name: "Run apt clean"
+  ansible.builtin.apt:
+    clean: true
+  tags:
+    - always
+
+...

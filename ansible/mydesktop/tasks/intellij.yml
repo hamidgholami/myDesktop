@@ -1,0 +1,30 @@
+---
+- name: "Installing Intellij-IDEA"
+  block:
+    - name: "Add gpg signing key for jetbrains"
+      ansible.builtin.get_url:
+        url: "{{ intellij_idea.gpg_key_url }}"
+        dest: "/tmp/jetbrains.pub"
+        checksum: "{{ intellij_idea.gpg_checksum }}"
+
+    - name: "Generate Intellij-IDEA keyrings dearmor"
+      ansible.builtin.shell: "gpg --dearmor < /tmp/jetbrains.pub > {{ intellij_idea.archive_keyrings_path }}"
+      no_log: true
+      args:
+        creates: "{{ intellij_idea.archive_keyrings_path }}"
+
+    - name: "Add/Update Intellij-IDEA in source.list.d"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }} signed-by={{ intellij_idea.archive_keyrings_path }}] {{ intellij_idea.release_url }} any main"
+        state: present
+        filename: "jetbrains"
+        update_cache: true
+
+    - name: "Installing {{ intellij_idea.package_name }}"
+      ansible.builtin.apt:
+        name: "{{ intellij_idea.package_name }}"
+        state: present
+  tags:
+    - "intellij-idea"
+
+...

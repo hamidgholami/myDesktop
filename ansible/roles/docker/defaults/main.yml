@@ -1,0 +1,98 @@
+---
+
+system_architecture: {
+  "aarch64": "arm64",
+  "x86_64": "amd64"
+}
+
+user_configurations:
+  user_name: "vagrant"
+
+docker:
+  release:
+    name: "stable"
+    version: "*" # apt-cache madison docker-ce | awk '{ print $3 }', e.g. '5:24.0.0-1~debian.11~bullseye'
+    url: "https://download.docker.com/linux/debian"
+    gpg:
+      file_name: "gpg"
+      checksum_hash: "sha256:1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570" # curl -sL https://download.docker.com/linux/debian/gpg | sha256sum
+      archive_keyring_path: "/usr/share/keyrings/docker-archive-keyring.gpg"
+      temp_file_path: "/tmp/docker.gpg"
+  packages:
+    unofficial:
+      - "docker.io"
+      - "docker-compose"
+      - "docker-doc"
+      - "podman-docker"
+    official:
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
+      - "docker-buildx-plugin"
+      - "docker-compose-plugin"
+  credential:
+    release:
+      url: "https://github.com/docker/docker-credential-helpers/releases"
+      version: "v0.8.0"
+      checksum_hash: "sha256:a69ce71a6b5cef7aadf343c93e00e1ffc549d649bd011fbb39bfa38534484511"
+  daemon:
+    "data-root": "/home/vagrant/docker-data"
+    "raw-logs": false
+    "log-driver": "json-file"
+    "log-opts": {
+      "cache-disabled": "false",
+      "cache-max-file": "5",
+      "cache-max-size": "20m",
+      "cache-compress": "true",
+      "max-size": "5m",
+      "max-file": "1",
+      "compress": "true",
+      "labels": "myDesktop"
+    }
+    "storage-driver": "overlay2"
+    "live-restore": true
+    "default-ulimits": {
+      "nofile": {
+        "Name": "nofile",
+        "Hard": 64000,
+        "Soft": 64000
+      }
+    }
+    "mtu": 1500
+    "bip": "10.10.0.5/24"
+    "fixed-cidr": "192.168.1.0/25"
+    "default-address-pools": [
+      {
+        "base": "172.253.0.0/16",
+        "size": 24
+      }
+    ]
+    "dns": [
+      "192.168.1.1"
+    ]
+    "insecure-registries": [
+      "mycompany.registry.com"
+    ]
+    "registry-mirrors": [
+      "http://mycompany.registry.com"
+    ]
+    "exec-opts": [
+      "native.cgroupdriver=systemd"
+    ]
+    "selinux-enabled": false
+    "max-concurrent-downloads": 3
+    "max-concurrent-uploads": 5
+    "max-download-attempts": 5
+    "builder": {
+      "gc": {
+        "enabled": true,
+        "defaultKeepStorage": "10GB",
+        "policy": [
+          { "keepStorage": "10GB", "filter": [ "unused-for=2200h" ] },
+          { "keepStorage": "50GB", "filter": [ "unused-for=3300h" ] },
+          { "keepStorage": "100GB", "all": true }
+        ]
+      }
+    }
+    "experimental": false
+...

@@ -1,0 +1,18 @@
+---
+
+- name: "Manipulate some required variables"
+  set_fact:
+    my_desktop_architecture: "{{ [ansible_architecture] | map('extract', system_architecture) | first }}"
+  tags:
+    - always
+
+- name: "Import install docker"
+  import_tasks: "install-docker.yml"
+
+- name: "Import configure docker"
+  import_tasks: "configure-docker.yml"
+
+- name: "Import docker credential helper"
+  import_tasks: "install-docker-credential.yml"
+
+...

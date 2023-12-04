@@ -1,0 +1,30 @@
+---
+- name: "Installing Visual Studio Code"
+  block:
+    - name: "Add gpg signing key for microsoft"
+      ansible.builtin.get_url:
+        url: "{{ vscode.gpg_key_url }}"
+        dest: "/tmp/vscode.pub"
+        checksum: "{{ vscode.gpg_checksum }}"
+
+    - name: "Generate microsoft keyrings dearmor"
+      ansible.builtin.shell: "gpg --dearmor < /tmp/vscode.pub > {{ vscode.archive_keyrings_path }}"
+      no_log: true
+      args:
+        creates: "{{ vscode.archive_keyrings_path }}"
+
+    - name: "Add/Update microsoft in source.list.d"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }} signed-by={{ vscode.archive_keyrings_path }}] {{ vscode.release_url }} stable main"
+        state: present
+        filename: "vscode"
+        update_cache: true
+
+    - name: "Installing {{ vscode.package_name }}"
+      ansible.builtin.apt:
+        name: "{{ vscode.package_name }}"
+        state: present
+  tags:
+    - "vscode"
+
+...

@@ -1,0 +1,31 @@
+# encoding: utf-8
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
+
+IMAGE_DEBIAN_12 = "debian/bookworm64"
+IMAGE_VERSION = "12.20230723.1"
+VM_IP = "10.0.0.70"
+VM_NAME = "debian-12"
+VM_CPU = "2"
+VM_MEMORY = "4096"
+
+Vagrant.configure("2") do |config|
+  config.vm.define VM_NAME do |machine|
+    machine.ssh.insert_key = false
+    machine.vm.box = IMAGE_DEBIAN_12
+    machine.vm.box_version = IMAGE_VERSION
+    machine.vm.hostname = VM_NAME
+    machine.vm.synced_folder '.', '/vagrant', type: 'rsync', disabled: true
+    machine.vm.synced_folder '.', '/vagrant', disabled: true
+
+    machine.vm.network :private_network, :ip => VM_IP,
+                       :libvirt__forward_mode => "route",
+                       :libvirt__dhcp_enabled => false
+
+    machine.vm.provider "libvirt" do |lv|
+      lv.memory = VM_MEMORY
+      lv.cpus = VM_CPU
+    end
+  end
+end

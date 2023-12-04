@@ -1,0 +1,36 @@
+---
+
+- name: "Create '~/.config/pip/'"
+  ansible.builtin.file:
+    path: "/home/{{ user_configurations.user_name | default('vagrant') }}/.config/pip"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "755"
+    state: "directory"
+  tags:
+    - "prerequisites"
+    - "install-pip-packages"
+
+- name: "Add/Update pip in {{ user_configurations.user_name | default('vagrant') }}'s home dir"
+  changed_when: false
+  ansible.builtin.template:
+    src: "pip.conf.j2"
+    dest: "/home/{{ user_configurations.user_name | default('vagrant') }}/.config/pip/pip.conf"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "0644"
+  tags:
+    - "prerequisites"
+    - "install-pip-packages"
+
+- name: "Install 'pip_packages'"
+  become: false
+  ansible.builtin.pip:
+    name: "{{ item }}"
+  loop: "{{ pip_packages }}"
+  when:
+    - not ansible_check_mode
+  tags:
+    - "prerequisites"
+    - "install-pip-packages"
+...

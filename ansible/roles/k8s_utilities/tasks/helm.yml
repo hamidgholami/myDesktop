@@ -1,0 +1,47 @@
+---
+
+- name: "Helm | Installation"
+  block:
+    - name: "Helm | Fetch gpg signing key"
+      ansible.builtin.get_url:
+        url: "{{ helm.release.url }}/{{ helm.release.gpg.file_name }}"
+        dest: "{{ helm.release.gpg.temp_file_path }}"
+        checksum: "{{ helm.release.gpg.checksum_hash }}"
+
+    - name: "Helm | Generate keyring dearmor"
+      ansible.builtin.shell: "gpg --dearmor < {{ helm.release.gpg.temp_file_path }} > {{ helm.release.gpg.archive_keyring_file_path }}"
+      no_log: true
+      args:
+        creates: "{{ helm.release.gpg.archive_keyring_file_path }}"
+
+    - name: "Helm | Add/Update 'source.list.d/'"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ my_desktop_architecture }} signed-by={{ helm.release.gpg.archive_keyring_file_path }}] {{ helm.release.url }}/stable/debian/ all main"
+        state: present
+        filename: "helm"
+        update_cache: true
+
+    - name: "Helm | Install apt package"
+      ansible.builtin.apt:
+        name: "{{ helm.packages }}"
+        state: present
+  tags:
+    - "install-helm"
+
+- name: "Helm | Configure autocompletion"
+  ansible.builtin.shell: "helm completion bash | sudo tee /etc/bash_completion.d/helm"
+  args:
+    executable: "/bin/bash"
+    creates: "/etc/bash_completion.d/helm"
+  tags:
+    - "install-helm"
+    - "helm-autocompletion"
+
+...
+
+#  curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+#  sudo apt-get install apt-transport-https --yes
+#  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+#  sudo apt-get update
+#  sudo apt-get install helm
+# helm completion https://helm.sh/docs/helm/helm_completion_bash/

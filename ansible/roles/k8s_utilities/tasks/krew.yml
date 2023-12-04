@@ -1,0 +1,56 @@
+---
+
+- name: "Manipulate some required variables"
+  set_fact:
+    krew_release_download_url: "{{ krew.release.url }}/download/{{ krew.release.version }}"
+  tags:
+    - always
+
+- name: "Install krew"
+  block:
+    - name: "Fetch krew tar.gz file checksum"
+      ansible.builtin.uri:
+        url: "{{ krew_release_download_url }}/krew-linux_{{ my_desktop_architecture }}.tar.gz.sha256"
+        return_content: true
+      register: krew_checksum_sha256
+
+    - name: "Fetch krew tar.gz file"
+      ansible.builtin.get_url:
+        url: "{{ krew_release_download_url }}/krew-linux_{{ my_desktop_architecture }}.tar.gz"
+        dest: "{{ krew.temp_dir_path }}/krew-linux_{{ my_desktop_architecture }}.tar.gz"
+        checksum: "sha256:{{ krew_checksum_sha256.content }}"
+      when:
+        - not ansible_check_mode
+
+    - name: "Unarchive & copy krew binary file"
+      ansible.builtin.unarchive:
+        src: "{{ krew.temp_dir_path }}/krew-linux_{{ my_desktop_architecture }}.tar.gz"
+        dest: "/usr/local/bin"
+        extra_opts:
+          - "--transform"
+          - "s/krew-linux_{{ my_desktop_architecture }}/kubectl-krew/g"
+        mode: "0755"
+        remote_src: true
+        exclude: "LICENSE"
+        list_files: true
+
+    - name: "Run krew update"
+      become_user: "{{ user_configurations.user_name | default('vagrant') }}"
+      ansible.builtin.shell: "kubectl krew update"
+      args:
+        executable: "/bin/bash"
+        creates: "/home/{{ ansible_env.HOME }}/.krew/index/plugins/krew_plugins.yaml"
+  tags:
+    - "install-kubectl-krew"
+
+- name: "Instal kubectl plugins by krew"
+  changed_when: false
+  become_user: "{{ user_configurations.user_name }}"
+  ansible.builtin.shell: "kubectl krew install {{ item }}"
+  loop: "{{ krew.plugins }}"
+  when: krew.plugins is defined
+  tags:
+    - "install-kubectl-krew"
+    - "install-kubectl-krew-plugins"
+
+...

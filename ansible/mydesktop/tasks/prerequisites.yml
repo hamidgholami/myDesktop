@@ -1,0 +1,349 @@
+---
+
+- name: "Install 'display_server_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ display_server_packages_list }}"
+  register: display_server_installation
+  notify: "restart-lightdm"
+  tags:
+    - "prerequisites"
+    - "display-server-packages-list"
+
+- name: "Install 'system_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ system_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "system-packages-list"
+
+- name: "Install 'python_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ python_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "python-packages-list"
+
+- name: "Install 'security_management_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ security_management_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "security-management-packages-list"
+
+- name: "Install 'gpg_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ gpg_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "gpg-packages-list"
+
+- name: "Install 'ssh_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ ssh_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "ssh-packages-list"
+
+- name: "Install 'network_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ network_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "network-packages-list"
+
+- name: "Install 'compression_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ compression_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "compression-packages-list"
+
+- name: "Install 'sound_management_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ sound_management_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "sound-management-packages-list"
+
+- name: "Install 'system_utility_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ system_utility_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "system-utility-packages-list"
+
+- name: "Install 'essential_font_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ essential_font_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "essential-font-packages-list"
+
+- name: "Install 'editor_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ editor_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "editor-packages-list"
+
+- name: "Install 'file_manager_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ file_manager_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "file-manager-packages-list"
+
+- name: "Install 'terminal_emulator_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ terminal_emulator_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "terminal-emulator-packages-list"
+
+- name: "Install 'screen_capture_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ screen_capture_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "screen-capture-packages-list"
+
+- name: "Install 'remote_desktop_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ remote_desktop_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "remote-desktop-packages-list"
+
+- name: "Install 'clipboard_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ clipboard_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "clipboard-packages-list"
+
+- name: "Install 'internet_utility_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ internet_utility_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "internet-utility-packages-list"
+
+- name: "Install 'bluetooth_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ bluetooth_packages_list }}"
+  notify: "restart-bluetooth"
+  tags:
+    - "prerequisites"
+    - "bluetooth-packages-list"
+
+- name: "Install 'vpn_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ vpn_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "vpn-packages-list"
+
+- name: "Install 'document_management_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ document_management_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "pdf-management-packages-list"
+
+- name: "Install 'media_player_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ media_player_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "media-player-packages-list"
+
+- name: "Install 'system_events_notifications_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ system_events_notifications_packages_list }}"
+  notify:
+    - "restart-avahi-daemon"
+    - "restart-acpid"
+  tags:
+    - "prerequisites"
+    - "system-events-notifications-packages-list"
+
+- name: "Install 'printer_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ printer_packages_list }}"
+  notify: "restart-cups"
+  tags:
+    - "prerequisites"
+    - "printer-packages-list"
+
+- name: "Install 'mail_client_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ mail_client_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "mail-client-packages-list"
+
+- name: "Install 'minimal_desktop_environment_packages_list'"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: false
+    install_recommends: true
+  loop: "{{ minimal_desktop_environment_packages_list }}"
+  tags:
+    - "prerequisites"
+    - "minimal-desktop-environment-packages-list"
+
+- name: "Create .config in {{ mydesktop.system.username }}'s home dir"
+  become: false
+  ansible.builtin.file:
+      path: "/home/{{ mydesktop.system.username }}/.config"
+      owner: "{{ mydesktop.system.username }}"
+      group: "{{ mydesktop.system.username }}"
+      mode: "0755"
+      state: "directory"
+  tags:
+    - "prerequisites"
+
+- name: "Reboot the host"
+  block:
+    - name: "Print message"
+      ansible.builtin.debug:
+        msg:
+          - "Rebooting the host ..."
+
+    - name: "Reboot"
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible due to display server installation/updates"
+        connect_timeout: 5
+        reboot_timeout: 70
+        pre_reboot_delay: 0
+        post_reboot_delay: 7
+        test_command: uptime
+  when:
+    - display_server_installation.changed
+    - not ansible_connection == 'local'
+    - not ansible_check_mode
+  tags:
+    - "prerequisites"
+    - "prerequisites-reboot"
+
+- name: "Finish the playbook"
+  block:
+    - name: "Print message"
+      ansible.builtin.debug:
+        msg:
+          - "Since the playbook is running on local connection, and display_server_installation has been changed."
+          - "Please reboot the host and proceed with the playbook"
+
+    - name: "Stop the playbook"
+      ansible.builtin.meta: end_play
+      when:
+        - not ansible_check_mode
+  when:
+    - ansible_connection == 'local'
+    - not ansible_check_mode
+  tags:
+    - "prerequisites"
+    - "prerequisites-reboot"
+
+...

@@ -1,0 +1,25 @@
+---
+- name: "Adding hashicorp apt repository"
+  block:
+    - name: "Get hashicorp GPG"
+      ansible.builtin.get_url:
+        url: "{{ hashicorp.release_url }}/gpg"
+        dest: "/tmp/hashicorp.gpg"
+        checksum: "{{ hashicorp.gpg_checksum }}"
+
+    - name: "Generate hashicorp keyrings dearmor"
+      ansible.builtin.shell: "gpg --dearmor < /tmp/hashicorp.gpg > {{ hashicorp.archive_keyrings_path }}"
+      no_log: true
+      args:
+        creates: "{{ hashicorp.archive_keyrings_path }}"
+
+    - name: "Add/Update hashicorp apt source list"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }} signed-by={{ hashicorp.archive_keyrings_path }}] {{ hashicorp.release_url }} {{ ansible_distribution_release }} main"
+        state: present
+        filename: "hashicorp"
+        update_cache: true
+  tags:
+    - "hashicorp-apt-repository"
+
+...

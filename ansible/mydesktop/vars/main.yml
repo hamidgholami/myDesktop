@@ -1,0 +1,354 @@
+---
+
+display_server_packages_list:
+  - "xorg"
+  - "xbacklight"
+  - "xbindkeys"
+  - "xvkbd"
+  - "xinput"
+  - "lxsession"
+  - "xserver-xorg-input-libinput"
+  - "xserver-xorg-input-evdev"
+  - "xserver-xorg-input-mouse"
+  - "lightdm"
+  - 'lightdm-gtk-greeter'
+  - "lightdm-gtk-greeter-settings"
+  - "wmctrl"
+
+system_packages_list:
+  - "apt-transport-https"
+  - "software-properties-common"
+  - "make"
+  - "sudo"
+  - "locales"
+  - "libfontconfig"
+  - "g++"
+  - "libatk-bridge2.0-0"
+  - "libgtk-3-0"
+  - "coreutils"
+  - "gcc"
+  - "build-essential"
+  - "ca-certificates"
+  - "iucode-tool"
+  - "grub2-common"
+  - "dkms"
+
+python_packages_list:
+  - "python3-full"
+  - "virtualenv"
+  - "python3-virtualenv"
+  - "python3-pip"
+  - "python-is-python3"
+  - "python3-distutils"
+
+security_management_packages_list:
+  - "ca-certificates"
+  - "openssl"
+  - "libsasl2-dev"
+  - "libpam-google-authenticator"
+  - "pass"
+  - "apg"
+  - "pwgen"
+  - "policykit-1-gnome"
+
+gpg_packages_list:
+  - "gnupg-agent"
+  - "gnupg"
+  - "qrencode"
+  - "paperkey"
+  - "zbar-tools"
+  - "pinentry-curses"
+  - "pinentry-tty"
+
+ssh_packages_list:
+  - "sshpass"
+  - "openssh-server"
+  - "openssh-client"
+
+network_packages_list:
+  - "dnsutils"
+  - "traceroute"
+  - "mtr-tiny"
+  - "net-tools"
+  - "ifupdown"
+  - "nmap"
+  - "netcat-traditional"
+  - "whois"
+  - "ethtool"
+
+dns_packages_list:
+  - "dnsmasq"
+
+compression_packages_list:
+  - "zip"
+  - "unzip"
+  - "gzip"
+  - "bzip2"
+  - "zstd"
+  - "7zip"
+  - "p7zip-full"
+  - "unrar-free"
+  - "file-roller"
+
+sound_management_packages_list:
+  - "pulseaudio"
+  - "alsa-utils"
+  - "pavucontrol"
+  - "volumeicon-alsa"
+
+system_utility_packages_list:
+  - "git"
+  - "tree"
+  - "curl"
+  - "wget"
+  - "jq"
+  - "aptitude"
+  - "dbus"
+  - "tmux"
+  - "yadm"
+  - "dmidecode"
+  - "iotop"
+  - "less"
+  - "htop"
+  - "rsync"
+  - "meld"
+  - "mlocate"
+  - "dos2unix"
+  - "neofetch"
+  - "exa"
+  - "lxappearance"
+  - "suckless-tools"
+  - "nitrogen"
+  - "gnuplot"
+  - "lolcat"
+  - "sl"
+  - "figlet"
+  - "xfce4-power-manager"
+  - "dialog"
+  - "mtools"
+  - "dosfstools"
+  - "picom"
+  - "galculator"
+  - "redshift"
+  - "cpu-x"
+  - "qimgv"
+  - "bash-completion"
+  - "shellcheck"
+  - "libxcb-xinerama0"
+  - "libxcb-cursor0"
+  - "hwinfo"
+  - "hicolor-icon-theme"
+  - "desktop-file-utils"
+  - "adwaita-qt6"
+
+essential_font_packages_list:
+  - "fonts-terminus"
+  - "fonts-hack"
+  - "fonts-jetbrains-mono"
+  - "fonts-mononoki"
+  - "fonts-recommended"
+  - "fonts-noto"
+  - "fonts-font-awesome"
+  - "fonts-liberation"
+  - "fonts-liberation2"
+  - "fonts-powerline"
+  - "fonts-ubuntu-title"
+  - "fonts-farsiweb"
+  - "fontconfig"
+
+editor_packages_list:
+  - "vim"
+  - "l3afpad"
+  - "kate"
+  - "notepadqq"
+  - "ipython3"
+  - "bpython"
+  - "geany"
+  - "geany-plugin-addons"
+  - "geany-plugin-git-changebar"
+  - "geany-plugin-overview"
+  - "geany-plugin-spellcheck"
+  - "geany-plugin-treebrowser"
+  - "geany-plugin-vimode"
+#  - "spyder"
+
+file_manager_packages_list:
+  - "pcmanfm"
+  - "ranger"
+  - "thunar"
+  - "thunar-volman"
+  - "thunar-archive-plugin"
+
+terminal_emulator_packages_list:
+  - "alacritty"
+  - "rxvt-unicode"
+  - "termit"
+  - "xterm"
+  - "kitty"
+
+screen_capture_packages_list:
+  - "flameshot"
+  - "peek"
+  - "scrot"
+  - "ffmpeg"
+  - "obs-studio"
+  - "kdenlive"
+  - "kazam"
+  - "simplescreenrecorder"
+
+remote_desktop_packages_list:
+  - "x11vnc"
+  - "remmina"
+  - "remmina-plugin-*"
+
+clipboard_packages_list:
+  - "xclip"
+  - "xsel"
+  - "copyq"
+  - "copyq-plugins"
+
+internet_utility_packages_list:
+  - "chromium"
+  - "firefox-esr"
+  - "surf"
+  - "qutebrowser"
+  - "lynx"
+  - "aria2"
+  - "transmission-gtk"
+  - "deluge"
+  - "qbittorrent"
+  - "filezilla"
+  - "geary"
+  - "hexchat"
+
+bluetooth_packages_list:
+  - "bluetooth"
+  - "bluez"
+  - "blueman"
+
+vpn_packages_list:
+  - "openvpn"
+  - "openconnect"
+  - "network-manager-openconnect"
+  - "network-manager-openvpn"
+  - "network-manager-vpnc"
+  - "network-manager-l2tp"
+  - "network-manager-sstp"
+  - "network-manager-pptp"
+
+document_management_packages_list:
+  - "cups-pdf"
+  - "xournal"
+  - "okular"
+  - "xchm"
+  - "evince"
+  - "pdfarranger"
+  - "zathura"
+  - "gnumeric"
+  - "ghostscript"
+
+media_player_packages_list:
+  - "vlc"
+  - "mpv"
+  - "media-player-info"
+
+libvirt_qemu_packages_list:
+  - "libvirt-clients"
+  - "libvirt-daemon"
+  - "libvirt-daemon-system"
+  - "libnss-libvirt"
+  - "libosinfo-bin"
+  - "libguestfs-tools"
+  - "genisoimage"
+  - "virtinst"
+  - "imvirt"
+  - "qemu-utils"
+  - "qemu-system"
+  - "virt-viewer"
+  - "virt-manager"
+  - "bridge-utils"
+  - "ksmtuned"
+  - "cpu-checker"
+
+system_events_notifications_packages_list:
+  - "libnotify-bin"
+  - "avahi-daemon"
+  - "acpi"
+  - "acpid"
+  - "dunst"
+  - "rofi"
+  - "fzf"
+
+printer_packages_list:
+  - "cups"
+  - "system-config-printer"
+  - "simple-scan"
+
+mail_client_packages_list:
+  - "thunderbird"
+  - "webext-tbsync"
+  - "thunderbird-l10n-de"
+  - "thunderbird-l10n-ar"
+
+minimal_desktop_environment_packages_list:
+  - "xfce4"
+  - "xfce4-goodies"
+
+wireless_packages_list:
+  - "wireless-regdb"
+  - "wireless-tools"
+
+disk_management_packages_list:
+  - "lvm2"
+  - "parted"
+  - "gparted"
+  - "volume-key"
+  - "usbmuxd"
+  - "mintstick"
+  - "usbview"
+  - "usbutils"
+
+
+distributing_desktop_applications:
+  - "flatpak"
+
+pip_packages_list:
+  - "yt-dlp"
+
+keyboard_management_packages_list:
+  - "kbd"
+  - "kbdd"
+
+wiki_packages_list:
+  - "zim"
+prerequisite_packages_list:
+  - "ruby"
+
+i3wm_packages:
+  - "i3-wm"
+  - "suckless-tools"
+  - "polybar"
+  - "sxhkd"
+  - "i3lock-fancy"
+
+docker_packages_list:
+
+
+graphical_applications_packages_list:
+  - "inkscape"
+  - "ristretto"
+  - "blender"
+  - "scribus"
+  - "gnucash"
+
+#  - https://github.com/fzerorubigd/persian-fonts-linux
+#  - "ttf-mscorefonts-installer"
+#  - "virtualbox"
+#  - "virtualbox-ext-pack"
+# https://github.com/sebastiencs/icons-in-terminal
+# https://github.com/drewgrif/qtile-debian
+# https://github.com/jarun/nnn
+# https://github.com/mananapr/cfiles
+# alias ls='exa -al --long --header --color=always --group-directories-first'
+
+...

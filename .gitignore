@@ -1,0 +1,11 @@
+# IDEs
+.idea
+*.log
+*.swp
+
+# virtualization
+*/.vagrant/
+
+# debyg/test
+*/*/tests
+ansible/mydesktop/*/*

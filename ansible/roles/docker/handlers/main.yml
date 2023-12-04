@@ -1,0 +1,9 @@
+---
+- name: "Restart-Active docker service unit"
+  listen: "restart-docker"
+  service:
+    name: "docker"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode

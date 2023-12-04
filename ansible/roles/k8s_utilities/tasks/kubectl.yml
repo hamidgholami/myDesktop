@@ -1,0 +1,148 @@
+---
+
+- name: "Manipulate kubectl and kubecolor variables"
+  set_fact:
+    k8s_specific_version: "{{ k8s.release.version }}"
+    k8s_release_deb_url: "{{ k8s.release.url }}/core:/{{ k8s.release.name }}:/{{ k8s.release.version }}/deb/"
+    kubecolor_tar_file_name: "kubecolor_{{ kubecolor.release.version }}_Linux_{{ ansible_architecture }}.tar.gz"
+    kubecolor_release_url: "{{ kubecolor.release.url }}/download/v{{ kubecolor.release.version }}"
+  tags:
+    - always
+
+- name: "Install kubectl"
+  block:
+    - name: "Get k8s GPG"
+      changed_when: false
+      ansible.builtin.get_url:
+        url: "{{ k8s_release_deb_url }}/{{ k8s.release.gpg.file_name }}"
+        dest: "{{ k8s.release.gpg.temp_file_path }}"
+        checksum: "{{ k8s.release.gpg.checksum_hash }}"
+
+    - name: "Generate k8s keyrings dearmor"
+      ansible.builtin.shell: "gpg --dearmor < {{ k8s.release.gpg.temp_file_path }} > {{ k8s.release.gpg.archive_keyrings_path }}"
+      no_log: true
+      args:
+        creates: "{{ k8s.release.gpg.archive_keyrings_path }}"
+
+    - name: "Add/Update k8s apt source list"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ my_desktop_architecture }} signed-by={{ k8s.release.gpg.archive_keyrings_path }}] {{ k8s_release_deb_url }} /"
+        state: present
+        filename: "k8s"
+        update_cache: true
+
+    - name: "kubectl | Install {{ k8s.packages | join(',') }} packages"
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: false
+        install_recommends: false
+      loop: "{{ k8s.packages }}"
+  tags:
+    - "install-kubectl"
+
+- name: "Ensure .kube directory exists"
+  changed_when: false
+  file:
+    path: "/home/{{ user_configurations.user_name | default('vagrant') }}/.kube"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "0755"
+    state: "directory"
+  tags:
+    - "install-kubectl"
+    - "create-kube-conf"
+    -
+- name: "Ensure bash_profiles exists"
+  changed_when: false
+  file:
+    path: "/home/{{ user_configurations.user_name | default('vagrant') }}/.bash_profiles"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "0755"
+    state: "directory"
+  tags:
+    - "install-kubectl"
+    - "update-k8s-bashrc"
+
+- name: "Ensure .profiles are updated with 'bash_profiles' directory"
+  changed_when: false
+  shell: "grep -c .bash_profiles /home/{{ user_configurations.user_name | default('vagrant') }}/.profile || true"
+  register: check_bash_profiles
+  tags:
+    - "install-kubectl"
+    - "update-k8s-bashrc"
+
+- name: "Add bash_profiles in .profile"
+  lineinfile:
+    dest: "/home/{{ user_configurations.user_name | default('vagrant') }}/.profile"
+    line: |
+      if [ -f "$HOME/.bash_profiles" ]; then
+          . "$HOME/.bash_profiles/*_bashrc"
+      fi
+  when: check_bash_profiles.stdout == "0"
+  tags:
+    - "install-kubectl"
+    - "update-k8s-bashrc"
+
+- name: "kubectl | Copy k8s_bashrc"
+  become: false
+  ansible.builtin.copy:
+    content: "{{ k8s.kubectl.bashrc }}"
+    dest: "/home/{{ user_configurations.user_name | default('vagrant') }}/.bash_profiles/k8s_bashrc"
+    owner: "{{ user_configurations.user_name | default('vagrant') }}"
+    group: "{{ user_configurations.user_name | default('vagrant') }}"
+    mode: "0644"
+  tags:
+    - "install-kubectl"
+    - "update-k8s-bashrc"
+
+- name: "Install kubecolor"
+  block:
+    - name: "Fetch kubecolor tar.gz file"
+      ansible.builtin.get_url:
+        url: "{{ kubecolor_release_url }}/{{ kubecolor_tar_file_name }}"
+        dest: "/tmp"
+        checksum: "{{ kubecolor.release.checksum_hash }}"
+
+    - name: "Unarchive & copy krew binary file"
+      ansible.builtin.unarchive:
+        src: "/tmp/{{ kubecolor_tar_file_name }}"
+        dest: "/usr/local/bin"
+        mode: "0755"
+        remote_src: true
+        exclude:
+          - "LICENSE"
+          - "README.md"
+  tags:
+    - "install-kubectl"
+    - "install-kubecolor"
+
+- name: "Install kubetail"
+  block:
+    - name: "Fetch kubetail version: {{ kubetail.release.version }}"
+      ansible.builtin.get_url:
+        url: "{{ kubetail.release.url }}/{{ kubetail.release.version }}.tar.gz"
+        dest: "/tmp"
+        checksum: "{{ kubetail.release.checksum_hash }}"
+
+    - name: "Unarchive & copy kubetail script file"
+      ansible.builtin.unarchive:
+        src: "/tmp/kubetail-{{ kubetail.release.version }}.tar.gz"
+        dest: "/usr/local/bin"
+        mode: "0755"
+        remote_src: true
+        extra_opts:
+          - '--strip-components=1'
+          - '--overwrite'
+        exclude:
+          - ".github"
+          - ".gitignore"
+          - "LICENSE"
+          - "README.md"
+          - "completion"
+          - "kubetail.plugin.zsh"
+  tags:
+    - "install-kubectl"
+    - "install-kubetail"
+...

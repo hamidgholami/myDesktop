@@ -1,0 +1,16 @@
+---
+googlechrome:
+  release:
+    url: "https://dl.google.com/linux"
+    package_name: "google-chrome-stable"
+    gpg:
+      file_name: "linux_signing_key.pub"
+      checksum_hash: "sha256:fb8df9740df6a1125fd2983465d830b764b63cd92d5ada8b5bbf75927d6a71ee" # curl -sL https://dl.google.com/linux/linux_signing_key.pub | sha256sum
+      archive_keyring_file_path: "/usr/share/keyrings/google-chrome-archive-keyring.gpg"
+      temp_file_path: "/tmp/googlechrome.pub"
+
+  archive_keyrings_path: "/usr/share/keyrings/google-chrome-archive-keyring.gpg"
+  gpg_checksum: "sha256:fb8df9740df6a1125fd2983465d830b764b63cd92d5ada8b5bbf75927d6a71ee" # curl -sL https://dl.google.com/linux/linux_signing_key.pub | sha256sum
+  gpg_key_url: "https://dl.google.com/linux/linux_signing_key.pub"
+  release_url: "https://dl.google.com/linux/chrome/deb/"
+  package_name: "google-chrome-stable"

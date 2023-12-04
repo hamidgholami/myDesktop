@@ -1,0 +1,36 @@
+---
+
+- name: "Installing google-chrome"
+  block:
+    - name: "Add gpg signing key for google-chrome"
+      ansible.builtin.get_url:
+        url: "{{ googlechrome.gpg_key_url }}"
+        dest: "/tmp/googlechrome.pub"
+        checksum: "{{ googlechrome.gpg_checksum }}"
+
+    - name: "Generate google-chrome keyrings dearmor"
+      ansible.builtin.shell: "gpg --dearmor < /tmp/googlechrome.pub > {{ googlechrome.archive_keyrings_path }}"
+      no_log: true
+      args:
+        creates: "{{ googlechrome.archive_keyrings_path }}"
+
+    - name: "Add/Update google-chrome apt source list"
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ [ansible_architecture] | map('extract', deb_architecture) | first }} signed-by={{ googlechrome.archive_keyrings_path }}] {{ googlechrome.release_url }} stable main"
+        state: present
+        filename: "googlechrome"
+        update_cache: true
+
+    - name: "Installing google-chrome"
+      ansible.builtin.apt:
+        name: "{{ googlechrome.package_name }}"
+        state: present
+
+    - name: "Remove extra google-chrome apt source list"
+      ansible.builtin.file:
+        path: "/etc/apt/sources.list.d/google-chrome.list"
+        state: absent
+  tags:
+    - "google-chrome"
+
+...

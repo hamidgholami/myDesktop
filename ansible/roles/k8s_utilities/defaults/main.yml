@@ -1,0 +1,114 @@
+---
+
+system_architecture: {
+  "aarch64": "arm64",
+  "x86_64": "amd64"
+}
+
+user_configurations:
+  user_name: "vagrant"
+
+helm:
+  release:
+    url: "https://baltocdn.com/helm"
+    gpg:
+      file_name: "signing.asc"
+      checksum_hash: "sha256:d8d0edbdc72338073b7b126be1454c7ebd29bf0da2f64fba87b82d2ae528626d" # curl -sL https://baltocdn.com/helm/signing.asc | sha256sum
+      archive_keyring_file_path: "/usr/share/keyrings/helm-archive-keyring.gpg"
+      temp_file_path: "/tmp/helm.gpg"
+  packages:
+    - "helm"
+
+kustomize:
+  release:
+    url: "https://github.com/kubernetes-sigs/kustomize/releases"
+    version: "v5.1.1"
+    checksum_hash: "sha256:3b30477a7ff4fb6547fa77d8117e66d995c2bdd526de0dafbf8b7bcb9556c85d" # https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.1.1/checksums.txt
+
+kubetail:
+  release:
+    url: "https://github.com/johanhaleby/kubetail/archive/refs/tags"
+    version: "1.6.18"
+    checksum_hash: "sha256:62ba29b3a869bba5b2ddf8c0fbbd307330dfe8cf8f3d47ae459c327b66afbb93" # curl -fsSL https://github.com/johanhaleby/kubetail/archive/refs/tags/1.6.18.tar.gz | sha256sum
+
+krew:
+  release:
+    url: "https://github.com/kubernetes-sigs/krew/releases"
+    version: "v0.4.4"
+  temp_dir_path: "/tmp"
+  plugins:
+    - "access-matrix"
+    - "ctx"
+    - "deprecations"
+    - "df-pv"
+    - "explore"
+    - "get-all"
+    - "images"
+    - "ingress-nginx"
+    - "janitor"
+    - "ns"
+    - "outdated"
+    - "pod-dive"
+    - "score"
+    - "sniff"
+    - "sort-manifests"
+    - "status"
+    - "trace"
+    - "tree"
+
+kubecolor:
+  release:
+    url: "https://github.com/hidetatz/kubecolor/releases"
+    version: "0.0.25"
+    checksum_hash: "sha256:c126077e765ead50cfeca8e39886ddeee83c882cb54df726191f6762007a8015" # Extract from https://github.com/hidetatz/kubecolor/releases/download/v0.0.25/checksums.txt
+k8s:
+  release:
+    name: "stable"
+    version: "v1.28"
+    last_stable_url: "https://cdn.dl.k8s.io/release/stable.txt"
+    url: "https://pkgs.k8s.io"
+    gpg:
+      file_name: "Release.key"
+      archive_keyrings_path: "/usr/share/keyrings/k8s-archive-keyring.gpg"
+      checksum_hash: "sha256:5fe267a9ae47ffd566624057f2c8f64ab8a786a9c650e92cc22135381b04f12b" # curl -sL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sha256sum
+      temp_file_path: "/tmp/k8s.gpg"
+  packages:
+    - "kubectl"
+  kubectl:
+    bashrc: |
+      ## Kubernetes
+      export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+      source <(kubectl completion bash)
+      alias kubectl="kubecolor"
+      alias k='kubectl'
+      alias kg='kubectl get'
+      alias klog='kubectl logs -f'
+      alias kx=kubectx
+      alias kctx="kubectl ctx"
+      alias kubectx="kubectl ctx"
+      alias kn=kubens
+      alias kns="kubectl ns"
+      alias kubens="kubectl ns"
+      alias kval=kubeval
+      alias kscore="kubectl score"
+      alias kdep="kubectl deprications"
+      alias ktree="kubectl tree"
+      alias kimages="kubectl images"
+      alias kdf="kubectl df-pv"
+      alias ktail="kubetail"
+
+      complete -F __start_kubectl k
+      complete -F __start_kubectl kg
+      complete -F __start_kubectl klog
+      complete -F __start_kubectl kx
+      complete -F __start_kubectl kubectx
+      complete -F __start_kubectl kn
+      complete -F __start_kubectl kns
+      complete -F __start_kubectl kubens
+      complete -F __start_kubectl kval
+      complete -F __start_kubectl kscore
+      complete -F __start_kubectl kdep
+      complete -F __start_kubectl ktree
+      complete -F __start_kubectl kimages
+      complete -F __start_kubectl kdf
+      complete -F __start_kubectl ktail

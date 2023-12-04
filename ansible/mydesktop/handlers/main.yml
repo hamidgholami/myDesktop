@@ -1,0 +1,65 @@
+---
+- name: "Restart-Active libvirtd service unit"
+  listen: "restart-libvirtd"
+  service:
+    name: "libvirtd"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode
+
+
+- name: "Restart-Active cups service unit"
+  listen: "restart-cups"
+  service:
+    name: "cups"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode
+
+- name: "Restart-Active bluetooth service unit"
+  listen: "restart-bluetooth"
+  service:
+    name: "bluetooth"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode
+
+- name: "Restart-Active lightdm service unit"
+  listen: "restart-lightdm"
+  service:
+    name: "lightdm"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode
+
+- name: "Restart-Active avahi-daemon service unit"
+  listen: "restart-avahi-daemon"
+  service:
+    name: "avahi-daemon"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode
+
+- name: "Restart-Active acpid service unit"
+  listen: "restart-acpid"
+  service:
+    name: "acpid"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode
+
+- name: "Restart-Active docker service unit"
+  listen: "restart-docker"
+  service:
+    name: "docker"
+    state: "restarted"
+    enabled: true
+  when:
+    - not ansible_check_mode
+...

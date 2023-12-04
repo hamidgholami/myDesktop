@@ -1,0 +1,21 @@
+---
+- name: "Manipulate some required variables"
+  set_fact:
+    my_desktop_architecture: "{{ [ansible_architecture] | map('extract', system_architecture) | first }}"
+  tags:
+    - always
+
+- name: "Import kubectl tasks"
+  import_tasks: "kubectl.yml"
+
+- name: "Import kustomize"
+  import_tasks: "kustomize.yml"
+
+- name: "Import krew tasks"
+  import_tasks: "krew.yml"
+
+- name: "Import helm"
+  import_tasks: "helm.yml"
+
+
+...
