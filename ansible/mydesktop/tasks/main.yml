@@ -19,7 +19,7 @@
   import_tasks: "prerequisites.yml"
 
 - name: "Import pip_install"
-  import_tasks: "pip_install.yml"
+  import_tasks: "../../roles/prerequisites/tasks/pip_install.yml"
 
 - name: "Import libvirt_qemu"
   import_tasks: "libvirt_qemu.yml"

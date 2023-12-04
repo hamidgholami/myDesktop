@@ -1,3 +1,11 @@
 ---
 # sublime configuration
+
+  https://github.com/dim13/otpauth
+  go build
+  ./otpauth -link otpauth-migration://offline?data=<redacted> | tail -n1 | sed 's@.*secret=@@g'
+  
+  https://github.com/arcanericky/totp
+  make linux-amd64
+  https://confluence.check24.de/display/FXB/How+to+use+totp+as+commandline+2FA+OTP+authenticator
 ...

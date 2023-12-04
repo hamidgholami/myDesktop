@@ -99,6 +99,64 @@ k8s:
       temp_file_path: "/tmp/k8s.gpg"
   packages:
     - "kubectl"
+  kubectl:
+    bashrc: |
+      ## Kubernetes
+      export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+      source <(kubectl completion bash)
+      alias kubectl="kubecolor"
+      alias k='kubectl'
+      alias kg='kubectl get'
+      alias klo='kubectl logs -f'
+      alias kx=kubectx
+      alias kctx="kubectl ctx"
+      alias kubectx="kubectl ctx"
+      alias kn=kubens
+      alias kns="kubectl ns"
+      alias kubens="kubectl ns"
+      alias kval=kubeval
+      alias kscore="kubectl score"
+      alias kdep="kubectl deprications"
+      alias ktree="kubectl tree"
+      alias kimages="kubectl images"
+      alias kdf="kubectl df-pv"
+      alias ktail="kubectl tail"
+
+      complete -F __start_kubectl k
+      complete -F __start_kubectl kg
+      complete -F __start_kubectl klo
+      complete -F __start_kubectl kx
+      complete -F __start_kubectl kubectx
+      complete -F __start_kubectl kn
+      complete -F __start_kubectl kns
+      complete -F __start_kubectl kubens
+      complete -F __start_kubectl kval
+      complete -F __start_kubectl kscore
+      complete -F __start_kubectl kdep
+      complete -F __start_kubectl ktree
+      complete -F __start_kubectl kimages
+      complete -F __start_kubectl kdf
+      complete -F __start_kubectl ktail
+
+    plugins:
+      - "ctx"
+      - "ns"
+      - "deprecations"
+      - "tree"
+      - "images"
+      - "df-pv"
+      - "trace"
+      - "sniff"
+      - "janitor"
+      - "pod-dive"
+      - "status"
+      - "get-all"
+      - "access-matrix"
+      - "score"
+      - "sort-manifests"
+      - "explore"
+      - "outdated"
+      - "ingress-nginx"
 
 docker:
   release:
@@ -154,4 +212,5 @@ docker:
         - "mycompany.registry.com"
       registry_mirrors:
         - "http://mycompany.registry.com"
+
 ...

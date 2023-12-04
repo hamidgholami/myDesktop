@@ -17,6 +17,7 @@
         - k8s.version|default('')|length>0
 
     - name: "Get k8s GPG"
+      changed_when: false
       ansible.builtin.get_url:
         url: "{{ k8s.release.url }}/core:/{{ k8s.release.name }}:/{{ k8s.release.version }}/deb/{{ k8s.release.gpg.file_name }}"
         dest: "{{ k8s.release.gpg.temp_file_path }}"
@@ -35,13 +36,57 @@
         filename: "k8s"
         update_cache: true
 
-    - name: "Install {{ k8s.packages | join(',') }} packages"
+    - name: "kubectl | Install {{ k8s.packages | join(',') }} packages"
       ansible.builtin.apt:
         name: "{{ item }}"
         state: present
         update_cache: false
         install_recommends: false
       loop: "{{ k8s.packages }}"
+
+    - name: "kubectl | Copy k8s_bashrc"
+      become: false
+      ansible.builtin.copy:
+        content: "{{ k8s.kubectl.bashrc }}"
+        dest: "bash_profiles/k8s_bashrc"
+        mode: "644"
+
   tags:
     - "install-kubectl"
-...
+
+- name: "Install kubectl krew"
+  block:
+    - name: "krew | Copy installation script"
+      become: false
+      ansible.builtin.copy:
+        src: "installKubectlKrew.sh"
+        dest: "/tmp/installKubectlKrew.sh"
+        mode: "775"
+      register: copy_krew_installation_script
+
+    - name: "krew | execute installation script"
+      ansible.builtin.shell: "./installKubectlKrew.sh"
+      args:
+        chdir: "/tmp"
+        executable: "/bin/bash"
+      when: copy_krew_installation_script.changed
+  tags:
+    - "install-kubectl-krew"
+
+- name: "Instal kubectl plugins by krew"
+  ansible.builtin.shell: "kubectl krew install {{ item }}"
+  loop: "{{ k8s.kubectl.plugins }}"
+  when: k8s.kubectl.plugins is defined
+  tags:
+    - "install-kubectl-plugins"
+
+#- name: "Enable shell autocompletion and add useful aliases"
+#- name: "https://github.com/hidetatz/kubecolor"
+#- name: "https://github.com/derailed/popeye"
+#- name: "https://github.com/instrumenta/kubeval"
+#- name: "https://github.com/instrumenta/helm-kubeval"
+#- name: "https://github.com/lee0c/kubectl-watch/tree/main"
+#- name: "https://github.com/ivkalita/kubectl-clogs"
+#- name: "https://github.com/rafi/kubectl-pass"
+#- name: "https://github.com/ishantanu/awesome-kubectl-plugins"
+#
